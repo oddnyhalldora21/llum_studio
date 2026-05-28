@@ -1,0 +1,38 @@
+import { Link } from 'react-router-dom'
+
+function Navbar() {
+  return (
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-stone-200">
+      <nav className="flex items-center justify-between px-8 h-14">
+        
+        {/* Left - Brand */}
+        <Link to="/" className="font-serif text-lg tracking-wide text-stone-900">
+          Llum Studio
+        </Link>
+
+        {/* Center - Nav links */}
+        <div className="flex items-center gap-8">
+          <Link to="/shop" className="text-sm text-stone-600 hover:text-stone-900 transition-colors">
+            Shop
+          </Link>
+          <Link to="/collections" className="text-sm text-stone-600 hover:text-stone-900 transition-colors">
+            Collections
+          </Link>
+        </div>
+
+        {/* Right - Actions */}
+        <div className="flex items-center gap-6">
+          <Link to="/sign-in" className="text-sm text-stone-600 hover:text-stone-900 transition-colors">
+            Sign In
+          </Link>
+          <Link to="/cart" className="text-sm text-stone-600 hover:text-stone-900 transition-colors">
+            Cart (0)
+          </Link>
+        </div>
+
+      </nav>
+    </header>
+  )
+}
+
+export default Navbar
