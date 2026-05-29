@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useProducts } from '../hooks/useProducts'
 
@@ -5,6 +6,11 @@ const categories = ["All Products", "Chandelier", "Pendant", "Sconce", "Table La
 
 function ShopPage() {
   const { products, loading, error } = useProducts()
+  const [selectedCategory, setSelectedCategory] = useState("All Products")
+
+  const filtered = selectedCategory === "All Products"
+    ? products
+    : products.filter(p => p.genre === selectedCategory)
 
   if (loading) return <div className="flex items-center justify-center min-h-screen text-sm text-stone-400">Loading...</div>
   if (error) return <div className="flex items-center justify-center min-h-screen text-sm text-red-400">{error}</div>
@@ -16,7 +22,14 @@ function ShopPage() {
         <ul className="space-y-3">
           {categories.map((cat) => (
             <li key={cat}>
-              <button className="text-sm text-stone-600 hover:text-stone-900 transition-colors">
+              <button
+                onClick={() => setSelectedCategory(cat)}
+                className={`text-sm transition-colors ${
+                  selectedCategory === cat
+                    ? 'text-stone-900 font-medium'
+                    : 'text-stone-400 hover:text-stone-900'
+                }`}
+              >
                 {cat}
               </button>
             </li>
@@ -27,10 +40,10 @@ function ShopPage() {
       {/* Product Grid */}
       <main className="flex-1 px-8 py-12">
         <h1 className="font-serif text-3xl text-stone-900 mb-8">
-          All Products <span className="text-lg text-stone-400 font-sans">{products.length}</span>
+          {selectedCategory} <span className="text-lg text-stone-400 font-sans">{filtered.length}</span>
         </h1>
         <div className="grid grid-cols-4 gap-6">
-          {products.map((product) => (
+          {filtered.map((product) => (
             <Link key={product.id} to={`/products/${product.slug}`} className="group">
               <div className="aspect-square overflow-hidden bg-stone-100 mb-3">
                 <img
