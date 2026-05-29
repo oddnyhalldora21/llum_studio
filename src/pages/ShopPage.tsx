@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useProducts } from '../hooks/useProducts'
 
 const categories = ["All Products", "Chandelier", "Pendant", "Sconce", "Table Lamp", "Floor Lamp"]
@@ -30,7 +31,7 @@ function ShopPage() {
         </h1>
         <div className="grid grid-cols-4 gap-6">
           {products.map((product) => (
-            <div key={product.id} className="group cursor-pointer">
+            <Link key={product.id} to={`/products/${product.slug}`} className="group">
               <div className="aspect-square overflow-hidden bg-stone-100 mb-3">
                 <img
                   src={product.image_url}
@@ -42,7 +43,7 @@ function ShopPage() {
               <p className="text-sm text-stone-500">
                 From ${(product.price_cents / 100).toLocaleString()}
               </p>
-            </div>
+            </Link>
           ))}
         </div>
       </main>
