@@ -5,6 +5,7 @@ import ShopPage from './pages/ShopPage'
 import ProductDetailPage from './pages/ProductDetailPage'
 import CartPage from './pages/CartPage'
 import CheckoutPage from './pages/CheckoutPage'
+import SignInPage from './pages/SignInPage'
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
           <Route path="/products/:id" element={<ProductDetailPage />} />
           <Route path="/cart" element={<CartPage/>} />
           <Route path="/checkout" element={<CheckoutPage/>} />
-          <Route path="/sign-in" element={<div>Sign In</div>} />
+          <Route path="/sign-in" element={<SignInPage/>} />
         </Routes>
       </main>
     </BrowserRouter>
