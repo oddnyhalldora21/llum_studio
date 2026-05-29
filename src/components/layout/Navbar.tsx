@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
+import { useCartStore } from '../../store/cartStore'
 
 function Navbar() {
+  const totalItems = useCartStore(state => state.totalItems())
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-stone-200">
       <nav className="flex items-center justify-between px-8 h-14">
@@ -26,7 +29,7 @@ function Navbar() {
             Sign In
           </Link>
           <Link to="/cart" className="text-sm text-stone-600 hover:text-stone-900 transition-colors">
-            Cart (0)
+            Cart ({totalItems})
           </Link>
         </div>
 

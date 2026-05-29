@@ -1,12 +1,26 @@
+import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useProduct } from '../hooks/useProduct'
+import { useCartStore } from '../store/cartStore'
 
 function ProductDetailPage() {
   const { id } = useParams<{ id: string }>()
   const { product, loading, error } = useProduct(id || '')
+  const addItem = useCartStore(state => state.addItem)
+  const [added, setAdded] = useState(false)
+  const [quantity, setQuantity] = useState(1)
 
   if (loading) return <div className="flex items-center justify-center min-h-screen text-sm text-stone-400">Loading...</div>
   if (error || !product) return <div className="flex items-center justify-center min-h-screen text-sm text-red-400">Product not found</div>
+
+  function handleAddToCart() {
+    if (!product) return
+    for (let i = 0; i < quantity; i++) {
+      addItem(product)
+    }
+    setAdded(true)
+    setTimeout(() => setAdded(false), 2000)
+  }
 
   return (
     <div className="flex min-h-screen">
@@ -38,16 +52,19 @@ function ProductDetailPage() {
         <div className="flex items-center border border-stone-300 mt-8">
           <div className="flex items-center gap-4 px-4 py-3 border-r border-stone-300">
             <span className="text-sm text-stone-600">Quantity</span>
-            <button className="text-stone-400 hover:text-stone-900">−</button>
-            <span className="text-sm">1</span>
-            <button className="text-stone-400 hover:text-stone-900">+</button>
+            <button onClick={() => setQuantity(q => Math.max(1, q - 1))} className="text-stone-400 hover:text-stone-900">−</button>
+            <span className="text-sm">{quantity}</span>
+            <button onClick={() => setQuantity(q => q + 1)} className="text-stone-400 hover:text-stone-900">+</button>
           </div>
           <div className="flex items-center justify-between flex-1 px-4 py-3">
             <span className="text-sm text-stone-900">
               From ${(product.price_cents / 100).toLocaleString()}
             </span>
-            <button className="text-sm text-stone-600 hover:text-stone-900 transition-colors">
-              Add to Cart
+            <button
+              onClick={handleAddToCart}
+              className="text-sm text-stone-600 hover:text-stone-900 transition-colors"
+            >
+              {added ? 'Added!' : 'Add to Cart'}
             </button>
           </div>
         </div>
