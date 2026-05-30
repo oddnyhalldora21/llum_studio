@@ -6,6 +6,7 @@ import ProductDetailPage from './pages/ProductDetailPage'
 import CartPage from './pages/CartPage'
 import CheckoutPage from './pages/CheckoutPage'
 import SignInPage from './pages/SignInPage'
+import Footer from './components/layout/Footer'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/sign-in" element={<SignInPage/>} />
         </Routes>
       </main>
+      <Footer />
     </BrowserRouter>
   )
 }
