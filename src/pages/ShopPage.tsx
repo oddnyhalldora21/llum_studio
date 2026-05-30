@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useProducts } from '../hooks/useProducts'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const categories = ["All Products", "Chandelier", "Pendant", "Sconce", "Table Lamp", "Floor Lamp"]
 
@@ -16,6 +16,10 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
   const filtered = selectedCategory === "All Products"
     ? products
     : products.filter(p => p.genre === selectedCategory)
+
+    useEffect(() => {
+      return () => setLightsOn(false)
+    }, [])
 
   if (loading) return <div className="flex items-center justify-center min-h-screen text-sm text-stone-400">Loading...</div>
   if (error) return <div className="flex items-center justify-center min-h-screen text-sm text-red-400">{error}</div>

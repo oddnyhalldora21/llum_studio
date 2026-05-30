@@ -8,6 +8,7 @@ import CartPage from './pages/CartPage'
 import CheckoutPage from './pages/CheckoutPage'
 import SignInPage from './pages/SignInPage'
 import Footer from './components/layout/Footer'
+import OrderConfirmationPage from './pages/OrderConfirmationPage'
 
 function App() {
   const [lightsOn, setLightsOn] = useState(false)
@@ -23,6 +24,7 @@ function App() {
           <Route path="/cart" element={<CartPage/>} />
           <Route path="/checkout" element={<CheckoutPage/>} />
           <Route path="/sign-in" element={<SignInPage/>} />
+          <Route path="/order-confirmation" element={<OrderConfirmationPage />} />
         </Routes>
       </main>
       <Footer />
