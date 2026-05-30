@@ -21,26 +21,24 @@ const collections = [
     return (
       <div>
         {/* Hero Section */}
-<section className="relative h-screen w-full overflow-hidden">
-  <img
-    src="https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg?auto=compress&cs=tinysrgb&w=1800"
-    alt="Llum Studio"
-    className="absolute inset-0 w-full h-full object-cover"
-  />
-  <div className="absolute inset-0 bg-black/20" />
-  <div className="absolute inset-0 flex items-center justify-between px-12">
-    <h1 className="text-6xl font-medium tracking-widest uppercase text-white w-1/2">
-      Llum Studio
-    </h1>
-    <p className="text-white/80 text-lg font-light max-w-xs text-right">
-      Handcrafted lighting for contemporary spaces.
-    </p>
-  </div>
-</section>
+        <section className="relative h-screen w-full overflow-hidden">
+          <img
+            src="https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg?auto=compress&cs=tinysrgb&w=1800"
+            alt="Llum Studio"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/20" />
+          <div className="absolute inset-0 flex flex-col justify-end p-12">
+            <h1 className="font-serif text-6xl text-white mb-4">Llum Studio</h1>
+            <p className="text-white/80 text-lg max-w-sm">
+              Handcrafted lighting for contemporary spaces.
+            </p>
+          </div>
+        </section>
   
         {/* Collections Section */}
         <section className="py-24 px-8">
-          <h2 className="text-3xl font-medium tracking-wide text-stone-900 mb-12">Collections</h2>
+          <h2 className="font-serif text-3xl text-stone-900 mb-12">Collections</h2>
           <div className="grid grid-cols-4 gap-4">
             {collections.map((collection) => (
               <div key={collection.name} className="relative aspect-[3/4] overflow-hidden group cursor-pointer">
@@ -51,7 +49,7 @@ const collections = [
                 />
                 <div className="absolute inset-0 bg-black/20" />
                 <div className="absolute inset-0 flex items-end p-6">
-                  <h3 className="text-2xl font-light tracking-wide text-white">{collection.name}</h3>
+                  <h3 className="font-serif text-2xl text-white">{collection.name}</h3>
                 </div>
               </div>
             ))}
