@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../store/authStore'
+import { supabase } from '../lib/supabase'
 
 function SignInPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [fullName, setFullName] = useState('')
   const [isSignUp, setIsSignUp] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
@@ -15,15 +17,32 @@ function SignInPage() {
     setLoading(true)
     setError(null)
 
-    const errorMsg = isSignUp
-      ? await signUp(email, password)
-      : await signIn(email, password)
-
-    if (errorMsg) {
-      setError(errorMsg)
+    if (isSignUp) {
+      const errorMsg = await signUp(email, password)
+      if (errorMsg) {
+        setError(errorMsg)
+        setLoading(false)
+        return
+      }
+      // Save name to profiles table
+      const { data: { user } } = await supabase.auth.getUser()
+      if (user) {
+        await supabase.from('profiles').insert({
+          id: user.id,
+          email: email,
+          full_name: fullName,
+        })
+      }
     } else {
-      navigate('/')
+      const errorMsg = await signIn(email, password)
+      if (errorMsg) {
+        setError(errorMsg)
+        setLoading(false)
+        return
+      }
     }
+
+    navigate('/')
     setLoading(false)
   }
 
@@ -41,6 +60,15 @@ function SignInPage() {
       )}
 
       <div className="space-y-4">
+        {isSignUp && (
+          <input
+            type="text"
+            placeholder="Full name"
+            value={fullName}
+            onChange={e => setFullName(e.target.value)}
+            className="w-full border border-stone-300 px-4 py-3 text-sm outline-none focus:border-stone-900 transition-colors"
+          />
+        )}
         <input
           type="email"
           placeholder="Email"
