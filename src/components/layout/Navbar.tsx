@@ -4,7 +4,7 @@ import { useAuthStore } from '../../store/authStore'
 
 function Navbar() {
   const totalItems = useCartStore(state => state.totalItems())
-  const { user, signOut } = useAuthStore()
+  const { user, fullName, signOut } = useAuthStore()
   const navigate = useNavigate()
 
   async function handleSignOut() {
@@ -33,15 +33,16 @@ function Navbar() {
 
         {/* Right - Actions */}
         <div className="flex items-center gap-6">
-          {user ? (
-            <>
-              <button
-                onClick={handleSignOut}
-                className="text-sm font-medium tracking-wide text-stone-900 hover:text-stone-500 transition-colors"
-              >
-                Sign Out
-              </button>
-            </>
+        {user ? (
+  <>
+    <span className="text-sm font-medium tracking-wide text-stone-900">{fullName}</span>
+    <button
+      onClick={handleSignOut}
+      className="text-sm font-medium tracking-wide text-stone-900 hover:text-stone-500 transition-colors"
+    >
+      Sign Out
+    </button>
+  </>
           ) : (
             <Link to="/sign-in" className="text-sm font-medium tracking-wide text-stone-900 hover:text-stone-500 transition-colors">
               Sign In
