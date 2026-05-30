@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/layout/Navbar'
 import HomePage from './pages/HomePage'
@@ -9,13 +10,15 @@ import SignInPage from './pages/SignInPage'
 import Footer from './components/layout/Footer'
 
 function App() {
+  const [lightsOn, setLightsOn] = useState(false)
+
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar lightsOn={lightsOn} />
       <main className="pt-14">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/shop" element={<ShopPage />} />
+          <Route path="/shop" element={<ShopPage lightsOn={lightsOn} setLightsOn={setLightsOn} />} />
           <Route path="/products/:id" element={<ProductDetailPage />} />
           <Route path="/cart" element={<CartPage/>} />
           <Route path="/checkout" element={<CheckoutPage/>} />
