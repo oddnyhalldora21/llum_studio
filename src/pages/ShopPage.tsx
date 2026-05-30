@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
-import { useProducts } from '../hooks/useProducts'
 import { useState, useEffect } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
+import { useProducts } from '../hooks/useProducts'
 
 const categories = ["All Products", "Chandelier", "Pendant", "Sconce", "Table Lamp", "Floor Lamp"]
 
@@ -12,20 +12,24 @@ interface Props {
 function ShopPage({ lightsOn, setLightsOn }: Props) {
   const { products, loading, error } = useProducts()
   const [selectedCategory, setSelectedCategory] = useState("All Products")
+  const [searchParams] = useSearchParams()
+  const search = searchParams.get('search') || ''
 
-  const filtered = selectedCategory === "All Products"
-    ? products
-    : products.filter(p => p.genre === selectedCategory)
+  useEffect(() => {
+    return () => setLightsOn(false)
+  }, [])
 
-    useEffect(() => {
-      return () => setLightsOn(false)
-    }, [])
+  const filtered = products.filter(p => {
+    const matchesCategory = selectedCategory === "All Products" || p.genre === selectedCategory
+    const matchesSearch = p.name.toLowerCase().includes(search.toLowerCase())
+    return matchesCategory && matchesSearch
+  })
 
   if (loading) return <div className="flex items-center justify-center min-h-screen text-sm text-stone-400">Loading...</div>
   if (error) return <div className="flex items-center justify-center min-h-screen text-sm text-red-400">{error}</div>
 
   return (
-    <div className={`flex transition-colors duration-700 ${lightsOn ? 'bg-[#e8e0d8]' : 'bg-white'}`}>
+    <div className={`flex transition-colors duration-700 ${lightsOn ? 'bg-[#e8e0d8]' : ''}`}>
 
       <aside className={`w-56 shrink-0 px-8 py-12 border-r transition-colors duration-700 ${lightsOn ? 'border-stone-300' : 'border-stone-200'}`}>
         <ul className="space-y-3">
@@ -81,6 +85,10 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
             </Link>
           ))}
         </div>
+
+        {filtered.length === 0 && (
+          <p className="text-sm text-stone-400 mt-12">No products found for "{search}"</p>
+        )}
       </main>
     </div>
   )
