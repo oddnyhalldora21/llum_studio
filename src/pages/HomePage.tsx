@@ -41,24 +41,36 @@ function HomePage() {
       </section>
 
       {/* Collections Section */}
-      <section className="py-24 px-8">
-        <h2 className="text-3xl font-medium tracking-wide text-stone-900 mb-12">Collections</h2>
-        <div className="grid grid-cols-4 gap-4">
-          {collections.map((collection) => (
-            <div key={collection.name} className="relative aspect-[3/4] overflow-hidden group cursor-pointer">
-              <img
-                src={collection.image}
-                alt={collection.name}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-black/20" />
-              <div className="absolute inset-0 flex items-end p-6">
-                <h3 className="text-2xl font-light tracking-wide text-white">{collection.name}</h3>
-              </div>
-            </div>
-          ))}
+<section className="py-16 flex gap-8 px-8">
+  
+  {/* Left label column */}
+  <div className="w-40 shrink-0">
+    <p className="text-xs tracking-widest uppercase text-stone-400">Our Catalog</p>
+  </div>
+
+  {/* Right scrollable content */}
+  <div className="flex-1 overflow-hidden">
+    <p className="text-sm text-stone-500 max-w-md mb-10">
+      Handcrafted lighting designed for contemporary residential and commercial spaces.
+    </p>
+    <div className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
+      {collections.map((collection) => (
+        <div key={collection.name} className="shrink-0 w-64 cursor-pointer group">
+          <div className="aspect-[3/4] overflow-hidden mb-3">
+            <img
+              src={collection.image}
+              alt={collection.name}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          </div>
+          <h3 className="text-sm font-medium text-stone-900">{collection.name}</h3>
+          <p className="text-xs text-stone-400 mt-1">Shop</p>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+
+</section>
     </div>
   )
 }
