@@ -3,11 +3,13 @@ import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useCartStore } from '../../store/cartStore'
 import { useAuthStore } from '../../store/authStore'
 
-interface Props {
-  lightsOn: boolean
-}
 
-function Navbar({ lightsOn }: Props) {
+interface Props {
+    lightsOn: boolean
+    onCartOpen: () => void
+  }
+
+function Navbar({ lightsOn, onCartOpen }: Props) {
   const totalItems = useCartStore(state => state.totalItems())
   const { user, fullName, signOut } = useAuthStore()
   const navigate = useNavigate()
@@ -76,9 +78,9 @@ function Navbar({ lightsOn }: Props) {
             ) : (
               <Link to="/sign-in" className={linkClass}>Sign In</Link>
             )}
-            <Link to="/cart" className={linkClass}>
-              Cart ({totalItems})
-            </Link>
+            <button onClick={onCartOpen} className={linkClass}>
+            Cart ({totalItems})
+            </button>
           </div>
 
         </nav>

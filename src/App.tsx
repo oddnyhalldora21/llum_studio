@@ -11,21 +11,23 @@ import Footer from './components/layout/Footer'
 import OrderConfirmationPage from './pages/OrderConfirmationPage'
 import CollectionsPage from './pages/CollectionsPage'
 import CollectionDetailPage from './pages/CollectionDetailPage'
+import CartDrawer from './components/CartDrawer'
 
 function App() {
   const [lightsOn, setLightsOn] = useState(false)
+  const [cartOpen, setCartOpen] = useState(false)
 
   return (
     <BrowserRouter>
-      <Navbar lightsOn={lightsOn} />
+      <Navbar lightsOn={lightsOn} onCartOpen={() => setCartOpen(true)} />
       <main className="pt-14">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/shop" element={<ShopPage lightsOn={lightsOn} setLightsOn={setLightsOn} />} />
           <Route path="/products/:id" element={<ProductDetailPage />} />
-          <Route path="/cart" element={<CartPage/>} />
-          <Route path="/checkout" element={<CheckoutPage/>} />
-          <Route path="/sign-in" element={<SignInPage/>} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/sign-in" element={<SignInPage />} />
           <Route path="/order-confirmation" element={<OrderConfirmationPage />} />
           <Route path="/collections" element={<CollectionsPage />} />
           <Route path="/collections/detail" element={<CollectionDetailPage />} />
@@ -33,6 +35,7 @@ function App() {
         </Routes>
       </main>
       <Footer lightsOn={lightsOn} />
+      <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
     </BrowserRouter>
   )
 }
