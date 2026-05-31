@@ -28,8 +28,8 @@ function App() {
           <Route path="/sign-in" element={<SignInPage/>} />
           <Route path="/order-confirmation" element={<OrderConfirmationPage />} />
           <Route path="/collections" element={<CollectionsPage />} />
-<Route path="/collections/detail" element={<CollectionDetailPage />} />
-<Route path="/collections/detail/:slug" element={<CollectionDetailPage />} />
+          <Route path="/collections/detail" element={<CollectionDetailPage />} />
+          <Route path="/collections/detail/:slug" element={<CollectionDetailPage />} />
         </Routes>
       </main>
       <Footer lightsOn={lightsOn} />

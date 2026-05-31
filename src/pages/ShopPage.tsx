@@ -24,9 +24,10 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
 
   const filtered = products.filter(p => {
     const matchesCategory =
-      selectedCategory === "All Lighting" ||
-      (!isCollection && p.genre === selectedCategory) ||
-      (isCollection && p.collection?.toLowerCase() === selectedCategory.toLowerCase())
+    selectedCategory === "All Products" ||
+    selectedCategory === "All Lighting" ||
+    (!isCollection && p.genre === selectedCategory) ||
+    (isCollection && p.collection?.toLowerCase() === selectedCategory.toLowerCase())
     const matchesSearch = p.name.toLowerCase().includes(search.toLowerCase())
     return matchesCategory && matchesSearch
   })

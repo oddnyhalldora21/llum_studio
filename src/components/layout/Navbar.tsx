@@ -42,13 +42,13 @@ function Navbar({ lightsOn }: Props) {
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-700 ${
-        onCollections
-          ? 'bg-[#2c1810] border-white/10'
-          : lightsOn
-            ? 'bg-[#e8e0d8] border-stone-300'
-            : 'border-stone-200'
-      }`}>
+      <header className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-700 ${
+  onCollections
+    ? 'bg-[#2c1810] border-transparent'
+    : lightsOn
+      ? 'bg-[#e8e0d8] border-stone-300'
+      : 'bg-[#f5f0eb] border-transparent'
+}`}>
         <nav className="flex items-center justify-between px-8 h-14">
 
           <Link to="/" className={`text-base font-semibold tracking-widest uppercase transition-colors duration-700 ${onCollections ? 'text-white' : 'text-stone-900'}`}>

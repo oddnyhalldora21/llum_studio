@@ -58,7 +58,7 @@ function CollectionsCarouselPage() {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#2c1810' }}>
-      <div className="px-12 py-16">
+      <div className="px-12 pt-38 pb-16">
 
         {/* Carousel */}
         <div
