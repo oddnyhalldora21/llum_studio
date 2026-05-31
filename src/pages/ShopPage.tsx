@@ -58,11 +58,11 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
           <button
             onClick={() => setLightsOn(!lightsOn)}
             className={`relative w-12 h-6 rounded-full border transition-colors duration-500 ${
-              lightsOn ? 'bg-[#3d1a10] border-[#3d1a10]' : 'bg-transparent border-stone-400'
+              lightsOn ? 'bg-[#3d1a10] border-[#3d1a10]' : 'bg-transparent border-[#3d1a10]'
             }`}
           >
-            <span className={`absolute top-1 w-4 h-4 rounded-full transition-all duration-500 ${
-              lightsOn ? 'left-7 bg-white' : 'left-1 bg-stone-400'
+            <span className={`absolute top-1 w-3.5 h-3.5 rounded-full transition-all duration-600 ${
+              lightsOn ? 'left-7 bg-white' : 'left-1 bg-[#3d1a10]'
             }`} />
           </button>
         </div>
