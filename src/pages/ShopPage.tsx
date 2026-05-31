@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { useProducts } from '../hooks/useProducts'
 
-const categories = ["All Products", "Chandelier", "Pendant", "Sconce", "Table Lamp", "Floor Lamp"]
+const lightingCategories = ["All Lighting", "Chandelier", "Pendant", "Sconce", "Table Lamp", "Floor Lamp"]
+const collectionSlugs = ["Lido", "Saga", "Flora", "Core", "Dune", "Strata", "Curio", "Terra"]
 
 interface Props {
   lightsOn: boolean
@@ -19,8 +20,13 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
     return () => setLightsOn(false)
   }, [])
 
+  const isCollection = collectionSlugs.map(c => c.toLowerCase()).includes(selectedCategory.toLowerCase())
+
   const filtered = products.filter(p => {
-    const matchesCategory = selectedCategory === "All Products" || p.genre === selectedCategory
+    const matchesCategory =
+      selectedCategory === "All Lighting" ||
+      (!isCollection && p.genre === selectedCategory) ||
+      (isCollection && p.collection?.toLowerCase() === selectedCategory.toLowerCase())
     const matchesSearch = p.name.toLowerCase().includes(search.toLowerCase())
     return matchesCategory && matchesSearch
   })
@@ -52,22 +58,39 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
 
       {/* Divider line */}
       <div className="border-t" style={{ borderColor: '#2c1810' }} />
-      
-      
 
       {/* Main layout */}
       <div className="flex">
 
         {/* Sidebar */}
-        
         <aside className="w-56 shrink-0 px-8 py-10">
-          <ul className="space-y-3">
-            {categories.map((cat) => (
+
+          {/* All Products */}
+          <ul className="space-y-1 mb-6">
+            <li>
+              <button
+                onClick={() => setSelectedCategory("All Products")}
+                className="text-sm text-left w-full transition-all duration-300"
+                style={{
+                  color: '#2c1810',
+                  opacity: selectedCategory === "All Products" ? 1 : 0.4,
+                  transform: selectedCategory === "All Products" ? 'translateX(4px)' : 'translateX(0px)',
+                }}
+              >
+                {selectedCategory === "All Products" ? '● ' : ''}All Products
+              </button>
+            </li>
+          </ul>
+
+          {/* Lighting section */}
+          <p className="text-sm mb-2" style={{ color: '#2c1810' }}>Lighting</p>
+          <ul className="space-y-1 mb-6">
+            {lightingCategories.map((cat) => (
               <li key={cat}>
                 <button
                   onClick={() => setSelectedCategory(cat)}
                   className="text-sm text-left w-full transition-all duration-300"
-                  style={{ 
+                  style={{
                     color: '#2c1810',
                     opacity: selectedCategory === cat ? 1 : 0.4,
                     transform: selectedCategory === cat ? 'translateX(4px)' : 'translateX(0px)',
@@ -75,9 +98,30 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
                 >
                   {selectedCategory === cat ? '● ' : ''}{cat}
                 </button>
-                              </li>
+              </li>
             ))}
           </ul>
+
+          {/* Collections section */}
+          <p className="text-sm mb-2" style={{ color: '#2c1810' }}>Collections</p>
+          <ul className="space-y-1">
+          {collectionSlugs.map((col) => (
+          <li key={col}>
+            <button
+              onClick={() => setSelectedCategory(col)}
+              className="text-sm text-left w-full transition-all duration-300"
+              style={{
+                color: '#2c1810',
+                opacity: selectedCategory === col ? 1 : 0.4,
+                transform: selectedCategory === col ? 'translateX(4px)' : 'translateX(0px)',
+              }}
+            >
+              {selectedCategory === col ? '● ' : ''}{col}
+            </button>
+          </li>
+        ))}
+          </ul>
+
         </aside>
 
         {/* Products */}
@@ -98,7 +142,7 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
                 </div>
                 <p className="text-sm" style={{ color: '#2c1810' }}>{product.name}</p>
                 <p className="text-sm" style={{ color: '#2c181080' }}>
-                  From ${(product.price_cents / 100).toLocaleString()}
+                From €{(product.price_cents / 100).toLocaleString()}
                 </p>
               </Link>
             ))}

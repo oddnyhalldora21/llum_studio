@@ -13,6 +13,7 @@ export type Product = {
   image_url: string
   image_url_2: string | null
   genre: string
+  collection: string | null
 }
 
 export function useProducts() {

@@ -17,6 +17,7 @@ describe('Cart Store', () => {
     description: 'A test lamp',
     image_url: 'https://example.com/image.jpg',
     image_url_2: null,
+    collection: null, // Added the missing property
   }
 
   it('starts with an empty cart', () => {

@@ -58,7 +58,7 @@ function ProductDetailPage() {
           </div>
           <div className="flex items-center justify-between flex-1 px-4 py-3">
             <span className="text-sm text-stone-900">
-              From ${(product.price_cents / 100).toLocaleString()}
+            From €{(product.price_cents / 100).toLocaleString()}
             </span>
             <button
               onClick={handleAddToCart}
