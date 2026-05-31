@@ -13,6 +13,8 @@ interface Props {
 function ShopPage({ lightsOn, setLightsOn }: Props) {
   const { products, loading, error } = useProducts()
   const [selectedCategory, setSelectedCategory] = useState("All Products")
+  const [visible, setVisible] = useState(true)
+  const [displayedCategory, setDisplayedCategory] = useState("All Products")
   const [searchParams] = useSearchParams()
   const search = searchParams.get('search') || ''
 
@@ -20,14 +22,23 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
     return () => setLightsOn(false)
   }, [])
 
+  function handleCategoryChange(cat: string) {
+    setVisible(false)
+    setTimeout(() => {
+      setSelectedCategory(cat)
+      setDisplayedCategory(cat)
+      setVisible(true)
+    }, 300)
+  }
+
   const isCollection = collectionSlugs.map(c => c.toLowerCase()).includes(selectedCategory.toLowerCase())
 
   const filtered = products.filter(p => {
     const matchesCategory =
-    selectedCategory === "All Products" ||
-    selectedCategory === "All Lighting" ||
-    (!isCollection && p.genre === selectedCategory) ||
-    (isCollection && p.collection?.toLowerCase() === selectedCategory.toLowerCase())
+      selectedCategory === "All Products" ||
+      selectedCategory === "All Lighting" ||
+      (!isCollection && p.genre === selectedCategory) ||
+      (isCollection && p.collection?.toLowerCase() === selectedCategory.toLowerCase())
     const matchesSearch = p.name.toLowerCase().includes(search.toLowerCase())
     return matchesCategory && matchesSearch
   })
@@ -70,7 +81,7 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
           <ul className="space-y-1 mb-6">
             <li>
               <button
-                onClick={() => setSelectedCategory("All Products")}
+                onClick={() => handleCategoryChange("All Products")}
                 className="text-sm text-left w-full transition-all duration-300"
                 style={{
                   color: '#2c1810',
@@ -89,7 +100,7 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
             {lightingCategories.map((cat) => (
               <li key={cat}>
                 <button
-                  onClick={() => setSelectedCategory(cat)}
+                  onClick={() => handleCategoryChange(cat)}
                   className="text-sm text-left w-full transition-all duration-300"
                   style={{
                     color: '#2c1810',
@@ -106,52 +117,59 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
           {/* Collections section */}
           <p className="text-sm mb-2" style={{ color: '#2c1810' }}>Collections</p>
           <ul className="space-y-1">
-          {collectionSlugs.map((col) => (
-          <li key={col}>
-            <button
-              onClick={() => setSelectedCategory(col)}
-              className="text-sm text-left w-full transition-all duration-300"
-              style={{
-                color: '#2c1810',
-                opacity: selectedCategory === col ? 1 : 0.4,
-                transform: selectedCategory === col ? 'translateX(4px)' : 'translateX(0px)',
-              }}
-            >
-              {selectedCategory === col ? '● ' : ''}{col}
-            </button>
-          </li>
-        ))}
+            {collectionSlugs.map((col) => (
+              <li key={col}>
+                <button
+                  onClick={() => handleCategoryChange(col)}
+                  className="text-sm text-left w-full transition-all duration-300"
+                  style={{
+                    color: '#2c1810',
+                    opacity: selectedCategory === col ? 1 : 0.4,
+                    transform: selectedCategory === col ? 'translateX(4px)' : 'translateX(0px)',
+                  }}
+                >
+                  {selectedCategory === col ? '● ' : ''}{col}
+                </button>
+              </li>
+            ))}
           </ul>
 
         </aside>
 
         {/* Products */}
         <main className="flex-1 px-8 py-10">
-          <h1 className="text-2xl mb-8" style={{ color: '#2c1810' }}>
-            {selectedCategory} <span className="text-base" style={{ color: '#2c181060' }}>{filtered.length}</span>
-          </h1>
+          <div
+            style={{
+              opacity: visible ? 1 : 0,
+              transition: 'opacity 0.5s ease',
+            }}
+          >
+            <h1 className="text-2xl mb-8" style={{ color: '#2c1810' }}>
+              {displayedCategory} <span className="text-base" style={{ color: '#2c181060' }}>{filtered.length}</span>
+            </h1>
 
-          <div className="grid grid-cols-4 gap-6">
-            {filtered.map((product) => (
-              <Link key={product.id} to={`/products/${product.slug}`} className="group">
-                <div className={`aspect-square overflow-hidden mb-3 transition-colors duration-700 ${lightsOn ? 'bg-stone-200' : 'bg-stone-100'}`}>
-                  <img
-                    src={lightsOn ? (product.image_url_2 || product.image_url) : product.image_url}
-                    alt={product.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <p className="text-sm" style={{ color: '#2c1810' }}>{product.name}</p>
-                <p className="text-sm" style={{ color: '#2c181080' }}>
-                From €{(product.price_cents / 100).toLocaleString()}
-                </p>
-              </Link>
-            ))}
+            <div className="grid grid-cols-4 gap-6">
+              {filtered.map((product) => (
+                <Link key={product.id} to={`/products/${product.slug}`} className="group">
+                  <div className={`aspect-square overflow-hidden mb-3 transition-colors duration-700 ${lightsOn ? 'bg-stone-200' : 'bg-stone-100'}`}>
+                    <img
+                      src={lightsOn ? (product.image_url_2 || product.image_url) : product.image_url}
+                      alt={product.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <p className="text-sm" style={{ color: '#2c1810' }}>{product.name}</p>
+                  <p className="text-sm" style={{ color: '#2c181080' }}>
+                    From €{(product.price_cents / 100).toLocaleString()}
+                  </p>
+                </Link>
+              ))}
+            </div>
+
+            {filtered.length === 0 && (
+              <p className="text-sm text-stone-400 mt-12">No products found for "{search}"</p>
+            )}
           </div>
-
-          {filtered.length === 0 && (
-            <p className="text-sm text-stone-400 mt-12">No products found for "{search}"</p>
-          )}
         </main>
 
       </div>

@@ -12,6 +12,8 @@ import OrderConfirmationPage from './pages/OrderConfirmationPage'
 import CollectionsPage from './pages/CollectionsPage'
 import CollectionDetailPage from './pages/CollectionDetailPage'
 import CartDrawer from './components/CartDrawer'
+import ScrollToTop from './components/ScrollToTop'
+
 
 function App() {
   const [lightsOn, setLightsOn] = useState(false)
@@ -36,6 +38,7 @@ function App() {
       </main>
       <Footer lightsOn={lightsOn} />
       <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
+      <ScrollToTop />
     </BrowserRouter>
   )
 }
