@@ -11,6 +11,7 @@ export type Product = {
   price_cents: number
   currency: string
   image_url: string
+  image_url_2: string | null
   genre: string
 }
 
