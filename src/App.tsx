@@ -9,6 +9,8 @@ import CheckoutPage from './pages/CheckoutPage'
 import SignInPage from './pages/SignInPage'
 import Footer from './components/layout/Footer'
 import OrderConfirmationPage from './pages/OrderConfirmationPage'
+import CollectionsPage from './pages/CollectionsPage'
+import CollectionDetailPage from './pages/CollectionDetailPage'
 
 function App() {
   const [lightsOn, setLightsOn] = useState(false)
@@ -25,9 +27,12 @@ function App() {
           <Route path="/checkout" element={<CheckoutPage/>} />
           <Route path="/sign-in" element={<SignInPage/>} />
           <Route path="/order-confirmation" element={<OrderConfirmationPage />} />
+          <Route path="/collections" element={<CollectionsPage />} />
+<Route path="/collections/detail" element={<CollectionDetailPage />} />
+<Route path="/collections/detail/:slug" element={<CollectionDetailPage />} />
         </Routes>
       </main>
-      <Footer />
+      <Footer lightsOn={lightsOn} />
     </BrowserRouter>
   )
 }

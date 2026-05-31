@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useCartStore } from '../../store/cartStore'
 import { useAuthStore } from '../../store/authStore'
 
@@ -11,6 +11,8 @@ function Navbar({ lightsOn }: Props) {
   const totalItems = useCartStore(state => state.totalItems())
   const { user, fullName, signOut } = useAuthStore()
   const navigate = useNavigate()
+  const location = useLocation()
+  const onCollections = location.pathname.startsWith('/collections')
   const [searchOpen, setSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
 
@@ -34,26 +36,29 @@ function Navbar({ lightsOn }: Props) {
 
   const searchBg = { backgroundColor: 'oklch(0.96 0.008 60)' }
 
+  const linkClass = `text-sm font-medium tracking-wide transition-colors ${
+    onCollections ? 'text-white/70 hover:text-white' : 'text-stone-900 hover:text-stone-500'
+  }`
+
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-700 ${lightsOn ? 'bg-[#e8e0d8] border-stone-300' : 'border-stone-200'}`}>
+      <header className={`fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-700 ${
+        onCollections
+          ? 'bg-[#2c1810] border-white/10'
+          : lightsOn
+            ? 'bg-[#e8e0d8] border-stone-300'
+            : 'border-stone-200'
+      }`}>
         <nav className="flex items-center justify-between px-8 h-14">
 
-          <Link to="/" className="text-base font-semibold tracking-widest uppercase text-stone-900">
+          <Link to="/" className={`text-base font-semibold tracking-widest uppercase transition-colors duration-700 ${onCollections ? 'text-white' : 'text-stone-900'}`}>
             Llum Studio
           </Link>
 
           <div className="flex items-center gap-10">
-            <Link to="/shop" className="text-sm font-medium tracking-wide text-stone-900 hover:text-stone-500 transition-colors">
-              Shop
-            </Link>
-            <Link to="/collections" className="text-sm font-medium tracking-wide text-stone-900 hover:text-stone-500 transition-colors">
-              Collections
-            </Link>
-            <button
-              onClick={() => setSearchOpen(!searchOpen)}
-              className="text-sm font-medium tracking-wide text-stone-900 hover:text-stone-500 transition-colors"
-            >
+            <Link to="/shop" className={linkClass}>Shop</Link>
+            <Link to="/collections" className={linkClass}>Collections</Link>
+            <button onClick={() => setSearchOpen(!searchOpen)} className={linkClass}>
               Search
             </button>
           </div>
@@ -61,20 +66,17 @@ function Navbar({ lightsOn }: Props) {
           <div className="flex items-center gap-6">
             {user ? (
               <>
-                <span className="text-sm font-medium tracking-wide text-stone-900">{fullName}</span>
-                <button
-                  onClick={handleSignOut}
-                  className="text-sm font-medium tracking-wide text-stone-900 hover:text-stone-500 transition-colors"
-                >
+                <span className={`text-sm font-medium tracking-wide ${onCollections ? 'text-white/70' : 'text-stone-900'}`}>
+                  {fullName}
+                </span>
+                <button onClick={handleSignOut} className={linkClass}>
                   Sign Out
                 </button>
               </>
             ) : (
-              <Link to="/sign-in" className="text-sm font-medium tracking-wide text-stone-900 hover:text-stone-500 transition-colors">
-                Sign In
-              </Link>
+              <Link to="/sign-in" className={linkClass}>Sign In</Link>
             )}
-            <Link to="/cart" className="text-sm font-medium tracking-wide text-stone-900 hover:text-stone-500 transition-colors">
+            <Link to="/cart" className={linkClass}>
               Cart ({totalItems})
             </Link>
           </div>
