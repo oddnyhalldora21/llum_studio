@@ -17,6 +17,7 @@ describe('Checkout Logic', () => {
     description: 'A test lamp',
     image_url: 'https://example.com/image.jpg',
     image_url_2: null,
+    collection: null, // Added the missing property
   }
 
   it('cart is empty after placing order', () => {
