@@ -12,7 +12,7 @@ function Navbar({ lightsOn }: Props) {
   const { user, fullName, signOut } = useAuthStore()
   const navigate = useNavigate()
   const location = useLocation()
-  const onCollections = location.pathname.startsWith('/collections')
+  const onCollections = location.pathname === '/collections'
   const [searchOpen, setSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
 

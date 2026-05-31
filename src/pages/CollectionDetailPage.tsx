@@ -17,27 +17,33 @@ function CollectionDetailPage() {
       setActiveSlug(slug)
     }
   }, [slug])
-
-  // Scroll spy
-  useEffect(() => {
+// Scroll spy
+useEffect(() => {
     const observers: IntersectionObserver[] = []
-
-    collectionsData.forEach(collection => {
-      const el = sectionRefs.current[collection.slug]
-      if (!el) return
-
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActiveSlug(collection.slug)
-        },
-        { threshold: 0.1, rootMargin: '-20% 0px -60% 0px' }
-      )
-
-      observer.observe(el)
-      observers.push(observer)
-    })
-
-    return () => observers.forEach(o => o.disconnect())
+  
+    const setup = () => {
+      collectionsData.forEach(collection => {
+        const el = sectionRefs.current[collection.slug]
+        if (!el) return
+  
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) setActiveSlug(collection.slug)
+          },
+          { threshold: 0.1, rootMargin: '-20% 0px -60% 0px' }
+        )
+  
+        observer.observe(el)
+        observers.push(observer)
+      })
+    }
+  
+    const timer = setTimeout(setup, 200)
+  
+    return () => {
+      clearTimeout(timer)
+      observers.forEach(o => o.disconnect())
+    }
   }, [])
 
   const scrollTo = (s: string) => {
@@ -79,7 +85,7 @@ function CollectionDetailPage() {
             >
 
               {/* Hero */}
-              <div className="relative w-full overflow-hidden" style={{ height: '70vh' }}>
+              <div className="relative w-full overflow-hidden" style={{ height: '100vh' }}>
                 <img
                   src={collection.heroImage}
                   alt={collection.name}
