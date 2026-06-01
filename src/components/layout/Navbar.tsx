@@ -48,7 +48,7 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
   onCollections
     ? 'bg-[#2c1810] border-transparent'
     : lightsOn
-      ? 'bg-[#e8e0d8] border-stone-300'
+      ? 'bg-[#e8e0d8] border-transparent'
       : 'bg-[#f5f0eb] border-transparent'
 }`}>
         <nav className="flex items-center justify-between px-8 h-14">
