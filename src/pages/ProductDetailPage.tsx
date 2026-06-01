@@ -3,13 +3,17 @@ import { useParams } from 'react-router-dom'
 import { useProduct } from '../hooks/useProduct'
 import { useCartStore } from '../store/cartStore'
 
-function ProductDetailPage() {
+interface Props {
+  lightsOn: boolean
+  setLightsOn: (value: boolean) => void
+}
+
+function ProductDetailPage({ lightsOn, setLightsOn }: Props) {
   const { id } = useParams<{ id: string }>()
   const { product, loading, error } = useProduct(id || '')
   const addItem = useCartStore(state => state.addItem)
   const [added, setAdded] = useState(false)
   const [quantity, setQuantity] = useState(1)
-  const [lightsOn, setLightsOn] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
   const [selectedSize, setSelectedSize] = useState('Select')
   const [selectedHardware, setSelectedHardware] = useState('Select')
@@ -26,8 +30,6 @@ function ProductDetailPage() {
     setAdded(true)
     setTimeout(() => setAdded(false), 2000)
   }
-
-  const currentImage = lightsOn && product.image_url_2 ? product.image_url_2 : product.image_url
 
   const sizeOptions = ['Small', 'Medium']
   const hardwareOptions = ['Brass', 'Blackened Brass', 'Pewter']
@@ -77,7 +79,7 @@ function ProductDetailPage() {
   }
 
   return (
-    <div className="flex min-h-screen" style={{ backgroundColor: '#f5f0eb' }}>
+    <div className="flex min-h-screen transition-colors duration-700" style={{ backgroundColor: lightsOn ? '#e8e0d8' : '#f5f0eb' }}>
 
       {/* Left - Product Info */}
       <div className="w-1/2 px-12 pt-32 pb-16 flex flex-col">
@@ -130,39 +132,44 @@ function ProductDetailPage() {
         {/* Light toggle */}
         {product.image_url_2 && (
           <div className="absolute top-6 right-6 z-10 flex items-center gap-3">
-            <span className="text-xs tracking-widest uppercase" style={{ color: '#2c181080' }}>
-              Light
-            </span>
+            <span className="text-xs tracking-widest uppercase" style={{ color: '#2c181080' }}>Light</span>
             <button
               onClick={() => setLightsOn(!lightsOn)}
               className="relative rounded-full border transition-colors duration-500"
               style={{
-                width: '40px',
-                height: '20px',
+                width: '40px', height: '20px',
                 backgroundColor: lightsOn ? '#3d1a10' : 'transparent',
                 borderColor: lightsOn ? '#3d1a10' : '#2c181060',
               }}
             >
-              <span
-                className="absolute rounded-full transition-all duration-500"
-                style={{
-                  top: '2px',
-                  width: '14px',
-                  height: '14px',
-                  left: lightsOn ? '22px' : '2px',
-                  backgroundColor: lightsOn ? 'white' : '#2c181060',
-                }}
-              />
+              <span className="absolute rounded-full transition-all duration-500" style={{
+                top: '2px', width: '14px', height: '14px',
+                left: lightsOn ? '22px' : '2px',
+                backgroundColor: lightsOn ? 'white' : '#2c181060',
+              }} />
             </button>
           </div>
         )}
 
+        {/* Off image */}
         <img
-          src={currentImage}
+          src={product.image_url}
           alt={product.name}
-          className="w-full h-full object-cover"
-          style={{ minHeight: '100vh', transition: 'opacity 0.7s ease' }}
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ minHeight: '100vh', opacity: lightsOn ? 0 : 1, transition: 'opacity 0.8s ease' }}
         />
+        {/* On image */}
+        {product.image_url_2 && (
+          <img
+            src={product.image_url_2}
+            alt={product.name}
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ minHeight: '100vh', opacity: lightsOn ? 1 : 0, transition: 'opacity 0.8s ease' }}
+          />
+        )}
+        {/* Spacer */}
+        <div style={{ minHeight: '100vh' }} />
+
       </div>
 
     </div>

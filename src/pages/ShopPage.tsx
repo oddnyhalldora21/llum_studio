@@ -151,13 +151,22 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
             <div className="grid grid-cols-4 gap-6">
               {filtered.map((product) => (
                 <Link key={product.id} to={`/products/${product.slug}`} className="group">
-                  <div className={`aspect-square overflow-hidden mb-3 transition-colors duration-700 ${lightsOn ? 'bg-stone-200' : 'bg-stone-100'}`}>
+                  <div className={`aspect-square overflow-hidden mb-3 relative transition-colors duration-700 ${lightsOn ? 'bg-stone-200' : 'bg-stone-100'}`}>
+                  <img
+                    src={product.image_url}
+                    alt={product.name}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    style={{ opacity: lightsOn ? 0 : 1, transition: 'opacity 0.8s ease, transform 0.5s ease' }}
+                  />
+                  {product.image_url_2 && (
                     <img
-                      src={lightsOn ? (product.image_url_2 || product.image_url) : product.image_url}
+                      src={product.image_url_2}
                       alt={product.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      style={{ opacity: lightsOn ? 1 : 0, transition: 'opacity 0.8s ease, transform 0.5s ease' }}
                     />
-                  </div>
+                  )}
+                </div>
                   <p className="text-sm" style={{ color: '#2c1810' }}>{product.name}</p>
                   <p className="text-sm" style={{ color: '#2c181080' }}>
                     From €{(product.price_cents / 100).toLocaleString()}
