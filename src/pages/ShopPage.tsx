@@ -85,11 +85,12 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
             <li>
               <button
                 onClick={() => handleCategoryChange("All Products")}
-                className="text-sm text-left w-full transition-all duration-300"
+                className="text-sm text-left w-full"
                 style={{ color: '#2c1810' }}
               >
                 <span
-                  className="inline-block transition-all duration-300"
+                  key={selectedCategory === "All Products" ? 'active' : 'inactive'}
+                  className={`inline-block ${selectedCategory === "All Products" ? 'dot-drop' : ''}`}
                   style={{ opacity: selectedCategory === "All Products" ? 1 : 0, marginRight: selectedCategory === "All Products" ? '4px' : '0px' }}
                 >●</span>All Products
               </button>
@@ -102,32 +103,32 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
             {lightingCategories.map((cat) => (
               <li key={cat}>
                 <button
-                  onClick={() => handleCategoryChange(cat)}
-                  className="text-sm text-left w-full transition-all duration-300"
-                  style={{ color: '#2c1810', paddingLeft: '12px' }}
-                >
-                  <span
-                    className="inline-block transition-all duration-300"
-                    style={{ opacity: selectedCategory === cat ? 1 : 0, marginRight: selectedCategory === cat ? '4px' : '0px' }}
-                  >●</span>{cat}
-                </button>
+  onClick={() => handleCategoryChange(cat)}
+  className="text-sm text-left w-full relative"
+  style={{ color: '#2c1810', paddingLeft: '16px' }}
+>
+  <span
+    key={selectedCategory === cat ? 'active' : 'inactive'}
+    className={`absolute left-0 top-0 ${selectedCategory === cat ? 'dot-drop' : 'opacity-0'}`}
+  >●</span>{cat}
+</button>
               </li>
             ))}
           </ul>
 
-          {/* Collections section */}
+         {/* Collections section */}
           <p className="text-sm mb-1" style={{ color: '#2c1810' }}>Collections</p>
           <ul className="space-y-0.5">
             {collectionSlugs.map((col) => (
               <li key={col}>
                 <button
                   onClick={() => handleCategoryChange(col)}
-                  className="text-sm text-left w-full transition-all duration-300"
-                  style={{ color: '#2c1810', paddingLeft: '12px' }}
+                  className="text-sm text-left w-full relative"
+                  style={{ color: '#2c1810', paddingLeft: '16px' }}
                 >
                   <span
-                    className="inline-block transition-all duration-300"
-                    style={{ opacity: selectedCategory === col ? 1 : 0, marginRight: selectedCategory === col ? '4px' : '0px' }}
+                    key={selectedCategory === col ? 'active' : 'inactive'}
+                    className={`absolute left-0 top-0 ${selectedCategory === col ? 'dot-drop' : 'opacity-0'}`}
                   >●</span>{col}
                 </button>
               </li>
