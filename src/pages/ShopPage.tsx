@@ -12,9 +12,9 @@ interface Props {
 
 function ShopPage({ lightsOn, setLightsOn }: Props) {
   const { products, loading, error } = useProducts()
-  const [selectedCategory, setSelectedCategory] = useState("All Products")
+  const [selectedCategory, setSelectedCategory] = useState("All Lighting")
   const [visible, setVisible] = useState(true)
-  const [displayedCategory, setDisplayedCategory] = useState("All Products")
+  const [displayedCategory, setDisplayedCategory] = useState("All Lighting")
   const [searchParams] = useSearchParams()
   const search = searchParams.get('search') || ''
 
@@ -35,7 +35,6 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
 
   const filtered = products.filter(p => {
     const matchesCategory =
-      selectedCategory === "All Products" ||
       selectedCategory === "All Lighting" ||
       (!isCollection && p.genre === selectedCategory) ||
       (isCollection && p.collection?.toLowerCase() === selectedCategory.toLowerCase())
@@ -80,45 +79,28 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
         {/* Sidebar */}
         <aside className="w-56 shrink-0 px-8 py-6">
 
-          {/* All Products */}
-          <ul className="space-y-0.5 mb-4">
-            <li>
-              <button
-                onClick={() => handleCategoryChange("All Products")}
-                className="text-sm text-left w-full"
-                style={{ color: '#2c1810' }}
-              >
-                <span
-                  key={selectedCategory === "All Products" ? 'active' : 'inactive'}
-                  className={`inline-block ${selectedCategory === "All Products" ? 'dot-drop' : ''}`}
-                  style={{ opacity: selectedCategory === "All Products" ? 1 : 0, marginRight: selectedCategory === "All Products" ? '4px' : '0px' }}
-                >●</span>All Products
-              </button>
-            </li>
-          </ul>
-
           {/* Lighting section */}
           <p className="text-sm mb-1" style={{ color: '#2c1810' }}>Lighting</p>
-          <ul className="space-y-0.5 mb-4">
+          <ul className="space-y-0.1 mb-4">
             {lightingCategories.map((cat) => (
               <li key={cat}>
                 <button
-  onClick={() => handleCategoryChange(cat)}
-  className="text-sm text-left w-full relative"
-  style={{ color: '#2c1810', paddingLeft: '16px' }}
->
-  <span
-    key={selectedCategory === cat ? 'active' : 'inactive'}
-    className={`absolute left-0 top-0 ${selectedCategory === cat ? 'dot-drop' : 'opacity-0'}`}
-  >●</span>{cat}
-</button>
+                  onClick={() => handleCategoryChange(cat)}
+                  className="text-sm text-left w-full relative"
+                  style={{ color: '#2c1810', paddingLeft: '16px' }}
+                >
+                  <span
+                    key={selectedCategory === cat ? 'active' : 'inactive'}
+                    className={`absolute left-0 top-0 ${selectedCategory === cat ? 'dot-drop' : 'opacity-0'}`}
+                  >●</span>{cat}
+                </button>
               </li>
             ))}
           </ul>
 
-         {/* Collections section */}
+          {/* Collections section */}
           <p className="text-sm mb-1" style={{ color: '#2c1810' }}>Collections</p>
-          <ul className="space-y-0.5">
+          <ul className="space-y-0.1">
             {collectionSlugs.map((col) => (
               <li key={col}>
                 <button
