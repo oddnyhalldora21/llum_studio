@@ -69,66 +69,66 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
       </div>
 
       {/* Divider line */}
-      <div className="border-t" style={{ borderColor: '#2c1810' }} />
+      <div className="flex gap-4 px-8">
+        <div className="w-56 shrink-0 border-t" style={{ borderColor: '#2c1810' }} />
+        <div className="flex-1 border-t" style={{ borderColor: '#2c1810' }} />
+      </div>
 
       {/* Main layout */}
       <div className="flex">
 
         {/* Sidebar */}
-        <aside className="w-56 shrink-0 px-8 py-10">
+        <aside className="w-56 shrink-0 px-8 py-6">
 
           {/* All Products */}
-          <ul className="space-y-1 mb-6">
+          <ul className="space-y-0.5 mb-4">
             <li>
               <button
                 onClick={() => handleCategoryChange("All Products")}
                 className="text-sm text-left w-full transition-all duration-300"
-                style={{
-                  color: '#2c1810',
-                  opacity: selectedCategory === "All Products" ? 1 : 0.4,
-                  transform: selectedCategory === "All Products" ? 'translateX(4px)' : 'translateX(0px)',
-                }}
+                style={{ color: '#2c1810' }}
               >
-                {selectedCategory === "All Products" ? '● ' : ''}All Products
+                <span
+                  className="inline-block transition-all duration-300"
+                  style={{ opacity: selectedCategory === "All Products" ? 1 : 0, marginRight: selectedCategory === "All Products" ? '4px' : '0px' }}
+                >●</span>All Products
               </button>
             </li>
           </ul>
 
           {/* Lighting section */}
-          <p className="text-sm mb-2" style={{ color: '#2c1810' }}>Lighting</p>
-          <ul className="space-y-1 mb-6">
+          <p className="text-sm mb-1" style={{ color: '#2c1810' }}>Lighting</p>
+          <ul className="space-y-0.5 mb-4">
             {lightingCategories.map((cat) => (
               <li key={cat}>
                 <button
                   onClick={() => handleCategoryChange(cat)}
                   className="text-sm text-left w-full transition-all duration-300"
-                  style={{
-                    color: '#2c1810',
-                    opacity: selectedCategory === cat ? 1 : 0.4,
-                    transform: selectedCategory === cat ? 'translateX(4px)' : 'translateX(0px)',
-                  }}
+                  style={{ color: '#2c1810', paddingLeft: '12px' }}
                 >
-                  {selectedCategory === cat ? '● ' : ''}{cat}
+                  <span
+                    className="inline-block transition-all duration-300"
+                    style={{ opacity: selectedCategory === cat ? 1 : 0, marginRight: selectedCategory === cat ? '4px' : '0px' }}
+                  >●</span>{cat}
                 </button>
               </li>
             ))}
           </ul>
 
           {/* Collections section */}
-          <p className="text-sm mb-2" style={{ color: '#2c1810' }}>Collections</p>
-          <ul className="space-y-1">
+          <p className="text-sm mb-1" style={{ color: '#2c1810' }}>Collections</p>
+          <ul className="space-y-0.5">
             {collectionSlugs.map((col) => (
               <li key={col}>
                 <button
                   onClick={() => handleCategoryChange(col)}
                   className="text-sm text-left w-full transition-all duration-300"
-                  style={{
-                    color: '#2c1810',
-                    opacity: selectedCategory === col ? 1 : 0.4,
-                    transform: selectedCategory === col ? 'translateX(4px)' : 'translateX(0px)',
-                  }}
+                  style={{ color: '#2c1810', paddingLeft: '12px' }}
                 >
-                  {selectedCategory === col ? '● ' : ''}{col}
+                  <span
+                    className="inline-block transition-all duration-300"
+                    style={{ opacity: selectedCategory === col ? 1 : 0, marginRight: selectedCategory === col ? '4px' : '0px' }}
+                  >●</span>{col}
                 </button>
               </li>
             ))}
@@ -151,22 +151,22 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
             <div className="grid grid-cols-4 gap-6">
               {filtered.map((product) => (
                 <Link key={product.id} to={`/products/${product.slug}`} className="group">
-                  <div className={`aspect-square overflow-hidden mb-3 relative transition-colors duration-700 ${lightsOn ? 'bg-stone-200' : 'bg-stone-100'}`}>
-                  <img
-                    src={product.image_url}
-                    alt={product.name}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    style={{ opacity: lightsOn ? 0 : 1, transition: 'opacity 0.8s ease, transform 0.5s ease' }}
-                  />
-                  {product.image_url_2 && (
+                  <div className={`overflow-hidden mb-3 relative transition-colors duration-700 ${lightsOn ? 'bg-stone-200' : 'bg-stone-100'}`} style={{ aspectRatio: '3/4' }}>
                     <img
-                      src={product.image_url_2}
+                      src={product.image_url}
                       alt={product.name}
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      style={{ opacity: lightsOn ? 1 : 0, transition: 'opacity 0.8s ease, transform 0.5s ease' }}
+                      style={{ opacity: lightsOn ? 0 : 1, transition: 'opacity 0.8s ease, transform 0.5s ease' }}
                     />
-                  )}
-                </div>
+                    {product.image_url_2 && (
+                      <img
+                        src={product.image_url_2}
+                        alt={product.name}
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        style={{ opacity: lightsOn ? 1 : 0, transition: 'opacity 0.8s ease, transform 0.5s ease' }}
+                      />
+                    )}
+                  </div>
                   <p className="text-sm" style={{ color: '#2c1810' }}>{product.name}</p>
                   <p className="text-sm" style={{ color: '#2c181080' }}>
                     From €{(product.price_cents / 100).toLocaleString()}
