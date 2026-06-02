@@ -1,13 +1,12 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useCartStore } from '../../store/cartStore'
 import { useAuthStore } from '../../store/authStore'
 
-
 interface Props {
-    lightsOn: boolean
-    onCartOpen: () => void
-  }
+  lightsOn: boolean
+  onCartOpen: () => void
+}
 
 function Navbar({ lightsOn, onCartOpen }: Props) {
   const totalItems = useCartStore(state => state.totalItems())
@@ -15,8 +14,20 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
   const navigate = useNavigate()
   const location = useLocation()
   const onCollections = location.pathname === '/collections'
+  const isHome = location.pathname === '/'
   const [searchOpen, setSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
+  const [scrolled, setScrolled] = useState(false)
+  const [hovered, setHovered] = useState(false)
+
+  useEffect(() => {
+    if (!isHome) return
+    function handleScroll() {
+      setScrolled(window.scrollY > 60)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [isHome])
 
   async function handleSignOut() {
     await signOut()
@@ -38,22 +49,46 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
 
   const searchBg = { backgroundColor: 'oklch(0.96 0.008 60)' }
 
-  const linkClass = `text-sm font-medium tracking-wide transition-colors ${
-    onCollections ? 'text-white/70 hover:text-white' : 'text-stone-900 hover:text-stone-500'
+  // Determine navbar state
+  const isTranslucent = isHome && !scrolled
+  const showLogo = !isHome || scrolled || hovered
+
+  const headerClass = `fixed top-0 left-0 right-0 z-50 border-b transition-all duration-500 ${
+    onCollections
+      ? 'bg-[#2c1810] border-transparent'
+      : isTranslucent
+        ? 'bg-transparent border-transparent'
+        : lightsOn
+          ? 'bg-[#e8e0d8] border-transparent'
+          : 'bg-[#f5f0eb] border-transparent'
   }`
+
+  const linkClass = `text-sm font-medium tracking-wide transition-colors duration-500 ${
+    onCollections
+      ? 'text-white/70 hover:text-white'
+      : isTranslucent
+        ? 'text-[#f5f0eb] hover:text-[#f5f0eb]/70'
+        : 'text-stone-900 hover:text-stone-500'
+  }`
+
+  const logoClass = `text-base font-semibold tracking-widest uppercase transition-all duration-500 hover:opacity-70 ${
+    onCollections
+      ? 'text-[#f5f0eb]'
+      : isTranslucent
+        ? 'text-[#f5f0eb]'
+        : 'text-[#2c1810]'
+  } ${!showLogo ? 'opacity-0 pointer-events-none' : 'opacity-100'}`
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-700 ${
-  onCollections
-    ? 'bg-[#2c1810] border-transparent'
-    : lightsOn
-      ? 'bg-[#e8e0d8] border-transparent'
-      : 'bg-[#f5f0eb] border-transparent'
-}`}>
+      <header
+        className={headerClass}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
         <nav className="flex items-center justify-between px-8 h-14">
 
-          <Link to="/" className={`text-base font-semibold tracking-widest uppercase transition-colors duration-700 ${onCollections ? 'text-white' : 'text-stone-900'}`}>
+          <Link to="/" className={logoClass}>
             Llum Studio
           </Link>
 
@@ -68,7 +103,9 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
           <div className="flex items-center gap-6">
             {user ? (
               <>
-                <span className={`text-sm font-medium tracking-wide ${onCollections ? 'text-white/70' : 'text-stone-900'}`}>
+                <span className={`text-sm font-medium tracking-wide transition-colors duration-500 ${
+                  onCollections ? 'text-white/70' : isTranslucent ? 'text-[#f5f0eb] hover:text-[#f5f0eb]' : 'text-stone-900 hover:text-stone-500'
+                }`}>
                   {fullName}
                 </span>
                 <button onClick={handleSignOut} className={linkClass}>
@@ -79,7 +116,7 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
               <Link to="/sign-in" className={linkClass}>Sign In</Link>
             )}
             <button onClick={onCartOpen} className={linkClass}>
-            Cart ({totalItems})
+              Cart ({totalItems})
             </button>
           </div>
 

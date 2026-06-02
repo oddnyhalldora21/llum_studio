@@ -23,7 +23,7 @@ function HomePage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative h-screen w-full overflow-hidden">
+      <section className="relative h-screen w-full overflow-hidden -mt-14">
         <img
           src={heroImage}
           alt="Llum Studio"
@@ -31,11 +31,9 @@ function HomePage() {
         />
         <div className="absolute inset-0 bg-black/20" />
         <div className="absolute inset-0 flex items-center justify-between px-12">
-          <h1 className="text-6xl font-medium tracking-widest uppercase text-white w-1/2">
-            Llum Studio
+        <h1 className="text-6xl font-medium tracking-widest uppercase text-[#f5f0eb] w-1/2">            Llum Studio
           </h1>
-          <p className="text-white/80 text-lg font-light max-w-xs text-right">
-            Handcrafted lighting for contemporary spaces.
+          <p className="text-[#f5f0eb]/80 text-lg font-light max-w-xs text-right">            Handcrafted lighting for contemporary spaces.
           </p>
         </div>
       </section>
