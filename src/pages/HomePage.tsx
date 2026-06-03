@@ -4,32 +4,32 @@ import heroImage from '../assets/hero.webp'
 
 const catalogCollections = [
   {
-   
+    name: '',
     slug: 'lido',
     image: "https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/lido-collection-section.png",
   },
   {
-   
+    name: '',
     slug: 'saga',
     image: "https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/saga-collection-section.png",
   },
   {
-    
+    name: '',
     slug: 'flora',
     image: "https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/flora-collection-section.png",
   },
   {
-    
+    name: '',
     slug: 'core',
     image: "https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/core-collection-section.png",
   },
   {
-    
+    name: '',
     slug: 'strata',
     image: "https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/strata-collection-section.png",
   },
   {
-    
+    name: '',
     slug: 'terra',
     image: "https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/terra-collection-section.png",
   },

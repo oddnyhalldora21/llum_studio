@@ -15,19 +15,21 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
   const location = useLocation()
   const onCollections = location.pathname === '/collections'
   const isHome = location.pathname === '/'
+  const isAbout = location.pathname === '/about'
+  const isTranslucentPage = isHome || isAbout
   const [searchOpen, setSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const [scrolled, setScrolled] = useState(false)
   const [hovered, setHovered] = useState(false)
 
   useEffect(() => {
-    if (!isHome) return
+    if (!isTranslucentPage) return
     function handleScroll() {
       setScrolled(window.scrollY > 60)
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [isHome])
+  }, [isTranslucentPage])
 
   async function handleSignOut() {
     await signOut()
@@ -47,28 +49,29 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
     if (e.key === 'Escape') setSearchOpen(false)
   }
 
-  const searchBg = { backgroundColor: 'oklch(0.96 0.008 60)' }
+  const searchBg = { backgroundColor: '#f5f0eb' }
 
-  // Determine navbar state
-  const isTranslucent = isHome && !scrolled
-  const showLogo = !isHome || scrolled || hovered
+  const isTranslucent = isTranslucentPage && !scrolled
+  const showLogo = !isTranslucentPage || scrolled || hovered
 
   const headerClass = `fixed top-0 left-0 right-0 z-50 border-b transition-all duration-500 ${
     onCollections
       ? 'bg-[#2c1810] border-transparent'
       : isTranslucent
         ? 'bg-transparent border-transparent'
-        : lightsOn
+        : isAbout
           ? 'bg-[#e8e0d8] border-transparent'
-          : 'bg-[#f5f0eb] border-transparent'
+          : lightsOn
+            ? 'bg-[#e8e0d8] border-transparent'
+            : 'bg-[#f5f0eb] border-transparent'
   }`
 
   const linkClass = `text-sm font-medium tracking-wide transition-colors duration-500 ${
     onCollections
-      ? 'text-white/70 hover:text-white'
+      ? 'text-[#f5f0eb]/70 hover:text-[#f5f0eb]'
       : isTranslucent
         ? 'text-[#f5f0eb] hover:text-[#f5f0eb]/70'
-        : 'text-stone-900 hover:text-stone-500'
+        : 'text-[#2c1810] hover:opacity-60'
   }`
 
   const logoClass = `text-base font-semibold tracking-widest uppercase transition-all duration-500 hover:opacity-70 ${
@@ -95,6 +98,7 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
           <div className="flex items-center gap-10">
             <Link to="/shop" className={linkClass}>Shop</Link>
             <Link to="/collections" className={linkClass}>Collections</Link>
+            <Link to="/about" className={linkClass}>About</Link>
             <button onClick={() => setSearchOpen(!searchOpen)} className={linkClass}>
               Search
             </button>
@@ -104,7 +108,7 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
             {user ? (
               <>
                 <span className={`text-sm font-medium tracking-wide transition-colors duration-500 ${
-                  onCollections ? 'text-white/70' : isTranslucent ? 'text-[#f5f0eb] hover:text-[#f5f0eb]' : 'text-stone-900 hover:text-stone-500'
+                  onCollections ? 'text-[#f5f0eb]/70' : isTranslucent ? 'text-[#f5f0eb]' : 'text-[#2c1810]'
                 }`}>
                   {fullName}
                 </span>
@@ -131,8 +135,8 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
             onClick={() => setSearchOpen(false)}
           />
           <div
-            className="fixed top-14 left-1/2 -translate-x-1/2 z-50 border border-stone-200 shadow-lg w-[480px]"
-            style={searchBg}
+            className="fixed top-14 left-1/2 -translate-x-1/2 z-50 border shadow-lg w-[480px]"
+            style={{ ...searchBg, borderColor: '#2c181020' }}
           >
             <div className="flex items-center p-4 gap-4">
               <input
@@ -142,17 +146,20 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
                 onChange={e => setSearchQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
                 autoFocus
-                className="flex-1 text-sm outline-none placeholder-stone-400 text-stone-900 bg-transparent"
+                className="flex-1 text-sm outline-none bg-transparent"
+                style={{ color: '#2c1810' }}
               />
               <button
                 onClick={handleSearch}
-                className="text-sm font-medium text-stone-900 hover:text-stone-500 transition-colors px-4 py-2 border border-stone-200 hover:border-stone-400"
+                className="text-sm font-medium transition-opacity hover:opacity-60 px-4 py-2 border"
+                style={{ color: '#2c1810', borderColor: '#2c181040' }}
               >
                 Search
               </button>
               <button
                 onClick={() => setSearchOpen(false)}
-                className="text-stone-400 hover:text-stone-900 transition-colors"
+                className="transition-opacity hover:opacity-60"
+                style={{ color: '#2c1810' }}
               >
                 ✕
               </button>

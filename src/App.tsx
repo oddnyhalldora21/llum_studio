@@ -13,6 +13,7 @@ import CollectionsPage from './pages/CollectionsPage'
 import CollectionDetailPage from './pages/CollectionDetailPage'
 import CartDrawer from './components/CartDrawer'
 import ScrollToTop from './components/ScrollToTop'
+import AboutPage from './pages/AboutPage'
 
 
 function App() {
@@ -34,6 +35,8 @@ function App() {
           <Route path="/collections" element={<CollectionsPage />} />
           <Route path="/collections/detail" element={<CollectionDetailPage />} />
           <Route path="/collections/detail/:slug" element={<CollectionDetailPage />} />
+          <Route path="/about" element={<AboutPage />} />
+
         </Routes>
       </main>
       <Footer lightsOn={lightsOn} />
