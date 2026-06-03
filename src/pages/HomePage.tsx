@@ -1,27 +1,46 @@
+import { useRef } from 'react'
+import { Link } from 'react-router-dom'
 import heroImage from '../assets/hero.webp'
 
-const collections = [
+const catalogCollections = [
   {
-    name: "Pendant",
-    image: "https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg?auto=compress&cs=tinysrgb&w=800",
+   
+    slug: 'lido',
+    image: "https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/lido-collection-section.png",
   },
   {
-    name: "Sconce",
-    image: "https://images.pexels.com/photos/1123262/pexels-photo-1123262.jpeg?auto=compress&cs=tinysrgb&w=800",
+   
+    slug: 'saga',
+    image: "https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/saga-collection-section.png",
   },
   {
-    name: "Table",
-    image: "https://images.pexels.com/photos/3586966/pexels-photo-3586966.jpeg?auto=compress&cs=tinysrgb&w=800",
+    
+    slug: 'flora',
+    image: "https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/flora-collection-section.png",
   },
   {
-    name: "Floor",
-    image: "https://images.pexels.com/photos/6489103/pexels-photo-6489103.jpeg?auto=compress&cs=tinysrgb&w=800",
+    
+    slug: 'core',
+    image: "https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/core-collection-section.png",
+  },
+  {
+    
+    slug: 'strata',
+    image: "https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/strata-collection-section.png",
+  },
+  {
+    
+    slug: 'terra',
+    image: "https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/terra-collection-section.png",
   },
 ]
 
 function HomePage() {
+  const scrollRef = useRef<HTMLDivElement>(null)
+
   return (
-    <div>
+    <div style={{ backgroundColor: '#f5f0eb' }}>
+
       {/* Hero Section */}
       <section className="relative h-screen w-full overflow-hidden -mt-14">
         <img
@@ -31,44 +50,91 @@ function HomePage() {
         />
         <div className="absolute inset-0 bg-black/20" />
         <div className="absolute inset-0 flex items-center justify-between px-12">
-        <h1 className="text-6xl font-medium tracking-widest uppercase text-[#f5f0eb] w-1/2">            Llum Studio
+          <h1 className="text-6xl font-medium tracking-widest uppercase text-[#f5f0eb] w-1/2">
+            Llum Studio
           </h1>
-          <p className="text-[#f5f0eb]/80 text-lg font-light max-w-xs text-right">            Handcrafted lighting for contemporary spaces.
+          <p className="text-[#f5f0eb]/80 text-lg font-light max-w-xs text-right">
+            Handcrafted lighting for contemporary spaces.
           </p>
         </div>
       </section>
 
-      {/* Collections Section */}
-<section className="py-16 flex gap-8 px-8">
-  
-  {/* Left label column */}
-  <div className="w-40 shrink-0">
-    <p className="text-xs tracking-widest uppercase text-stone-400">Our Catalog</p>
-  </div>
+      {/* Catalog Section */}
+      <section className="py-16 flex">
 
-  {/* Right scrollable content */}
-  <div className="flex-1 overflow-hidden">
-    <p className="text-sm text-stone-500 max-w-md mb-10">
-      Handcrafted lighting designed for contemporary residential and commercial spaces.
-    </p>
-    <div className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
-      {collections.map((collection) => (
-        <div key={collection.name} className="shrink-0 w-64 cursor-pointer group">
-          <div className="aspect-[3/4] overflow-hidden mb-3">
-            <img
-              src={collection.image}
-              alt={collection.name}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-          </div>
-          <h3 className="text-sm font-medium text-stone-900">{collection.name}</h3>
-          <p className="text-xs text-stone-400 mt-1">Shop</p>
+        {/* Two lines with break — same as shop page */}
+        <div className="absolute left-0 right-0 flex gap-4 px-8" style={{ marginTop: '-4rem' }}>
+          <div className="w-56 shrink-0 border-t" style={{ borderColor: '#2c1810' }} />
+          <div className="flex-1 border-t" style={{ borderColor: '#2c1810' }} />
         </div>
-      ))}
-    </div>
-  </div>
 
-</section>
+        {/* Left column */}
+        <div className="w-56 shrink-0 px-8 flex flex-col justify-between py-2">
+          <div>
+            <p className="text-xs tracking-widest uppercase mb-6" style={{ color: '#2c181080' }}>Our Catalog</p>
+            <p className="text-sm leading-relaxed" style={{ color: '#2c1810' }}>
+              Since our founding in 2018, our catalog has grown to include eight collections and over 27 products — suitable for both residential and commercial projects.
+            </p>
+          </div>
+          <div className="mt-12">
+            <Link
+              to="/shop"
+              className="text-sm tracking-wide hover:opacity-60 transition-opacity"
+              style={{ color: '#2c1810' }}
+            >
+              Shop All Lights
+            </Link>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="w-px shrink-0" style={{ backgroundColor: '#2c181020' }} />
+
+        {/* Right: scrollable cards + arrows */}
+        <div className="flex-1 px-10 overflow-hidden">
+
+          {/* Cards */}
+          <div
+            ref={scrollRef}
+            className="flex gap-6 overflow-x-auto pb-4"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {catalogCollections.map((col) => (
+              <Link
+                key={col.name}
+                to={`/shop?collection=${col.slug}`}
+                className="shrink-0 w-72 group cursor-pointer"
+              >
+                <div className="overflow-hidden mb-4" style={{ aspectRatio: '4/5' }}>
+                  <img
+                    src={col.image}
+                    alt={col.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <h3 className="text-2xl font-light" style={{ color: '#2c1810' }}>{col.name}</h3>
+              </Link>
+            ))}
+          </div>
+
+          {/* Arrows */}
+          <div className="flex justify-end gap-4 mt-6">
+            <span
+              className="cursor-pointer hover:opacity-60 transition-opacity text-lg"
+              style={{ color: '#2c1810' }}
+              onClick={() => scrollRef.current?.scrollBy({ left: -300, behavior: 'smooth' })}
+            >←</span>
+            <span
+              className="cursor-pointer hover:opacity-60 transition-opacity text-lg"
+              style={{ color: '#2c1810' }}
+              onClick={() => scrollRef.current?.scrollBy({ left: 300, behavior: 'smooth' })}
+            >→</span>
+          </div>
+
+        </div>
+
+      </section>
+
     </div>
   )
 }
