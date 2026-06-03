@@ -17,10 +17,17 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
   const [displayedCategory, setDisplayedCategory] = useState("All Lighting")
   const [searchParams] = useSearchParams()
   const search = searchParams.get('search') || ''
+  const collectionParam = searchParams.get('collection') || ''
 
   useEffect(() => {
     return () => setLightsOn(false)
   }, [])
+
+  useEffect(() => {
+    if (collectionParam) {
+      handleCategoryChange(collectionParam.charAt(0).toUpperCase() + collectionParam.slice(1))
+    }
+  }, [collectionParam])
 
   function handleCategoryChange(cat: string) {
     setVisible(false)
@@ -42,8 +49,8 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
     return matchesCategory && matchesSearch
   })
 
-  if (loading) return <div className="flex items-center justify-center min-h-screen text-sm text-stone-400">Loading...</div>
-  if (error) return <div className="flex items-center justify-center min-h-screen text-sm text-red-400">{error}</div>
+  if (loading) return <div className="flex items-center justify-center min-h-screen text-sm" style={{ color: '#2c1810' }}>Loading...</div>
+  if (error) return <div className="flex items-center justify-center min-h-screen text-sm" style={{ color: '#2c1810' }}>{error}</div>
 
   return (
     <div className={`min-h-screen transition-colors duration-700 ${lightsOn ? 'bg-[#e8e0d8]' : 'bg-[#f5f0eb]'}`}>
@@ -61,7 +68,7 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
             }`}
           >
             <span className={`absolute top-1 w-3.5 h-3.5 rounded-full transition-all duration-600 ${
-              lightsOn ? 'left-7 bg-white' : 'left-1 bg-[#3d1a10]'
+              lightsOn ? 'left-7 bg-[#f5f0eb]' : 'left-1 bg-[#3d1a10]'
             }`} />
           </button>
         </div>
@@ -134,7 +141,10 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
             <div className="grid grid-cols-4 gap-6">
               {filtered.map((product) => (
                 <Link key={product.id} to={`/products/${product.slug}`} className="group">
-                  <div className={`overflow-hidden mb-3 relative transition-colors duration-700 ${lightsOn ? 'bg-stone-200' : 'bg-stone-100'}`} style={{ aspectRatio: '3/4' }}>
+                  <div
+                    className="overflow-hidden mb-3 relative transition-colors duration-700"
+                    style={{ aspectRatio: '3/4', backgroundColor: lightsOn ? '#ddd5cb' : '#ebe6e0' }}
+                  >
                     <img
                       src={product.image_url}
                       alt={product.name}
@@ -159,7 +169,7 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
             </div>
 
             {filtered.length === 0 && (
-              <p className="text-sm text-stone-400 mt-12">No products found for "{search}"</p>
+              <p className="text-sm mt-12" style={{ color: '#2c181060' }}>No products found for "{search}"</p>
             )}
           </div>
         </main>
