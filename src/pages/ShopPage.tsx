@@ -3,7 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { useProducts } from '../hooks/useProducts'
 
 const lightingCategories = ["All Lighting", "Chandelier", "Pendant", "Sconce", "Table Lamp", "Floor Lamp"]
-const collectionSlugs = ["Lido", "Saga", "Flora", "Core", "Dune", "Strata", "Curio", "Terra"]
+const collectionSlugs = ["Lido", "Saga", "Flora", "Core", "Dune", "Strata", "Terra"]
 
 interface Props {
   lightsOn: boolean

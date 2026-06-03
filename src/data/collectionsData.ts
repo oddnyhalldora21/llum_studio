@@ -68,13 +68,7 @@ export type CollectionSection = {
         tagline: '',
         sections: [],
       },
-      {
-        name: 'Curio',
-        slug: 'curio',
-        heroImage: 'https://images.pexels.com/photos/1123262/pexels-photo-1123262.jpeg?auto=compress&cs=tinysrgb&w=1600',
-        tagline: '',
-        sections: [],
-      },
+      
       {
         name: 'Terra',
         slug: 'terra',
