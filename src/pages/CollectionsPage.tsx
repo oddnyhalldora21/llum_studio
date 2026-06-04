@@ -3,37 +3,37 @@ import { Link } from 'react-router-dom'
 
 const collections = [
   {
-    name: 'Lido',
+    name: '',
     slug: 'lido',
     image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/lido-collection-section.png',
   },
   {
-    name: 'Saga',
+    name: '',
     slug: 'saga',
     image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/saga-collection-section.png',
   },
   {
-    name: 'Flora',
+    name: '',
     slug: 'flora',
     image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/flora-collection-section.png',
   },
   {
-    name: 'Core',
+    name: '',
     slug: 'core',
     image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/core-collection-section.png',
   },
   {
-    name: 'Dune',
+    name: '',
     slug: 'dune',
     image: 'https://images.pexels.com/photos/1112598/pexels-photo-1112598.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
-    name: 'Strata',
+    name: '',
     slug: 'strata',
     image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/strata-collection-section.png',
   },
   {
-    name: 'Terra',
+    name: '',
     slug: 'terra',
     image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/terra-collection-section.png',
   },
