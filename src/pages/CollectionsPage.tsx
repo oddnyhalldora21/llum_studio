@@ -22,11 +22,7 @@ const collections = [
     slug: 'core',
     image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/core-collection-section.png',
   },
-  {
-    name: '',
-    slug: 'dune',
-    image: 'https://images.pexels.com/photos/1112598/pexels-photo-1112598.jpeg?auto=compress&cs=tinysrgb&w=800',
-  },
+ 
   {
     name: '',
     slug: 'strata',
