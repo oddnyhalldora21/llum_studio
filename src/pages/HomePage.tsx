@@ -48,15 +48,14 @@ function HomePage() {
           alt="Llum Studio"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/20" />
-        <div className="absolute inset-0 flex items-center justify-between px-12">
-          <h1 className="text-6xl font-medium tracking-widest uppercase text-[#f5f0eb] w-1/2">
-            Llum Studio
-          </h1>
-          <p className="text-[#f5f0eb]/80 text-lg font-light max-w-xs text-right">
-            Handcrafted lighting for contemporary spaces.
-          </p>
-        </div>
+<div className="absolute inset-0 flex items-center justify-between px-8 md:px-12">
+  <h1 className="text-3xl md:text-6xl font-medium tracking-widest uppercase text-[#f5f0eb] w-1/2">
+    Llum Studio
+  </h1>
+  <p className="hidden md:block text-[#f5f0eb]/80 text-lg font-light max-w-xs text-right">
+    Handcrafted lighting for contemporary spaces.
+  </p>
+</div>
       </section>
 
       {/* Catalog Section */}

@@ -21,6 +21,7 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
   const [searchQuery, setSearchQuery] = useState('')
   const [scrolled, setScrolled] = useState(false)
   const [hovered, setHovered] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     if (!isTranslucentPage) return
@@ -30,6 +31,11 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [isTranslucentPage])
+
+  // Close menu on route change
+  useEffect(() => {
+    setMenuOpen(false)
+  }, [location.pathname])
 
   async function handleSignOut() {
     await signOut()
@@ -50,7 +56,6 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
   }
 
   const searchBg = { backgroundColor: '#f5f0eb' }
-
   const isTranslucent = isTranslucentPage && !scrolled
   const showLogo = !isTranslucentPage || scrolled || hovered
 
@@ -82,6 +87,8 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
         : 'text-[#2c1810]'
   } ${!showLogo ? 'opacity-0 pointer-events-none' : 'opacity-100'}`
 
+  const hamburgerColor = onCollections || isTranslucent ? '#f5f0eb' : '#2c1810'
+
   return (
     <>
       <header
@@ -95,7 +102,8 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
             Llum Studio
           </Link>
 
-          <div className="flex items-center gap-10">
+          {/* Desktop nav */}
+          <div className="hidden md:flex items-center gap-10">
             <Link to="/shop" className={linkClass}>Shop</Link>
             <Link to="/collections" className={linkClass}>Collections</Link>
             <Link to="/about" className={linkClass}>About</Link>
@@ -104,7 +112,8 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
             </button>
           </div>
 
-          <div className="flex items-center gap-6">
+          {/* Desktop right */}
+          <div className="hidden md:flex items-center gap-6">
             {user ? (
               <>
                 <span className={`text-sm font-medium tracking-wide transition-colors duration-500 ${
@@ -112,9 +121,7 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
                 }`}>
                   {fullName}
                 </span>
-                <button onClick={handleSignOut} className={linkClass}>
-                  Sign Out
-                </button>
+                <button onClick={handleSignOut} className={linkClass}>Sign Out</button>
               </>
             ) : (
               <Link to="/sign-in" className={linkClass}>Sign In</Link>
@@ -124,18 +131,58 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
             </button>
           </div>
 
+          {/* Mobile right: cart + hamburger */}
+          <div className="flex md:hidden items-center gap-4">
+            <button onClick={onCartOpen} className="text-sm font-medium" style={{ color: hamburgerColor }}>
+              Cart ({totalItems})
+            </button>
+            <button onClick={() => setMenuOpen(!menuOpen)} className="flex flex-col gap-1.5 p-1">
+              <span className="block w-6 h-px transition-all duration-300" style={{ backgroundColor: hamburgerColor }} />
+              <span className="block w-6 h-px transition-all duration-300" style={{ backgroundColor: hamburgerColor }} />
+              <span className="block w-6 h-px transition-all duration-300" style={{ backgroundColor: hamburgerColor }} />
+            </button>
+          </div>
+
         </nav>
       </header>
+
+      {/* Mobile menu overlay */}
+      {menuOpen && (
+        <div
+        className="fixed inset-0 z-40 flex flex-col pt-14"
+        style={{ backgroundColor: '#f5f0eb' }}
+      >
+        <div className="flex flex-col px-8 py-10 gap-6">
+          <Link to="/shop" className="text-2xl font-light tracking-wide" style={{ color: '#2c1810' }}>Shop</Link>
+          <Link to="/collections" className="text-2xl font-light tracking-wide" style={{ color: '#2c1810' }}>Collections</Link>
+          <Link to="/about" className="text-2xl font-light tracking-wide" style={{ color: '#2c1810' }}>About</Link>
+          <div className="border-t pt-6 mt-4 flex flex-col gap-4" style={{ borderColor: '#2c181020' }}>
+            {user ? (
+              <>
+                <span className="text-sm" style={{ color: '#2c181080' }}>{fullName}</span>
+                <button onClick={handleSignOut} className="text-sm text-left" style={{ color: '#2c1810' }}>Sign Out</button>
+              </>
+            ) : (
+              <Link to="/sign-in" className="text-sm" style={{ color: '#2c1810' }}>Sign In</Link>
+            )}
+            <button
+              onClick={() => { setMenuOpen(false); setSearchOpen(true) }}
+              className="text-sm text-left"
+              style={{ color: '#2c1810' }}
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
+      )}
 
       {/* Search popup */}
       {searchOpen && (
         <>
+          <div className="fixed inset-0 z-40" onClick={() => setSearchOpen(false)} />
           <div
-            className="fixed inset-0 z-40"
-            onClick={() => setSearchOpen(false)}
-          />
-          <div
-            className="fixed top-14 left-1/2 -translate-x-1/2 z-50 border shadow-lg w-[480px]"
+            className="fixed top-14 left-1/2 -translate-x-1/2 z-50 border shadow-lg w-[90vw] md:w-[480px]"
             style={{ ...searchBg, borderColor: '#2c181020' }}
           >
             <div className="flex items-center p-4 gap-4">
