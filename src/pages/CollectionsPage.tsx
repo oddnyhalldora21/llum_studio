@@ -5,22 +5,22 @@ const collections = [
   {
     name: 'Lido',
     slug: 'lido',
-    image: 'https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/lido-collection-section.png',
   },
   {
     name: 'Saga',
     slug: 'saga',
-    image: 'https://images.pexels.com/photos/1123262/pexels-photo-1123262.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/saga-collection-section.png',
   },
   {
     name: 'Flora',
     slug: 'flora',
-    image: 'https://images.pexels.com/photos/3586966/pexels-photo-3586966.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/flora-collection-section.png',
   },
   {
     name: 'Core',
     slug: 'core',
-    image: 'https://images.pexels.com/photos/6489103/pexels-photo-6489103.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/core-collection-section.png',
   },
   {
     name: 'Dune',
@@ -30,17 +30,12 @@ const collections = [
   {
     name: 'Strata',
     slug: 'strata',
-    image: 'https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg?auto=compress&cs=tinysrgb&w=800',
-  },
-  {
-    name: 'Curio',
-    slug: 'curio',
-    image: 'https://images.pexels.com/photos/1123262/pexels-photo-1123262.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/strata-collection-section.png',
   },
   {
     name: 'Terra',
     slug: 'terra',
-    image: 'https://images.pexels.com/photos/3586966/pexels-photo-3586966.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/terra-collection-section.png',
   },
 ]
 
@@ -80,7 +75,7 @@ function CollectionsCarouselPage() {
               />
               <div className="absolute inset-0 bg-black/30" />
               <div className="absolute inset-0 flex items-center justify-center">
-                <h2 className="text-white text-3xl font-light tracking-widest">{col.name}</h2>
+                <h2 className="text-[#f5f0eb] text-3xl font-light tracking-widest">{col.name}</h2>
               </div>
             </Link>
           ))}
@@ -88,15 +83,15 @@ function CollectionsCarouselPage() {
 
         {/* Bottom row */}
         <div className="flex items-end justify-between">
-          <p className="text-sm text-white/60 max-w-md">
+          <p className="text-sm max-w-md" style={{ color: '#f5f0eb80' }}>
             Our lights are organized into singular lighting collections, each deriving from a conceptual foundation and realized through distinct forms, materials, and craft-based engineering.
           </p>
           <div className="flex gap-4 items-center">
-            <Link to="/collections/detail" className="text-sm text-white/60 hover:text-white transition-colors tracking-wide mr-4">
+            <Link to="/collections/detail" className="text-sm hover:opacity-100 transition-opacity tracking-wide mr-4" style={{ color: '#f5f0eb60' }}>
               → Explore All
             </Link>
-            <button onClick={() => scroll('left')} className="text-white text-xl opacity-60 hover:opacity-100 transition-opacity">←</button>
-            <button onClick={() => scroll('right')} className="text-white text-xl opacity-60 hover:opacity-100 transition-opacity">→</button>
+            <button onClick={() => scroll('left')} className="text-xl opacity-60 hover:opacity-100 transition-opacity" style={{ color: '#f5f0eb' }}>←</button>
+            <button onClick={() => scroll('right')} className="text-xl opacity-60 hover:opacity-100 transition-opacity" style={{ color: '#f5f0eb' }}>→</button>
           </div>
         </div>
 
