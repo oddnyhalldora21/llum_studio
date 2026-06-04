@@ -5,32 +5,32 @@ const collections = [
   {
     name: '',
     slug: 'lido',
-    image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionpage-photos/lido-collectionphotos.png',
+    image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionpage-photos2/lido-cl.png',
   },
   {
     name: '',
     slug: 'saga',
-    image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionpage-photos/saga-collectionphotos.png',
+    image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionpage-photos2/saga-cl.png',
   },
   {
     name: '',
     slug: 'flora',
-    image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionpage-photos/flora-collectionphotos.png',
+    image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionpage-photos2/flora-cl.png',
   },
   {
     name: '',
     slug: 'core',
-    image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionpage-photos/core-collectionphotos.png',
+    image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionpage-photos2/core-cl.png',
   },
   {
     name: '',
     slug: 'dune',
-    image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionpage-photos/dune-collectionphotos.png',
+    image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionpage-photos2/dune-cl.png',
   },
   {
     name: '',
     slug: 'strata',
-    image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionpage-photos/strata-collectionphotos.png',
+    image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionpage-photos2/strata-cl.png',
   },
   {
     name: '',
