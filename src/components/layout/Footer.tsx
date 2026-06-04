@@ -7,7 +7,7 @@ interface Props {
 function Footer({ lightsOn }: Props) {
   const location = useLocation()
   const isAbout = location.pathname === '/about'
-  const isCollections = location.pathname === '/collections'
+  const isCollections = location.pathname === '/collections' || location.pathname.startsWith('/collections/')
 
   const textColor = isCollections ? '#f5f0eb' : '#2c1810'
   const borderColor = isCollections ? '#f5f0eb30' : '#2c181030'
