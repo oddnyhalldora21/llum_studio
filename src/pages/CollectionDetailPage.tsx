@@ -18,21 +18,24 @@ function CollectionDetailPage() {
   }, [slug])
 
   useEffect(() => {
-    const observers: IntersectionObserver[] = []
-    const setup = () => {
-      collectionsData.forEach(collection => {
+    function handleScroll() {
+      const scrollY = window.scrollY + window.innerHeight * 0.3
+
+      for (const collection of collectionsData) {
         const el = sectionRefs.current[collection.slug]
-        if (!el) return
-        const observer = new IntersectionObserver(
-          ([entry]) => { if (entry.isIntersecting) setActiveSlug(collection.slug) },
-          { threshold: 0.1, rootMargin: '-20% 0px -60% 0px' }
-        )
-        observer.observe(el)
-        observers.push(observer)
-      })
+        if (!el) continue
+        const top = el.offsetTop
+        const bottom = top + el.offsetHeight
+        if (scrollY >= top && scrollY < bottom) {
+          setActiveSlug(collection.slug)
+          break
+        }
+      }
     }
-    const timer = setTimeout(setup, 200)
-    return () => { clearTimeout(timer); observers.forEach(o => o.disconnect()) }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const scrollTo = (s: string) => {
@@ -52,10 +55,11 @@ function CollectionDetailPage() {
                 <li key={c.slug}>
                   <button
                     onClick={() => scrollTo(c.slug)}
-                    className="text-sm text-left transition-colors w-full"
-                    style={{ color: '#e8d5b7' }}
+                    className="text-sm text-left transition-colors w-full relative"
+                    style={{ color: '#e8d5b7', paddingLeft: '16px' }}
                   >
-                    {c.slug === activeSlug ? '● ' : ''}{c.name}
+                    <span className={`absolute left-0 top-0 transition-opacity duration-300 ${c.slug === activeSlug ? 'opacity-100' : 'opacity-0'}`}>●</span>
+                    {c.name}
                   </button>
                 </li>
               ))}
@@ -81,7 +85,8 @@ function CollectionDetailPage() {
                 />
                 <div className="absolute inset-0 bg-black/40" />
                 <div className="absolute inset-0 flex items-end px-16 pb-12">
-<h2 className="font-light tracking-widest" style={{ fontSize: '5rem', color: '#e8d5b7' }}>                    {collection.name}
+                  <h2 className="font-light tracking-widest" style={{ fontSize: '5rem', color: '#e8d5b7' }}>
+                    {collection.name}
                   </h2>
                 </div>
               </div>
