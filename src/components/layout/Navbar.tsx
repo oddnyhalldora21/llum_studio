@@ -13,7 +13,7 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
   const { user, fullName, signOut } = useAuthStore()
   const navigate = useNavigate()
   const location = useLocation()
-  const onCollections = location.pathname === '/collections'
+  const onCollections = location.pathname === '/collections' || location.pathname.startsWith('/collections/')
   const isHome = location.pathname === '/'
   const isAbout = location.pathname === '/about'
   const isTranslucentPage = isHome || isAbout
@@ -32,7 +32,6 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [isTranslucentPage])
 
-  // Close menu on route change
   useEffect(() => {
     setMenuOpen(false)
   }, [location.pathname])
@@ -148,33 +147,30 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
 
       {/* Mobile menu overlay */}
       {menuOpen && (
-        <div
-        className="fixed inset-0 z-40 flex flex-col pt-14"
-        style={{ backgroundColor: '#f5f0eb' }}
-      >
-        <div className="flex flex-col px-8 py-10 gap-6">
-          <Link to="/shop" className="text-2xl font-light tracking-wide" style={{ color: '#2c1810' }}>Shop</Link>
-          <Link to="/collections" className="text-2xl font-light tracking-wide" style={{ color: '#2c1810' }}>Collections</Link>
-          <Link to="/about" className="text-2xl font-light tracking-wide" style={{ color: '#2c1810' }}>About</Link>
-          <div className="border-t pt-6 mt-4 flex flex-col gap-4" style={{ borderColor: '#2c181020' }}>
-            {user ? (
-              <>
-                <span className="text-sm" style={{ color: '#2c181080' }}>{fullName}</span>
-                <button onClick={handleSignOut} className="text-sm text-left" style={{ color: '#2c1810' }}>Sign Out</button>
-              </>
-            ) : (
-              <Link to="/sign-in" className="text-sm" style={{ color: '#2c1810' }}>Sign In</Link>
-            )}
-            <button
-              onClick={() => { setMenuOpen(false); setSearchOpen(true) }}
-              className="text-sm text-left"
-              style={{ color: '#2c1810' }}
-            >
-              Search
-            </button>
+        <div className="fixed inset-0 z-40 flex flex-col pt-14" style={{ backgroundColor: '#f5f0eb' }}>
+          <div className="flex flex-col px-8 py-10 gap-6">
+            <Link to="/shop" className="text-2xl font-light tracking-wide" style={{ color: '#2c1810' }}>Shop</Link>
+            <Link to="/collections" className="text-2xl font-light tracking-wide" style={{ color: '#2c1810' }}>Collections</Link>
+            <Link to="/about" className="text-2xl font-light tracking-wide" style={{ color: '#2c1810' }}>About</Link>
+            <div className="border-t pt-6 mt-4 flex flex-col gap-4" style={{ borderColor: '#2c181020' }}>
+              {user ? (
+                <>
+                  <span className="text-sm" style={{ color: '#2c181080' }}>{fullName}</span>
+                  <button onClick={handleSignOut} className="text-sm text-left" style={{ color: '#2c1810' }}>Sign Out</button>
+                </>
+              ) : (
+                <Link to="/sign-in" className="text-sm" style={{ color: '#2c1810' }}>Sign In</Link>
+              )}
+              <button
+                onClick={() => { setMenuOpen(false); setSearchOpen(true) }}
+                className="text-sm text-left"
+                style={{ color: '#2c1810' }}
+              >
+                Search
+              </button>
+            </div>
           </div>
         </div>
-      </div>
       )}
 
       {/* Search popup */}

@@ -112,22 +112,70 @@ export const collectionsData: Collection[] = [
   {
     name: 'Dune',
     slug: 'dune',
-    heroImage: 'https://images.pexels.com/photos/1112598/pexels-photo-1112598.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    tagline: '',
-    sections: [],
+    heroImage: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/dune-collection-detail/Screenshot%202026-06-04%20at%2016.47.02.png',
+    tagline: 'Named for sand formations that migrate with the wind, Dune represents both intentionality and flexibility. Function-forward designs are balanced by exuberant shapes and colors, while indoor-outdoor durability enhances petite silhouettes that bring soulful whimsicality to the ritual of gathering.',
+    photos: [
+      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/dune-collection-detail/Screenshot%202026-06-04%20at%2016.47.50.png',
+      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/dune-collection-detail/Screenshot%202026-06-04%20at%2016.47.35.png',
+      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/dune-collection-detail/Screenshot%202026-06-04%20at%2016.47.25.png',
+      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/dune-collection-detail/Screenshot%202026-06-04%20at%2016.47.16.png',
+      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/dune-collection-detail/Screenshot%202026-06-04%20at%2016.47.08.png',
+    ],
+    sections: [
+      {
+        image: '',
+        text: 'Named for natural sand formations that migrate with the movement of the wind, the Dune Series represents a combination of simplicity and flexibility. Thoughtful, function-forward designs take on exuberant shapes and dynamic colors, and petite silhouettes with indoor-outdoor durability bring soul and whimsicality to any gathering — in spaces large or small, fireside or al fresco.',
+      },
+      {
+        image: '',
+        text: 'Inspired by their namesake landforms, Dune fixtures are defined by clean, curved lines that conceal underlying intricacies, like integrated dim-to-warm LED lights and dimmer knobs disguised as decorative beads. Grounded but energetic, each piece emanates warmth and a palpable sense of play.',
+      },
+    ],
   },
   {
     name: 'Strata',
     slug: 'strata',
-    heroImage: 'https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    tagline: '',
-    sections: [],
+    heroImage: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/strata-collection-detail/Screenshot%202026-06-04%20at%2020.25.09.png',
+    tagline: 'Transforming glass into a language of light, color, and form.',
+    photos: [
+      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/strata-collection-detail/Screenshot%202026-06-04%20at%2016.49.54.png',
+      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/strata-collection-detail/Screenshot%202026-06-04%20at%2016.49.38.png',
+      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/strata-collection-detail/Screenshot%202026-06-04%20at%2016.49.32.png',
+      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/strata-collection-detail/Screenshot%202026-06-04%20at%2016.49.24.png',
+      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/strata-collection-detail/Screenshot%202026-06-04%20at%2016.49.02.png',
+    ],
+    sections: [
+      {
+        image: '',
+        text: 'Strata transforms glass into a new language of light, color, and form. Across a range of flush mounts, surface mounts, and sconces, the collection builds on our interest in exceptional materials and meticulous craftsmanship while breaking new ground in traditional techniques like hand-cutting, silkscreening, and fusing. Each piece is the product of a one-of-one meeting between order and spontaneity. Together, they form a landscape that\'s rich in texture and tone.',
+      },
+      {
+        image: '',
+        text: 'Drawing as much inspiration from Bauhaus and Rationalist geometries as they do from the improvised rhythms of quiltmakers, these two glass techniques create Strata\'s full range of combinations and expressions. Its low-profile silhouettes are especially well-suited to compact and transitional spaces, or as an alternative to recessed lighting.',
+      },
+    ],
   },
   {
     name: 'Terra',
     slug: 'terra',
-    heroImage: 'https://images.pexels.com/photos/3586966/pexels-photo-3586966.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    tagline: '',
-    sections: [],
+    heroImage: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/terra-collection-detail/Screenshot%202026-06-04%20at%2016.30.54.png',
+    tagline: 'A collaboration with ceramicist Danny Kaplan. Together, we experimented with structure and scale to make the connection between clay and light appear innate — as effortless as friendly conversation.',
+    photos: [
+      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/terra-collection-detail/Screenshot%202026-06-04%20at%2016.30.43.png',
+      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/terra-collection-detail/Screenshot%202026-06-04%20at%2016.30.32.png',
+      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/terra-collection-detail/Screenshot%202026-06-04%20at%2016.30.20.png',
+      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/terra-collection-detail/Screenshot%202026-06-04%20at%2016.29.47.png',
+      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/terra-collection-detail/Screenshot%202026-06-04%20at%2016.28.58.png',
+    ],
+    sections: [
+      {
+        image: '',
+        text: 'Created in collaboration with ceramicist Danny Kaplan, the Terra Collection reflects our studios\' shared commitment to pairing beauty with utility; tradition with innovation; and Kaplan\'s organic forms with Llum Studio\'s systems-driven simplicity. In the totemic silhouettes and tactile nuances of its clay fixtures, Terra creates an absorbing exchange between sculpture and light.',
+      },
+      {
+        image: '',
+        text: 'This collection represents an ongoing dialogue on multiple levels: artist to artist and material to material. It draws out an intrinsic connection between the tactile quality of clay and the intangible glow of light — as effortless as a conversation between friends.',
+      },
+    ],
   },
 ]
