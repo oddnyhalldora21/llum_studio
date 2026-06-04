@@ -52,15 +52,15 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
   if (loading) return <div className="flex items-center justify-center min-h-screen text-sm" style={{ color: '#2c1810' }}>Loading...</div>
   if (error) return <div className="flex items-center justify-center min-h-screen text-sm" style={{ color: '#2c1810' }}>{error}</div>
 
+  const allCategories = [...lightingCategories, ...collectionSlugs]
+
   return (
     <div className={`min-h-screen transition-colors duration-700 ${lightsOn ? 'bg-[#e8e0d8]' : 'bg-[#f5f0eb]'}`}>
 
       {/* Top strip — light toggle */}
       <div className="flex justify-end items-center px-8 pt-24 pb-6">
         <div className="flex items-center gap-3">
-          <span className="text-xs tracking-widest uppercase" style={{ color: '#2c1810' }}>
-            Light
-          </span>
+          <span className="text-xs tracking-widest uppercase" style={{ color: '#2c1810' }}>Light</span>
           <button
             onClick={() => setLightsOn(!lightsOn)}
             className={`relative w-12 h-6 rounded-full border transition-colors duration-500 ${
@@ -76,17 +76,36 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
 
       {/* Divider line */}
       <div className="flex gap-4 px-8">
-        <div className="w-56 shrink-0 border-t" style={{ borderColor: '#2c1810' }} />
+        <div className="hidden md:block w-56 shrink-0 border-t" style={{ borderColor: '#2c1810' }} />
         <div className="flex-1 border-t" style={{ borderColor: '#2c1810' }} />
+      </div>
+
+      {/* Mobile filter bar */}
+      <div
+        className="md:hidden flex gap-4 px-8 py-4 overflow-x-auto"
+        style={{ scrollbarWidth: 'none' }}
+      >
+        {allCategories.map(cat => (
+          <button
+            key={cat}
+            onClick={() => handleCategoryChange(cat)}
+            className="shrink-0 text-xs tracking-wide px-3 py-1.5 border transition-colors"
+            style={{
+              color: selectedCategory === cat ? '#f5f0eb' : '#2c1810',
+              backgroundColor: selectedCategory === cat ? '#2c1810' : 'transparent',
+              borderColor: '#2c1810'
+            }}
+          >
+            {cat}
+          </button>
+        ))}
       </div>
 
       {/* Main layout */}
       <div className="flex">
 
-        {/* Sidebar */}
-        <aside className="w-56 shrink-0 px-8 py-6">
-
-          {/* Lighting section */}
+        {/* Sidebar — desktop only */}
+        <aside className="hidden md:block w-56 shrink-0 px-8 py-6">
           <p className="text-sm mb-1" style={{ color: '#2c1810' }}>Lighting</p>
           <ul className="space-y-0.1 mb-4">
             {lightingCategories.map((cat) => (
@@ -105,7 +124,6 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
             ))}
           </ul>
 
-          {/* Collections section */}
           <p className="text-sm mb-1" style={{ color: '#2c1810' }}>Collections</p>
           <ul className="space-y-0.1">
             {collectionSlugs.map((col) => (
@@ -123,22 +141,16 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
               </li>
             ))}
           </ul>
-
         </aside>
 
         {/* Products */}
-        <main className="flex-1 px-8 py-10">
-          <div
-            style={{
-              opacity: visible ? 1 : 0,
-              transition: 'opacity 0.5s ease',
-            }}
-          >
-            <h1 className="text-2xl mb-8" style={{ color: '#2c1810' }}>
+        <main className="flex-1 px-4 md:px-8 py-6 md:py-10">
+          <div style={{ opacity: visible ? 1 : 0, transition: 'opacity 0.5s ease' }}>
+            <h1 className="text-xl md:text-2xl mb-6 md:mb-8" style={{ color: '#2c1810' }}>
               {displayedCategory} <span className="text-base" style={{ color: '#2c181060' }}>{filtered.length}</span>
             </h1>
 
-            <div className="grid grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
               {filtered.map((product) => (
                 <Link key={product.id} to={`/products/${product.slug}`} className="group">
                   <div
@@ -160,8 +172,8 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
                       />
                     )}
                   </div>
-                  <p className="text-sm" style={{ color: '#2c1810' }}>{product.name}</p>
-                  <p className="text-sm" style={{ color: '#2c181080' }}>
+                  <p className="text-xs md:text-sm" style={{ color: '#2c1810' }}>{product.name}</p>
+                  <p className="text-xs md:text-sm" style={{ color: '#2c181080' }}>
                     From €{(product.price_cents / 100).toLocaleString()}
                   </p>
                 </Link>
