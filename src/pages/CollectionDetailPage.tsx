@@ -7,7 +7,6 @@ function CollectionDetailPage() {
   const [activeSlug, setActiveSlug] = useState(collectionsData[0]?.slug ?? '')
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({})
 
-  // Scroll to anchor on load
   useEffect(() => {
     if (slug) {
       const el = sectionRefs.current[slug]
@@ -17,33 +16,23 @@ function CollectionDetailPage() {
       setActiveSlug(slug)
     }
   }, [slug])
-// Scroll spy
-useEffect(() => {
+
+  useEffect(() => {
     const observers: IntersectionObserver[] = []
-  
     const setup = () => {
       collectionsData.forEach(collection => {
         const el = sectionRefs.current[collection.slug]
         if (!el) return
-  
         const observer = new IntersectionObserver(
-          ([entry]) => {
-            if (entry.isIntersecting) setActiveSlug(collection.slug)
-          },
+          ([entry]) => { if (entry.isIntersecting) setActiveSlug(collection.slug) },
           { threshold: 0.1, rootMargin: '-20% 0px -60% 0px' }
         )
-  
         observer.observe(el)
         observers.push(observer)
       })
     }
-  
     const timer = setTimeout(setup, 200)
-  
-    return () => {
-      clearTimeout(timer)
-      observers.forEach(o => o.disconnect())
-    }
+    return () => { clearTimeout(timer); observers.forEach(o => o.disconnect()) }
   }, [])
 
   const scrollTo = (s: string) => {
@@ -52,7 +41,7 @@ useEffect(() => {
   }
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#f5f0eb' }}>
+    <div className="min-h-screen" style={{ backgroundColor: '#2c1810' }}>
       <div className="flex">
 
         {/* Sticky sidebar */}
@@ -64,7 +53,7 @@ useEffect(() => {
                   <button
                     onClick={() => scrollTo(c.slug)}
                     className="text-sm text-left transition-colors w-full"
-                    style={{ color: '#2c1810' }}
+                    style={{ color: '#e8d5b7' }}
                   >
                     {c.slug === activeSlug ? '● ' : ''}{c.name}
                   </button>
@@ -81,7 +70,6 @@ useEffect(() => {
               key={collection.slug}
               id={collection.slug}
               ref={el => { sectionRefs.current[collection.slug] = el }}
-              className="border-b border-black/10"
             >
 
               {/* Hero */}
@@ -93,36 +81,87 @@ useEffect(() => {
                 />
                 <div className="absolute inset-0 bg-black/40" />
                 <div className="absolute inset-0 flex items-end px-16 pb-12">
-                  <h2 className="text-white font-light tracking-widest" style={{ fontSize: '5rem' }}>
-                    {collection.name}
+<h2 className="font-light tracking-widest" style={{ fontSize: '5rem', color: '#e8d5b7' }}>                    {collection.name}
                   </h2>
                 </div>
               </div>
 
               {/* Tagline */}
-              {collection.tagline ? (
-                <div className="px-16 py-12 border-b border-black/10">
-                  <p className="text-base leading-relaxed max-w-xl" style={{ color: '#2c1810' }}>
+              {collection.tagline && (
+                <div className="px-16 py-12">
+                  <p className="text-base leading-relaxed max-w-xl" style={{ color: '#e8d5b7' }}>
                     {collection.tagline}
                   </p>
                 </div>
-              ) : null}
+              )}
 
-              {/* Alternating sections */}
-              {collection.sections.map((section, i) => (
+              {/* Editorial photo layout — if photos exist */}
+              {collection.photos && collection.photos.length > 0 && (
+                <>
+                  {/* Row 1: big left + two stacked right + text */}
+                  <div className="flex gap-4 px-16 py-12">
+                    <div className="flex-1 overflow-hidden" style={{ aspectRatio: '2/3' }}>
+                      <img src={collection.photos[0]} alt="" className="w-full h-full object-cover" />
+                    </div>
+                    <div className="w-80 flex flex-col gap-4">
+                      {collection.photos[1] && (
+                        <div className="flex-1 overflow-hidden">
+                          <img src={collection.photos[1]} alt="" className="w-full h-full object-cover" />
+                        </div>
+                      )}
+                      {collection.photos[2] && (
+                        <div className="flex-1 overflow-hidden">
+                          <img src={collection.photos[2]} alt="" className="w-full h-full object-cover" />
+                        </div>
+                      )}
+                    </div>
+                    <div className="w-72 flex items-center">
+                      {collection.sections[0] && (
+                        <p className="text-sm leading-relaxed" style={{ color: '#e8d5b7' }}>
+                          {collection.sections[0].text}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Row 2: text left + two photos right */}
+                  {collection.photos.length > 3 && (
+                    <div className="flex gap-4 px-16 pb-12">
+                      <div className="w-72 flex items-center">
+                        {collection.sections[1] && (
+                          <p className="text-sm leading-relaxed" style={{ color: '#e8d5b7' }}>
+                            {collection.sections[1].text}
+                          </p>
+                        )}
+                      </div>
+                      <div className="flex-1 flex gap-4">
+                        {collection.photos[3] && (
+                          <div className="flex-1 overflow-hidden" style={{ aspectRatio: '3/4' }}>
+                            <img src={collection.photos[3]} alt="" className="w-full h-full object-cover" />
+                          </div>
+                        )}
+                        {collection.photos[4] && (
+                          <div className="flex-1 overflow-hidden" style={{ aspectRatio: '3/4' }}>
+                            <img src={collection.photos[4]} alt="" className="w-full h-full object-cover" />
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </>
+              )}
+
+              {/* Fallback: alternating layout for collections without photos */}
+              {(!collection.photos || collection.photos.length === 0) && collection.sections.map((section, i) => (
                 <div
                   key={i}
-                  className={`flex border-b border-black/10 ${i % 2 === 1 ? 'flex-row-reverse' : ''}`}
+                  className={`flex ${i % 2 === 1 ? 'flex-row-reverse' : ''}`}
                 >
                   <div className="w-1/2 overflow-hidden" style={{ minHeight: '480px' }}>
-                    <img
-                      src={section.image}
-                      alt=""
-                      className="w-full h-full object-cover"
-                    />
+                    <img src={section.image} alt="" className="w-full h-full object-cover" />
                   </div>
                   <div className="w-1/2 flex items-center px-16 py-16">
-                    <p className="text-base leading-relaxed max-w-md" style={{ color: '#2c1810' }}>
+                    <p className="text-base leading-relaxed max-w-md" style={{ color: '#e8d5b7' }}>
                       {section.text}
                     </p>
                   </div>
@@ -133,8 +172,8 @@ useEffect(() => {
               <div className="px-16 py-8">
                 <Link
                   to={`/shop?collection=${collection.slug}`}
-                  className="text-sm tracking-wide transition-colors"
-                  style={{ color: '#2c181080' }}
+                  className="text-sm tracking-wide transition-opacity hover:opacity-60"
+                  style={{ color: '#e8d5b7' }}
                 >
                   Shop {collection.name} →
                 </Link>
