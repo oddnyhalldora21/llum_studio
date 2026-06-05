@@ -10,7 +10,7 @@ function Footer({ lightsOn }: Props) {
   const isCollections = location.pathname === '/collections' || location.pathname.startsWith('/collections/')
 
   const textColor = isCollections ? '#f5f0eb' : '#2c1810'
-  const borderColor = isCollections ? '#f5f0eb30' : '#2c181030'
+  const borderColor = isCollections ? '#f5f0eb' : '#2c1810'
 
   return (
     <footer
@@ -19,14 +19,14 @@ function Footer({ lightsOn }: Props) {
     >
 
       {/* Newsletter */}
-      <div className="flex items-center justify-between border-b pb-8 mb-8" style={{ borderColor }}>
+      <div className="flex items-center justify-between border-b pb-8 mb-8 mx-4" style={{ borderColor }}>
         <p className="text-sm tracking-wide" style={{ color: textColor }}>Stay in the loop</p>
         <div className="flex gap-0">
           <input
             type="email"
             placeholder="Your email"
             className="bg-transparent border-b text-sm px-0 py-2 w-64 outline-none transition-colors placeholder-opacity-50"
-            style={{ borderColor: isCollections ? '#f5f0eb60' : '#2c181060', color: textColor }}
+            style={{ borderColor, color: textColor }}
           />
           <button
             className="text-sm ml-6 tracking-wide transition-opacity hover:opacity-60"
@@ -38,7 +38,7 @@ function Footer({ lightsOn }: Props) {
       </div>
 
       {/* Links */}
-      <div className="grid grid-cols-3 gap-12 mb-10">
+      <div className="grid grid-cols-3 gap-12 mb-10 mx-4">
         <div>
           <h4 className="text-xs tracking-widest uppercase mb-3" style={{ color: textColor }}>Shop</h4>
           <ul className="space-y-1.5">
@@ -70,7 +70,7 @@ function Footer({ lightsOn }: Props) {
       </div>
 
       {/* Bottom */}
-      <div className="flex items-center justify-between border-t pt-6" style={{ borderColor }}>
+      <div className="flex items-center justify-between border-t pt-6 mx-4" style={{ borderColor }}>
         <span className="text-base font-semibold tracking-widest uppercase" style={{ color: textColor }}>Llum Studio</span>
         <span className="text-xs opacity-50" style={{ color: textColor }}>© 2026 Llum Studio. All rights reserved.</span>
       </div>
