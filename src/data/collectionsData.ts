@@ -16,7 +16,7 @@ export const collectionsData: Collection[] = [
   {
     name: 'Lido',
     slug: 'lido',
-    heroImage: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/lido-collection-detail/Screenshot%202026-06-04%20at%2016.34.57.png',
+    heroImage: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/lido-collection-detail/Screenshot%202026-06-05%20at%2020.29.32.png',
     tagline: 'A continuation of our quest to preserve old-world craft — each piece deriving from a conceptual foundation and realized through distinct forms, materials, and craft-based engineering.',
     photos: [
       'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/lido-collection-detail/Screenshot%202026-06-04%20at%2016.34.40.png',

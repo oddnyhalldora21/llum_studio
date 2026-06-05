@@ -85,10 +85,10 @@ function CollectionDetailPage() {
                 />
                 <div className="absolute inset-0 bg-black/40" />
                 <div className="absolute inset-0 flex items-end px-16 pb-12">
-                  <h2 className="font-light tracking-widest" style={{ fontSize: '5rem', color: '#e8d5b7' }}>
-                    {collection.name}
-                  </h2>
-                </div>
+  <h2 className="font-light tracking-widest" style={{ fontSize: '5rem', color: '#e8d5b7', fontFamily: 'Cormorant Garamond, serif' }}>
+    {collection.name}
+  </h2>
+</div>
               </div>
 
               {/* Tagline */}

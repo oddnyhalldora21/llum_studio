@@ -146,8 +146,8 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
         {/* Products */}
         <main className="flex-1 px-4 md:px-8 py-6 md:py-10">
           <div style={{ opacity: visible ? 1 : 0, transition: 'opacity 0.5s ease' }}>
-            <h1 className="text-xl md:text-2xl mb-6 md:mb-8" style={{ color: '#2c1810' }}>
-              {displayedCategory} <span className="text-base" style={{ color: '#2c181060' }}>{filtered.length}</span>
+          <h1 className="text-xl md:text-2xl mb-6 md:mb-8" style={{ color: '#2c1810' }}>
+              {displayedCategory}<sup className="text-xs ml-0.5" style={{ color: '#2c1810' }}>{filtered.length}</sup>
             </h1>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
