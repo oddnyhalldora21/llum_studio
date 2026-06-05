@@ -45,73 +45,85 @@ function SignInPage() {
     setLoading(false)
   }
 
-  const inputClass = "w-full px-0 py-3 text-sm outline-none bg-transparent border-b transition-colors placeholder-[#2c181040]"
-  const inputStyle = { borderColor: '#2c1810', color: '#2c1810' }
-
   return (
-    <div className="min-h-screen pt-24 pb-16 flex items-start justify-center" style={{ backgroundColor: '#f5f0eb' }}>
-      <div className="w-full max-w-sm px-8">
+    <div className="min-h-screen" style={{ backgroundColor: '#f5f0eb' }}>
 
-        <h1 className="text-2xl font-light tracking-widest uppercase mb-2" style={{ color: '#2c1810' }}>
-          {isSignUp ? 'Create Account' : 'Sign In'}
-        </h1>
-        <p className="text-sm mb-12" style={{ color: '#2c181060' }}>
-          {isSignUp ? 'Join Llum Studio' : 'Welcome back to Llum Studio'}
-        </p>
+      {/* Two lines with break */}
+      <div className="flex gap-4 px-8 pt-24">
+        <div className="w-1/2 shrink-0 border-t" style={{ borderColor: '#2c1810' }} />
+        <div className="flex-1 border-t" style={{ borderColor: '#2c1810' }} />
+      </div>
 
-        {error && (
-          <p className="text-sm mb-6" style={{ color: '#c0392b' }}>{error}</p>
-        )}
+      {/* Main layout */}
+      <div className="flex">
 
-        <div className="space-y-0 mb-12">
-          {isSignUp && (
-            <input
-              type="text"
-              placeholder="Full name"
-              value={fullName}
-              onChange={e => setFullName(e.target.value)}
-              className={inputClass}
-              style={inputStyle}
-            />
-          )}
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            className={inputClass}
-            style={inputStyle}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            className={inputClass}
-            style={inputStyle}
-          />
+        {/* Left label */}
+        <div className="w-1/2 shrink-0 px-16 py-12">
+          <p className="text-xs tracking-widest uppercase" style={{ color: '#2c1810' }}>Account</p>
         </div>
 
-        <button
-          onClick={handleSubmit}
-          disabled={loading}
-          className="w-full py-2 text-sm tracking-widest uppercase transition-opacity hover:opacity-70 disabled:opacity-40 mb-6"
-          style={{ backgroundColor: '#3d1a10', color: '#f5f0eb' }}
-        >
-          {loading ? 'Please wait...' : isSignUp ? 'Create Account' : 'Sign In'}
-        </button>
+        {/* Right content */}
+        <div className="flex-1 px-16 py-12">
 
-        <p className="text-sm text-center" style={{ color: '#2c181060' }}>
-          {isSignUp ? 'Already have an account?' : "Don't have an account?"}{' '}
+          <p className="text-2xl leading-relaxed mb-12" style={{ color: '#2c1810' }}>
+            {isSignUp
+              ? 'Create an account to track orders and check out faster.'
+              : 'Log in to check order status, order history, and make checking out faster. No account? Sign up below.'}
+          </p>
+
+          {error && (
+            <p className="text-sm mb-6" style={{ color: '#c0392b' }}>{error}</p>
+          )}
+
+          {/* Inputs */}
+          <div className="mb-6">
+            {isSignUp && (
+              <input
+                type="text"
+                placeholder="Full name"
+                value={fullName}
+                onChange={e => setFullName(e.target.value)}
+                className="w-full px-3 py-3 text-sm outline-none bg-transparent border mb-3"
+                style={{ borderColor: '#2c181040', color: '#2c1810' }}
+              />
+            )}
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              className="w-full px-3 py-3 text-sm outline-none bg-transparent border mb-3"
+              style={{ borderColor: '#2c181040', color: '#2c1810' }}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              className="w-full px-3 py-3 text-sm outline-none bg-transparent border"
+              style={{ borderColor: '#2c181040', color: '#2c1810' }}
+            />
+          </div>
+
+          {/* Buttons */}
+          <button
+            onClick={handleSubmit}
+            disabled={loading}
+            className="w-full py-3 text-sm tracking-widest uppercase transition-opacity hover:opacity-70 disabled:opacity-40 mb-3"
+            style={{ backgroundColor: '#3d1a10', color: '#f5f0eb' }}
+          >
+            {loading ? 'Please wait...' : isSignUp ? 'Create Account' : 'Sign In'}
+          </button>
+
           <button
             onClick={() => setIsSignUp(!isSignUp)}
-            className="transition-colors"
-            style={{ color: '#2c1810' }}
+            className="w-full py-3 text-sm tracking-widest uppercase transition-opacity hover:opacity-70 border"
+            style={{ borderColor: '#2c181040', color: '#2c1810', backgroundColor: 'transparent' }}
           >
-            {isSignUp ? 'Sign in' : 'Create one'}
+            {isSignUp ? 'Sign In Instead' : 'Create Account'}
           </button>
-        </p>
 
+        </div>
       </div>
     </div>
   )
