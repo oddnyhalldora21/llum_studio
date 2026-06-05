@@ -1,6 +1,14 @@
-import { useRef } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import heroImage from '../assets/hero.webp'
+import { supabase } from '../lib/supabase'
+
+type Product = {
+  id: number
+  name: string
+  image_url: string
+  slug: string
+}
 
 const catalogCollections = [
   {
@@ -36,7 +44,36 @@ const catalogCollections = [
 ]
 
 function HomePage() {
-  const scrollRef = useRef<HTMLDivElement>(null)
+  const catalogScrollRef = useRef<HTMLDivElement>(null)
+  const featuredScrollRef = useRef<HTMLDivElement>(null)
+  const [featuredProducts, setFeaturedProducts] = useState<Product[]>([])
+  const [email, setEmail] = useState('')
+  const [subscribed, setSubscribed] = useState(false)
+
+  useEffect(() => {
+    async function fetchFeatured() {
+      const { data, error } = await supabase
+        .from('products')
+        .select('id, name, image_url, slug')
+        .eq('shop_id', '6b98e9ae-4667-4100-8203-4fbd00a36157')
+        .limit(10)
+        .order('created_at', { ascending: false })
+
+      if (!error && data) {
+        const shuffled = [...data].sort(() => Math.random() - 0.5)
+        setFeaturedProducts(shuffled)
+      }
+    }
+    fetchFeatured()
+  }, [])
+
+  function handleSubscribe() {
+    if (email) {
+      setSubscribed(true)
+      setEmail('')
+      setTimeout(() => setSubscribed(false), 3000)
+    }
+  }
 
   return (
     <div style={{ backgroundColor: '#f5f0eb' }}>
@@ -48,26 +85,23 @@ function HomePage() {
           alt="Llum Studio"
           className="absolute inset-0 w-full h-full object-cover"
         />
-<div className="absolute inset-0 flex items-center justify-between px-8 md:px-12">
-  <h1 className="text-3xl md:text-6xl font-medium tracking-widest uppercase text-[#f5f0eb] w-1/2">
-    Llum Studio
-  </h1>
-  <p className="hidden md:block text-[#f5f0eb]/80 text-lg font-light max-w-xs text-right">
-    Handcrafted lighting for contemporary spaces.
-  </p>
-</div>
+        <div className="absolute inset-0 flex items-center justify-between px-8 md:px-12">
+          <h1 className="text-3xl md:text-6xl font-medium tracking-widest uppercase text-[#f5f0eb] w-1/2">
+            Llum Studio
+          </h1>
+          <p className="hidden md:block text-[#f5f0eb]/80 text-lg font-light max-w-xs text-right">
+            Handcrafted lighting for contemporary spaces.
+          </p>
+        </div>
       </section>
 
       {/* Catalog Section */}
       <section className="py-16 flex">
-
-        {/* Two lines with break — same as shop page */}
         <div className="absolute left-0 right-0 flex gap-4 px-8" style={{ marginTop: '-4rem' }}>
           <div className="w-56 shrink-0 border-t" style={{ borderColor: '#2c1810' }} />
           <div className="flex-1 border-t" style={{ borderColor: '#2c1810' }} />
         </div>
 
-        {/* Left column */}
         <div className="w-56 shrink-0 px-8 flex flex-col justify-between py-2">
           <div>
             <p className="text-xs tracking-widest uppercase mb-6" style={{ color: '#2c181080' }}>Our Catalog</p>
@@ -86,21 +120,15 @@ function HomePage() {
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="w-px shrink-0" style={{ backgroundColor: '#2c181020' }} />
-
-        {/* Right: scrollable cards + arrows */}
         <div className="flex-1 px-10 overflow-hidden">
-
-          {/* Cards */}
           <div
-            ref={scrollRef}
+            ref={catalogScrollRef}
             className="flex gap-6 overflow-x-auto pb-4"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {catalogCollections.map((col) => (
               <Link
-                key={col.name}
+                key={col.slug}
                 to={`/shop?collection=${col.slug}`}
                 className="shrink-0 w-72 group cursor-pointer"
               >
@@ -115,23 +143,163 @@ function HomePage() {
               </Link>
             ))}
           </div>
-
-          {/* Arrows */}
           <div className="flex justify-end gap-4 mt-6">
             <span
               className="cursor-pointer hover:opacity-60 transition-opacity text-lg"
               style={{ color: '#2c1810' }}
-              onClick={() => scrollRef.current?.scrollBy({ left: -300, behavior: 'smooth' })}
+              onClick={() => catalogScrollRef.current?.scrollBy({ left: -300, behavior: 'smooth' })}
             >←</span>
             <span
               className="cursor-pointer hover:opacity-60 transition-opacity text-lg"
               style={{ color: '#2c1810' }}
-              onClick={() => scrollRef.current?.scrollBy({ left: 300, behavior: 'smooth' })}
+              onClick={() => catalogScrollRef.current?.scrollBy({ left: 300, behavior: 'smooth' })}
             >→</span>
           </div>
+        </div>
+      </section>
 
+      {/* Newsletter Section */}
+      <section className="py-16 flex">
+        <div className="absolute left-0 right-0 flex gap-4 px-8" style={{ marginTop: '-4rem' }}>
+          <div className="w-56 shrink-0 border-t" style={{ borderColor: '#2c1810' }} />
+          <div className="flex-1 border-t" style={{ borderColor: '#2c1810' }} />
         </div>
 
+        <div className="w-56 shrink-0 px-8 py-2">
+          <p className="text-xs tracking-widest uppercase" style={{ color: '#2c181080' }}>Newsletter</p>
+        </div>
+
+        <div className="flex-1 px-10 flex items-center justify-center py-12">
+          <div className="max-w-xl w-full">
+            <p className="text-2xl font-light mb-8 leading-snug" style={{ color: '#2c1810' }}>
+              Subscribe to our newsletter to stay in the know and up to date on the latest news and happenings.
+            </p>
+            <div className="flex" style={{ border: '1px solid #2c181050' }}>
+              <input
+                type="email"
+                placeholder="Your Email Address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleSubscribe()}
+                className="flex-1 px-4 py-3 text-sm bg-transparent outline-none placeholder-[#2c181050]"
+                style={{ color: '#2c1810' }}
+              />
+              <button
+                onClick={handleSubscribe}
+                className="px-6 py-3 text-sm tracking-wide transition-opacity hover:opacity-60"
+                style={{ color: '#2c1810', borderLeft: '1px solid #2c181050' }}
+              >
+                {subscribed ? 'Thank you!' : 'Subscribe'}
+              </button>
+            </div>
+            <p className="text-xs mt-3" style={{ color: '#2c181060' }}>
+              By signing up you are agreeing to our{' '}
+              <span className="underline cursor-pointer hover:opacity-60">Privacy Policy</span>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Editorial Split Section */}
+<section className="flex h-[80vh] pt-4">
+  <div className="relative w-1/2 overflow-hidden group">
+    <img
+      src="https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/lido-collection-detail/Screenshot%202026-06-04%20at%2016.34.10.png"
+      alt="Lido Collection"
+      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+    />
+    <div className="absolute inset-0 flex flex-col justify-end p-10">
+      <p className="text-xs tracking-widest uppercase mb-2" style={{ color: '#f5f0eb90' }}>Lido Collection</p>
+      <Link
+        to="/collections/lido"
+        className="text-2xl font-light hover:opacity-70 transition-opacity"
+        style={{ color: '#f5f0eb' }}
+      >
+        Warm Light for Warm Spaces →
+      </Link>
+    </div>
+  </div>
+
+  <div className="relative w-1/2 overflow-hidden group">
+    <img
+      src="https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/saga-collection-detail/Screenshot%202026-06-04%20at%2016.38.05.png"
+      alt="Saga Collection"
+      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+    />
+    <div className="absolute inset-0 flex flex-col justify-end p-10">
+      <p className="text-xs tracking-widest uppercase mb-2" style={{ color: '#f5f0eb90' }}>Saga Collection</p>
+      <Link
+        to="/collections/saga"
+        className="text-2xl font-light hover:opacity-70 transition-opacity"
+        style={{ color: '#f5f0eb' }}
+      >
+        Sculptural Forms, Lasting Light →
+      </Link>
+    </div>
+  </div>
+</section>
+
+      {/* Featured Products Section */}
+      <section className="py-16 flex">
+        <div className="absolute left-0 right-0 flex gap-4 px-8" style={{ marginTop: '-4rem' }}>
+          <div className="w-56 shrink-0 border-t" style={{ borderColor: '#2c1810' }} />
+          <div className="flex-1 border-t" style={{ borderColor: '#2c1810' }} />
+        </div>
+
+        <div className="w-56 shrink-0 px-8 flex flex-col justify-between py-2">
+          <div>
+            <p className="text-xs tracking-widest uppercase mb-6" style={{ color: '#2c181080' }}>Featured Products</p>
+            <p className="text-sm leading-relaxed" style={{ color: '#2c1810' }}>
+              A selection of our most loved pieces — each one crafted to bring warmth and character to any space.
+            </p>
+          </div>
+          <div className="mt-12">
+            <Link
+              to="/shop"
+              className="text-sm tracking-wide hover:opacity-60 transition-opacity"
+              style={{ color: '#2c1810' }}
+            >
+              View All Products
+            </Link>
+          </div>
+        </div>
+
+        <div className="flex-1 px-10 overflow-hidden">
+          <div
+            ref={featuredScrollRef}
+            className="flex gap-6 overflow-x-auto pb-4"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {featuredProducts.map((product) => (
+              <Link
+                key={product.id}
+                to={`/products/${product.slug}`}
+                className="shrink-0 w-72 group cursor-pointer"
+              >
+                <div className="overflow-hidden mb-4" style={{ aspectRatio: '4/5' }}>
+                  <img
+                    src={product.image_url}
+                    alt={product.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <h3 className="text-sm tracking-wide" style={{ color: '#2c1810' }}>{product.name}</h3>
+              </Link>
+            ))}
+          </div>
+          <div className="flex justify-end gap-4 mt-6">
+            <span
+              className="cursor-pointer hover:opacity-60 transition-opacity text-lg"
+              style={{ color: '#2c1810' }}
+              onClick={() => featuredScrollRef.current?.scrollBy({ left: -300, behavior: 'smooth' })}
+            >←</span>
+            <span
+              className="cursor-pointer hover:opacity-60 transition-opacity text-lg"
+              style={{ color: '#2c1810' }}
+              onClick={() => featuredScrollRef.current?.scrollBy({ left: 300, behavior: 'smooth' })}
+            >→</span>
+          </div>
+        </div>
       </section>
 
     </div>
