@@ -79,55 +79,10 @@ function ProductDetailPage({ lightsOn, setLightsOn }: Props) {
   }
 
   return (
-    <div className="flex min-h-screen transition-colors duration-700" style={{ backgroundColor: lightsOn ? '#e8e0d8' : '#f5f0eb' }}>
+    <div className="flex flex-col md:flex-row min-h-screen transition-colors duration-700" style={{ backgroundColor: lightsOn ? '#e8e0d8' : '#f5f0eb' }}>
 
-      {/* Left - Product Info */}
-      <div className="w-1/2 px-12 pt-32 pb-16 flex flex-col">
-
-        {/* Tagline + line */}
-        <p className="text-sm mb-4" style={{ color: '#5c1a1a70' }}>
-          {product.description}
-        </p>
-        <div style={{ height: '1px', backgroundColor: '#5c1a1a40', marginBottom: '48px' }} />
-
-        {/* Product name */}
-        <h1 className="text-4xl font-light mb-16" style={{ color: '#5c1a1a' }}>
-          {product.name}
-        </h1>
-
-        {/* Variant selectors */}
-        <div style={{ borderTop: '1px solid #5c1a1a40' }}>
-          <DropdownRow label="Size" options={sizeOptions} selected={selectedSize} setSelected={setSelectedSize} name="size" />
-          <DropdownRow label="Hardware" options={hardwareOptions} selected={selectedHardware} setSelected={setSelectedHardware} name="hardware" />
-          <DropdownRow label="Color" options={colorOptions} selected={selectedColor} setSelected={setSelectedColor} name="color" />
-        </div>
-
-        {/* Add to cart bar */}
-        <div className="flex items-center mt-6" style={{ border: '1px solid #5c1a1a50' }}>
-          <div className="flex items-center gap-3 px-4 py-2" style={{ borderRight: '1px solid #5c1a1a50' }}>
-            <span className="text-sm" style={{ color: '#5c1a1a80' }}>Quantity</span>
-            <button onClick={() => setQuantity(q => Math.max(1, q - 1))} className="transition-opacity hover:opacity-50" style={{ color: '#5c1a1a' }}>−</button>
-            <span className="text-sm" style={{ color: '#5c1a1a' }}>{quantity}</span>
-            <button onClick={() => setQuantity(q => q + 1)} className="transition-opacity hover:opacity-50" style={{ color: '#5c1a1a' }}>+</button>
-          </div>
-          <div className="flex items-center justify-between flex-1 px-4 py-2">
-            <span className="text-sm" style={{ color: '#5c1a1a' }}>
-              From €{(product.price_cents / 100).toLocaleString()}
-            </span>
-            <button
-              onClick={handleAddToCart}
-              className="text-sm transition-opacity hover:opacity-50"
-              style={{ color: added ? '#5c1a1a60' : '#5c1a1a' }}
-            >
-              {added ? 'Added!' : 'Add to Cart'}
-            </button>
-          </div>
-        </div>
-
-      </div>
-
-      {/* Right - Product Image */}
-      <div className="w-1/2 relative" style={{ backgroundColor: '#e8e0d8' }}>
+      {/* Image — top on mobile, right on desktop */}
+      <div className="w-full md:w-1/2 md:order-2 relative" style={{ backgroundColor: '#e8e0d8', minHeight: '60vw' }}>
 
         {/* Light toggle */}
         {product.image_url_2 && (
@@ -151,24 +106,62 @@ function ProductDetailPage({ lightsOn, setLightsOn }: Props) {
           </div>
         )}
 
-        {/* Off image */}
         <img
           src={product.image_url}
           alt={product.name}
           className="absolute inset-0 w-full h-full object-cover"
-          style={{ minHeight: '100vh', opacity: lightsOn ? 0 : 1, transition: 'opacity 0.8s ease' }}
+          style={{ opacity: lightsOn ? 0 : 1, transition: 'opacity 0.8s ease' }}
         />
-        {/* On image */}
         {product.image_url_2 && (
           <img
             src={product.image_url_2}
             alt={product.name}
             className="absolute inset-0 w-full h-full object-cover"
-            style={{ minHeight: '100vh', opacity: lightsOn ? 1 : 0, transition: 'opacity 0.8s ease' }}
+            style={{ opacity: lightsOn ? 1 : 0, transition: 'opacity 0.8s ease' }}
           />
         )}
-        {/* Spacer */}
-        <div style={{ minHeight: '100vh' }} />
+        <div className="md:hidden" style={{ paddingTop: '120%' }} />
+        <div className="hidden md:block" style={{ minHeight: '100vh' }} />
+      </div>
+
+      {/* Info — bottom on mobile, left on desktop */}
+      <div className="w-full md:w-1/2 md:order-1 px-8 md:px-12 pt-8 md:pt-32 pb-16 flex flex-col">
+
+        <p className="text-sm mb-4" style={{ color: '#5c1a1a70' }}>
+          {product.description}
+        </p>
+        <div style={{ height: '1px', backgroundColor: '#5c1a1a40', marginBottom: '32px' }} />
+
+        <h1 className="text-3xl md:text-4xl font-light mb-8 md:mb-16" style={{ color: '#5c1a1a' }}>
+          {product.name}
+        </h1>
+
+        <div style={{ borderTop: '1px solid #5c1a1a40' }}>
+          <DropdownRow label="Size" options={sizeOptions} selected={selectedSize} setSelected={setSelectedSize} name="size" />
+          <DropdownRow label="Hardware" options={hardwareOptions} selected={selectedHardware} setSelected={setSelectedHardware} name="hardware" />
+          <DropdownRow label="Color" options={colorOptions} selected={selectedColor} setSelected={setSelectedColor} name="color" />
+        </div>
+
+        <div className="flex items-center mt-6" style={{ border: '1px solid #5c1a1a50' }}>
+          <div className="flex items-center gap-3 px-4 py-2" style={{ borderRight: '1px solid #5c1a1a50' }}>
+            <span className="text-sm" style={{ color: '#5c1a1a80' }}>Qty</span>
+            <button onClick={() => setQuantity(q => Math.max(1, q - 1))} className="transition-opacity hover:opacity-50" style={{ color: '#5c1a1a' }}>−</button>
+            <span className="text-sm" style={{ color: '#5c1a1a' }}>{quantity}</span>
+            <button onClick={() => setQuantity(q => q + 1)} className="transition-opacity hover:opacity-50" style={{ color: '#5c1a1a' }}>+</button>
+          </div>
+          <div className="flex items-center justify-between flex-1 px-4 py-2">
+            <span className="text-sm" style={{ color: '#5c1a1a' }}>
+              From €{(product.price_cents / 100).toLocaleString()}
+            </span>
+            <button
+              onClick={handleAddToCart}
+              className="text-sm transition-opacity hover:opacity-50"
+              style={{ color: added ? '#5c1a1a60' : '#5c1a1a' }}
+            >
+              {added ? 'Added!' : 'Add to Cart'}
+            </button>
+          </div>
+        </div>
 
       </div>
 

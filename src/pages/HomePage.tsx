@@ -11,36 +11,12 @@ type Product = {
 }
 
 const catalogCollections = [
-  {
-    name: '',
-    slug: 'lido',
-    image: "https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/lido-collection-section.png",
-  },
-  {
-    name: '',
-    slug: 'saga',
-    image: "https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/saga-collection-section.png",
-  },
-  {
-    name: '',
-    slug: 'flora',
-    image: "https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/flora-collection-section.png",
-  },
-  {
-    name: '',
-    slug: 'core',
-    image: "https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/core-collection-section.png",
-  },
-  {
-    name: '',
-    slug: 'strata',
-    image: "https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/strata-collection-section.png",
-  },
-  {
-    name: '',
-    slug: 'terra',
-    image: "https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/terra-collection-section.png",
-  },
+  { name: '', slug: 'lido', image: "https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/lido-collection-section.png" },
+  { name: '', slug: 'saga', image: "https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/saga-collection-section.png" },
+  { name: '', slug: 'flora', image: "https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/flora-collection-section.png" },
+  { name: '', slug: 'core', image: "https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/core-collection-section.png" },
+  { name: '', slug: 'strata', image: "https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/strata-collection-section.png" },
+  { name: '', slug: 'terra', image: "https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/terra-collection-section.png" },
 ]
 
 function HomePage() {
@@ -58,7 +34,6 @@ function HomePage() {
         .eq('shop_id', '6b98e9ae-4667-4100-8203-4fbd00a36157')
         .limit(10)
         .order('created_at', { ascending: false })
-
       if (!error && data) {
         const shuffled = [...data].sort(() => Math.random() - 0.5)
         setFeaturedProducts(shuffled)
@@ -80,11 +55,7 @@ function HomePage() {
 
       {/* Hero Section */}
       <section className="relative h-screen w-full overflow-hidden -mt-14">
-        <img
-          src={heroImage}
-          alt="Llum Studio"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+        <img src={heroImage} alt="Llum Studio" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 flex items-center justify-between px-8 md:px-12">
           <h1 className="text-3xl md:text-6xl font-medium tracking-widest uppercase text-[#f5f0eb] w-1/2">
             Llum Studio
@@ -97,13 +68,12 @@ function HomePage() {
 
       {/* Catalog Section */}
       <section className="mt-20 py-16 flex">
-        
         <div className="absolute left-0 right-0 flex gap-4 px-8" style={{ marginTop: '-4rem' }}>
-          <div className="w-56 shrink-0 border-t" style={{ borderColor: '#5c1a1a' }} />
+          <div className="hidden md:block w-56 shrink-0 border-t" style={{ borderColor: '#5c1a1a' }} />
           <div className="flex-1 border-t" style={{ borderColor: '#5c1a1a' }} />
         </div>
 
-        <div className="w-56 shrink-0 px-8 flex flex-col justify-between py-2">
+        <div className="hidden md:flex w-56 shrink-0 px-8 flex-col justify-between py-2">
           <div>
             <p className="text-xs tracking-widest uppercase mb-6" style={{ color: '#5c1a1a80' }}>Our Catalog</p>
             <p className="text-sm leading-relaxed" style={{ color: '#5c1a1a' }}>
@@ -111,68 +81,46 @@ function HomePage() {
             </p>
           </div>
           <div className="mt-12">
-            <Link
-              to="/shop"
-              className="text-sm tracking-wide hover:opacity-60 transition-opacity"
-              style={{ color: '#5c1a1a' }}
-            >
+            <Link to="/shop" className="text-sm tracking-wide hover:opacity-60 transition-opacity" style={{ color: '#5c1a1a' }}>
               Shop All Lights
             </Link>
           </div>
         </div>
 
-        <div className="flex-1 px-10 overflow-hidden">
-          <div
-            ref={catalogScrollRef}
-            className="flex gap-6 overflow-x-auto pb-4"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          >
+        <div className="flex-1 px-4 md:px-10 overflow-hidden">
+          <p className="md:hidden text-xs tracking-widest uppercase mb-4" style={{ color: '#5c1a1a80' }}>Our Catalog</p>
+          <div ref={catalogScrollRef} className="flex gap-4 md:gap-6 overflow-x-auto pb-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
             {catalogCollections.map((col) => (
-              <Link
-                key={col.slug}
-                to={`/shop?collection=${col.slug}`}
-                className="shrink-0 w-72 group cursor-pointer"
-              >
+              <Link key={col.slug} to={`/shop?collection=${col.slug}`} className="shrink-0 w-48 md:w-72 group cursor-pointer">
                 <div className="overflow-hidden mb-4" style={{ aspectRatio: '4/5' }}>
-                  <img
-                    src={col.image}
-                    alt={col.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+                  <img src={col.image} alt={col.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
-                <h3 className="text-2xl font-light" style={{ color: '#5c1a1a' }}>{col.name}</h3>
+                <h3 className="text-lg md:text-2xl font-light" style={{ color: '#5c1a1a' }}>{col.name}</h3>
               </Link>
             ))}
           </div>
           <div className="flex justify-end gap-4 mt-6">
-            <span
-              className="cursor-pointer hover:opacity-60 transition-opacity text-lg"
-              style={{ color: '#5c1a1a' }}
-              onClick={() => catalogScrollRef.current?.scrollBy({ left: -300, behavior: 'smooth' })}
-            >←</span>
-            <span
-              className="cursor-pointer hover:opacity-60 transition-opacity text-lg"
-              style={{ color: '#5c1a1a' }}
-              onClick={() => catalogScrollRef.current?.scrollBy({ left: 300, behavior: 'smooth' })}
-            >→</span>
+            <span className="cursor-pointer hover:opacity-60 transition-opacity text-lg" style={{ color: '#5c1a1a' }} onClick={() => catalogScrollRef.current?.scrollBy({ left: -300, behavior: 'smooth' })}>←</span>
+            <span className="cursor-pointer hover:opacity-60 transition-opacity text-lg" style={{ color: '#5c1a1a' }} onClick={() => catalogScrollRef.current?.scrollBy({ left: 300, behavior: 'smooth' })}>→</span>
           </div>
         </div>
       </section>
 
       {/* Newsletter Section */}
-      <section className="py-16 flex">
+      <section className="py-16 flex flex-col md:flex-row">
         <div className="absolute left-0 right-0 flex gap-4 px-8" style={{ marginTop: '-5rem' }}>
-          <div className="w-56 shrink-0 border-t" style={{ borderColor: '#5c1a1a' }} />
+          <div className="hidden md:block w-56 shrink-0 border-t" style={{ borderColor: '#5c1a1a' }} />
           <div className="flex-1 border-t" style={{ borderColor: '#5c1a1a' }} />
         </div>
 
-        <div className="w-56 shrink-0 px-8 py-2">
+        <div className="hidden md:block w-56 shrink-0 px-8 py-2">
           <p className="text-xs tracking-widest uppercase" style={{ color: '#5c1a1a80' }}>Newsletter</p>
         </div>
 
-        <div className="flex-1 px-10 flex items-center justify-center py-12">
+        <div className="flex-1 px-4 md:px-10 flex items-center justify-center py-8 md:py-12">
           <div className="max-w-xl w-full">
-            <p className="text-2xl font-light mb-8 leading-snug" style={{ color: '#5c1a1a' }}>
+            <p className="text-xs tracking-widest uppercase mb-6 md:hidden" style={{ color: '#5c1a1a80' }}>Newsletter</p>
+            <p className="text-xl md:text-2xl font-light mb-8 leading-snug" style={{ color: '#5c1a1a' }}>
               Subscribe to our newsletter to stay in the know and up to date on the latest news and happenings.
             </p>
             <div className="flex" style={{ border: '1px solid #5c1a1a50' }}>
@@ -185,11 +133,7 @@ function HomePage() {
                 className="flex-1 px-4 py-3 text-sm bg-transparent outline-none placeholder-[#5c1a1a50]"
                 style={{ color: '#5c1a1a' }}
               />
-              <button
-                onClick={handleSubscribe}
-                className="px-6 py-3 text-sm tracking-wide transition-opacity hover:opacity-60"
-                style={{ color: '#5c1a1a', borderLeft: '1px solid #5c1a1a50' }}
-              >
+              <button onClick={handleSubscribe} className="px-4 md:px-6 py-3 text-sm tracking-wide transition-opacity hover:opacity-60" style={{ color: '#5c1a1a', borderLeft: '1px solid #5c1a1a50' }}>
                 {subscribed ? 'Thank you!' : 'Subscribe'}
               </button>
             </div>
@@ -202,56 +146,41 @@ function HomePage() {
       </section>
 
       {/* Editorial Split Section */}
-<section className="mt-20 flex h-[80vh] pt-4">
-<div className="absolute left-0 right-0 flex gap-4 px-8" style={{ marginTop: '-6rem' }}>
+      <section className="mt-20 flex flex-col md:flex-row h-auto md:h-[80vh] pt-4">
+        <div className="absolute left-0 right-0 hidden md:flex gap-4 px-8" style={{ marginTop: '-6rem' }}>
           <div className="w-56 shrink-0 border-t" style={{ borderColor: '#5c1a1a' }} />
           <div className="flex-1 border-t" style={{ borderColor: '#5c1a1a' }} />
         </div>
-  <div className="relative w-1/2 overflow-hidden group">
-    <img
-      src="https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/lido-collection-detail/Screenshot%202026-06-04%20at%2016.34.10.png"
-      alt="Lido Collection"
-      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-    />
-    <div className="absolute inset-0 flex flex-col justify-end p-10">
-      <p className="text-xs tracking-widest uppercase mb-2" style={{ color: '#f5f0eb90' }}>Lido Collection</p>
-      <Link
-        to="/collections/lido"
-        className="text-2xl font-light hover:opacity-70 transition-opacity"
-        style={{ color: '#f5f0eb' }}
-      >
-        Warm Light for Warm Spaces →
-      </Link>
-    </div>
-  </div>
 
-  <div className="relative w-1/2 overflow-hidden group">
-    <img
-      src="https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/saga-collection-detail/Screenshot%202026-06-04%20at%2016.38.05.png"
-      alt="Saga Collection"
-      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-    />
-    <div className="absolute inset-0 flex flex-col justify-end p-10">
-      <p className="text-xs tracking-widest uppercase mb-2" style={{ color: '#f5f0eb90' }}>Saga Collection</p>
-      <Link
-        to="/collections/saga"
-        className="text-2xl font-light hover:opacity-70 transition-opacity"
-        style={{ color: '#f5f0eb' }}
-      >
-        Sculptural Forms, Lasting Light →
-      </Link>
-    </div>
-  </div>
-</section>
+        <div className="relative w-full md:w-1/2 overflow-hidden group" style={{ height: '60vw', minHeight: '300px' }}>
+          <img src="https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/lido-collection-detail/Screenshot%202026-06-04%20at%2016.34.10.png" alt="Lido Collection" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-10">
+            <p className="text-xs tracking-widest uppercase mb-2" style={{ color: '#f5f0eb90' }}>Lido Collection</p>
+            <Link to="/collections/lido" className="text-lg md:text-2xl font-light hover:opacity-70 transition-opacity" style={{ color: '#f5f0eb' }}>
+              Warm Light for Warm Spaces →
+            </Link>
+          </div>
+        </div>
+
+        <div className="relative w-full md:w-1/2 overflow-hidden group" style={{ height: '60vw', minHeight: '300px' }}>
+          <img src="https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/saga-collection-detail/Screenshot%202026-06-04%20at%2016.38.05.png" alt="Saga Collection" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-10">
+            <p className="text-xs tracking-widests uppercase mb-2" style={{ color: '#f5f0eb90' }}>Saga Collection</p>
+            <Link to="/collections/saga" className="text-lg md:text-2xl font-light hover:opacity-70 transition-opacity" style={{ color: '#f5f0eb' }}>
+              Sculptural Forms, Lasting Light →
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* Featured Products Section */}
       <section className="mt-20 py-16 flex">
         <div className="absolute left-0 right-0 flex gap-4 px-8" style={{ marginTop: '-4rem' }}>
-          <div className="w-56 shrink-0 border-t" style={{ borderColor: '#5c1a1a' }} />
+          <div className="hidden md:block w-56 shrink-0 border-t" style={{ borderColor: '#5c1a1a' }} />
           <div className="flex-1 border-t" style={{ borderColor: '#5c1a1a' }} />
         </div>
 
-        <div className="w-56 shrink-0 px-8 flex flex-col justify-between py-2">
+        <div className="hidden md:flex w-56 shrink-0 px-8 flex-col justify-between py-2">
           <div>
             <p className="text-xs tracking-widest uppercase mb-6" style={{ color: '#5c1a1a80' }}>Featured Products</p>
             <p className="text-sm leading-relaxed" style={{ color: '#5c1a1a' }}>
@@ -259,50 +188,27 @@ function HomePage() {
             </p>
           </div>
           <div className="mt-12">
-            <Link
-              to="/shop"
-              className="text-sm tracking-wide hover:opacity-60 transition-opacity"
-              style={{ color: '#5c1a1a' }}
-            >
+            <Link to="/shop" className="text-sm tracking-wide hover:opacity-60 transition-opacity" style={{ color: '#5c1a1a' }}>
               View All Products
             </Link>
           </div>
         </div>
 
-        <div className="flex-1 px-10 overflow-hidden">
-          <div
-            ref={featuredScrollRef}
-            className="flex gap-6 overflow-x-auto pb-4"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          >
+        <div className="flex-1 px-4 md:px-10 overflow-hidden">
+          <p className="md:hidden text-xs tracking-widest uppercase mb-4" style={{ color: '#5c1a1a80' }}>Featured Products</p>
+          <div ref={featuredScrollRef} className="flex gap-4 md:gap-6 overflow-x-auto pb-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
             {featuredProducts.map((product) => (
-              <Link
-                key={product.id}
-                to={`/products/${product.slug}`}
-                className="shrink-0 w-72 group cursor-pointer"
-              >
+              <Link key={product.id} to={`/products/${product.slug}`} className="shrink-0 w-48 md:w-72 group cursor-pointer">
                 <div className="overflow-hidden mb-4" style={{ aspectRatio: '4/5' }}>
-                  <img
-                    src={product.image_url}
-                    alt={product.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+                  <img src={product.image_url} alt={product.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
-                <h3 className="text-sm tracking-wide" style={{ color: '#5c1a1a' }}>{product.name}</h3>
+                <h3 className="text-xs md:text-sm tracking-wide" style={{ color: '#5c1a1a' }}>{product.name}</h3>
               </Link>
             ))}
           </div>
           <div className="flex justify-end gap-4 mt-6">
-            <span
-              className="cursor-pointer hover:opacity-60 transition-opacity text-lg"
-              style={{ color: '#5c1a1a' }}
-              onClick={() => featuredScrollRef.current?.scrollBy({ left: -300, behavior: 'smooth' })}
-            >←</span>
-            <span
-              className="cursor-pointer hover:opacity-60 transition-opacity text-lg"
-              style={{ color: '#5c1a1a' }}
-              onClick={() => featuredScrollRef.current?.scrollBy({ left: 300, behavior: 'smooth' })}
-            >→</span>
+            <span className="cursor-pointer hover:opacity-60 transition-opacity text-lg" style={{ color: '#5c1a1a' }} onClick={() => featuredScrollRef.current?.scrollBy({ left: -300, behavior: 'smooth' })}>←</span>
+            <span className="cursor-pointer hover:opacity-60 transition-opacity text-lg" style={{ color: '#5c1a1a' }} onClick={() => featuredScrollRef.current?.scrollBy({ left: 300, behavior: 'smooth' })}>→</span>
           </div>
         </div>
       </section>

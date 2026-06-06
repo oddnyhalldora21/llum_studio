@@ -48,24 +48,19 @@ function SignInPage() {
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#f5f0eb' }}>
 
-      {/* Two lines with break */}
       <div className="flex gap-4 px-8 pt-24">
-        <div className="w-1/2 shrink-0 border-t" style={{ borderColor: '#5c1a1a' }} />
-        <div className="flex-1 border-t" style={{ borderColor: '#5c1a1a' }} />
+        <div className="w-full md:w-1/2 shrink-0 border-t" style={{ borderColor: '#5c1a1a' }} />
+        <div className="flex-1 border-t hidden md:block" style={{ borderColor: '#5c1a1a' }} />
       </div>
 
-      {/* Main layout */}
-      <div className="flex">
+      <div className="flex flex-col md:flex-row">
 
-        {/* Left label */}
-        <div className="w-1/2 shrink-0 px-16 py-12">
+        <div className="w-full md:w-1/2 shrink-0 px-8 md:px-16 py-8 md:py-12">
           <p className="text-xs tracking-widest uppercase" style={{ color: '#5c1a1a' }}>Account</p>
         </div>
 
-        {/* Right content */}
-        <div className="flex-1 px-16 py-12">
-
-          <p className="text-2xl leading-relaxed mb-12" style={{ color: '#5c1a1a' }}>
+        <div className="flex-1 px-8 md:px-16 pb-12 md:py-12">
+          <p className="text-xl md:text-2xl leading-relaxed mb-12" style={{ color: '#5c1a1a' }}>
             {isSignUp
               ? 'Create an account to track orders and check out faster.'
               : 'Log in to check order status, order history, and make checking out faster. No account? Sign up below.'}
@@ -75,7 +70,6 @@ function SignInPage() {
             <p className="text-sm mb-6" style={{ color: '#c0392b' }}>{error}</p>
           )}
 
-          {/* Inputs */}
           <div className="mb-6">
             {isSignUp && (
               <input
@@ -105,7 +99,6 @@ function SignInPage() {
             />
           </div>
 
-          {/* Buttons */}
           <button
             onClick={handleSubmit}
             disabled={loading}
@@ -122,7 +115,6 @@ function SignInPage() {
           >
             {isSignUp ? 'Sign In Instead' : 'Create Account'}
           </button>
-
         </div>
       </div>
     </div>
