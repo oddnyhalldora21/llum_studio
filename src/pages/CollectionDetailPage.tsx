@@ -56,7 +56,7 @@ function CollectionDetailPage() {
                   <button
                     onClick={() => scrollTo(c.slug)}
                     className="text-sm text-left transition-colors w-full relative"
-                    style={{ color: '#e8d5b7', paddingLeft: '16px' }}
+                    style={{ color: '#f5f0eb', paddingLeft: '16px' }}
                   >
                     <span className={`absolute left-0 top-0 transition-opacity duration-300 ${c.slug === activeSlug ? 'opacity-100' : 'opacity-0'}`}>●</span>
                     {c.name}
@@ -83,9 +83,9 @@ function CollectionDetailPage() {
                   alt={collection.name}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-black/40" />
+               
                 <div className="absolute inset-0 flex items-end px-16 pb-12">
-  <h2 className="font-light tracking-widest" style={{ fontSize: '5rem', color: '#e8d5b7', fontFamily: 'Cormorant Garamond, serif' }}>
+  <h2 className="font-light tracking-widest" style={{ fontSize: '5rem', color: '#f5f0eb', fontFamily: 'Cormorant Garamond, serif' }}>
     {collection.name}
   </h2>
 </div>
@@ -94,7 +94,7 @@ function CollectionDetailPage() {
               {/* Tagline */}
               {collection.tagline && (
                 <div className="px-16 py-12">
-                  <p className="text-base leading-relaxed max-w-xl" style={{ color: '#e8d5b7' }}>
+                  <p className="text-base leading-relaxed max-w-xl" style={{ color: '#f5f0eb' }}>
                     {collection.tagline}
                   </p>
                 </div>
@@ -122,7 +122,7 @@ function CollectionDetailPage() {
                     </div>
                     <div className="w-72 flex items-center">
                       {collection.sections[0] && (
-                        <p className="text-sm leading-relaxed" style={{ color: '#e8d5b7' }}>
+                        <p className="text-sm leading-relaxed" style={{ color: '#f5f0eb' }}>
                           {collection.sections[0].text}
                         </p>
                       )}
@@ -134,7 +134,7 @@ function CollectionDetailPage() {
                     <div className="flex gap-4 px-16 pb-12">
                       <div className="w-72 flex items-center">
                         {collection.sections[1] && (
-                          <p className="text-sm leading-relaxed" style={{ color: '#e8d5b7' }}>
+                          <p className="text-sm leading-relaxed" style={{ color: '#f5f0eb' }}>
                             {collection.sections[1].text}
                           </p>
                         )}
@@ -166,7 +166,7 @@ function CollectionDetailPage() {
                     <img src={section.image} alt="" className="w-full h-full object-cover" />
                   </div>
                   <div className="w-1/2 flex items-center px-16 py-16">
-                    <p className="text-base leading-relaxed max-w-md" style={{ color: '#e8d5b7' }}>
+                    <p className="text-base leading-relaxed max-w-md" style={{ color: '#f5f0eb' }}>
                       {section.text}
                     </p>
                   </div>
@@ -178,7 +178,7 @@ function CollectionDetailPage() {
                 <Link
                   to={`/shop?collection=${collection.slug}`}
                   className="text-sm tracking-wide transition-opacity hover:opacity-60"
-                  style={{ color: '#e8d5b7' }}
+                  style={{ color: '#f5f0eb' }}
                 >
                   Shop {collection.name} →
                 </Link>

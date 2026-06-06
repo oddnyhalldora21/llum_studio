@@ -72,7 +72,7 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
 
   const linkClass = `text-sm font-medium tracking-wide transition-colors duration-500 ${
     onCollections
-      ? 'text-[#f5f0eb]/70 hover:text-[#f5f0eb]'
+      ? 'text-[#f5f0eb] hover:opacity-70'
       : isTranslucent
         ? 'text-[#f5f0eb] hover:text-[#f5f0eb]/70'
         : 'text-[#5c1a1a] hover:opacity-60'
@@ -116,7 +116,7 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
             {user ? (
               <>
                 <span className={`text-sm font-medium tracking-wide transition-colors duration-500 ${
-                  onCollections ? 'text-[#f5f0eb]/70' : isTranslucent ? 'text-[#f5f0eb]' : 'text-[#5c1a1a]'
+                  onCollections || isTranslucent ? 'text-[#f5f0eb]' : 'text-[#5c1a1a]'
                 }`}>
                   {fullName}
                 </span>
