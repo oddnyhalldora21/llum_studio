@@ -50,8 +50,8 @@ function SignInPage() {
 
       {/* Two lines with break */}
       <div className="flex gap-4 px-8 pt-24">
-        <div className="w-1/2 shrink-0 border-t" style={{ borderColor: '#2c1810' }} />
-        <div className="flex-1 border-t" style={{ borderColor: '#2c1810' }} />
+        <div className="w-1/2 shrink-0 border-t" style={{ borderColor: '#5c1a1a' }} />
+        <div className="flex-1 border-t" style={{ borderColor: '#5c1a1a' }} />
       </div>
 
       {/* Main layout */}
@@ -59,13 +59,13 @@ function SignInPage() {
 
         {/* Left label */}
         <div className="w-1/2 shrink-0 px-16 py-12">
-          <p className="text-xs tracking-widest uppercase" style={{ color: '#2c1810' }}>Account</p>
+          <p className="text-xs tracking-widest uppercase" style={{ color: '#5c1a1a' }}>Account</p>
         </div>
 
         {/* Right content */}
         <div className="flex-1 px-16 py-12">
 
-          <p className="text-2xl leading-relaxed mb-12" style={{ color: '#2c1810' }}>
+          <p className="text-2xl leading-relaxed mb-12" style={{ color: '#5c1a1a' }}>
             {isSignUp
               ? 'Create an account to track orders and check out faster.'
               : 'Log in to check order status, order history, and make checking out faster. No account? Sign up below.'}
@@ -84,7 +84,7 @@ function SignInPage() {
                 value={fullName}
                 onChange={e => setFullName(e.target.value)}
                 className="w-full px-3 py-3 text-sm outline-none bg-transparent border mb-3"
-                style={{ borderColor: '#2c181040', color: '#2c1810' }}
+                style={{ borderColor: '#5c1a1a40', color: '#5c1a1a' }}
               />
             )}
             <input
@@ -93,7 +93,7 @@ function SignInPage() {
               value={email}
               onChange={e => setEmail(e.target.value)}
               className="w-full px-3 py-3 text-sm outline-none bg-transparent border mb-3"
-              style={{ borderColor: '#2c181040', color: '#2c1810' }}
+              style={{ borderColor: '#5c1a1a40', color: '#5c1a1a' }}
             />
             <input
               type="password"
@@ -101,7 +101,7 @@ function SignInPage() {
               value={password}
               onChange={e => setPassword(e.target.value)}
               className="w-full px-3 py-3 text-sm outline-none bg-transparent border"
-              style={{ borderColor: '#2c181040', color: '#2c1810' }}
+              style={{ borderColor: '#5c1a1a40', color: '#5c1a1a' }}
             />
           </div>
 
@@ -118,7 +118,7 @@ function SignInPage() {
           <button
             onClick={() => setIsSignUp(!isSignUp)}
             className="w-full py-3 text-sm tracking-widest uppercase transition-opacity hover:opacity-70 border"
-            style={{ borderColor: '#2c181040', color: '#2c1810', backgroundColor: 'transparent' }}
+            style={{ borderColor: '#5c1a1a40', color: '#5c1a1a', backgroundColor: 'transparent' }}
           >
             {isSignUp ? 'Sign In Instead' : 'Create Account'}
           </button>

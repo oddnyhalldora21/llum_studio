@@ -18,11 +18,11 @@ function CartDrawer({ open, onClose }: Props) {
     >
       {/* Header */}
       <div className="flex items-center justify-between px-8 py-6">
-        <h2 className="text-sm tracking-widest uppercase" style={{ color: '#2c1810' }}>Your Cart</h2>
+        <h2 className="text-sm tracking-widest uppercase" style={{ color: '#5c1a1a' }}>Your Cart</h2>
         <button
           onClick={onClose}
           className="text-sm transition-colors"
-          style={{ color: '#2c181060' }}
+          style={{ color: '#5c1a1a60' }}
         >
           Close
         </button>
@@ -32,11 +32,11 @@ function CartDrawer({ open, onClose }: Props) {
       <div className="flex-1 overflow-y-auto px-6">
         {items.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full gap-4">
-            <p className="text-sm" style={{ color: '#2c181060' }}>Your cart is empty</p>
+            <p className="text-sm" style={{ color: '#5c1a1a60' }}>Your cart is empty</p>
             <button
               onClick={onClose}
               className="text-sm transition-colors"
-              style={{ color: '#2c1810' }}
+              style={{ color: '#5c1a1a' }}
             >
               Continue Shopping
             </button>
@@ -47,31 +47,31 @@ function CartDrawer({ open, onClose }: Props) {
               <div key={item.product.id} className="py-2">
 
                 {/* Top border */}
-                <div style={{ height: '1px', backgroundColor: '#2c1810' }} />
+                <div style={{ height: '1px', backgroundColor: '#5c1a1a' }} />
 
                 {/* Name row */}
                 <div className="flex items-center justify-between py-2 gap-2">
-                  <p className="text-sm flex-1" style={{ color: '#2c1810' }}>
+                  <p className="text-sm flex-1" style={{ color: '#5c1a1a' }}>
                     {item.product.name}
                   </p>
                   <div className="flex items-center gap-3 shrink-0">
                     <button
                       onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
-                      className="text-sm" style={{ color: '#2c181060' }}
+                      className="text-sm" style={{ color: '#5c1a1a60' }}
                     >−</button>
-                    <span className="text-sm" style={{ color: '#2c1810' }}>{item.quantity}</span>
+                    <span className="text-sm" style={{ color: '#5c1a1a' }}>{item.quantity}</span>
                     <button
                       onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
-                      className="text-sm" style={{ color: '#2c181060' }}
+                      className="text-sm" style={{ color: '#5c1a1a60' }}
                     >+</button>
                   </div>
-                  <p className="text-sm shrink-0 ml-2" style={{ color: '#2c1810' }}>
+                  <p className="text-sm shrink-0 ml-2" style={{ color: '#5c1a1a' }}>
                     €{(item.product.price_cents * item.quantity / 100).toLocaleString()}
                   </p>
                 </div>
 
                 {/* Bottom border */}
-                <div style={{ height: '1px', backgroundColor: '#2c1810' }} />
+                <div style={{ height: '1px', backgroundColor: '#5c1a1a' }} />
 
                 {/* Image + Remove below border */}
                 <div className="py-4 flex gap-4 items-start">
@@ -85,7 +85,7 @@ function CartDrawer({ open, onClose }: Props) {
                   <button
                     onClick={() => removeItem(item.product.id)}
                     className="text-xs transition-colors pt-1"
-                    style={{ color: '#2c181060' }}
+                    style={{ color: '#5c1a1a60' }}
                   >
                     Remove
                   </button>
@@ -100,16 +100,16 @@ function CartDrawer({ open, onClose }: Props) {
       {/* Footer */}
       {items.length > 0 && (
         <div className="px-6 py-6">
-          <div style={{ height: '1px', backgroundColor: '#2c1810' }} />
+          <div style={{ height: '1px', backgroundColor: '#5c1a1a' }} />
           <div className="flex justify-between py-3">
-            <span className="text-sm" style={{ color: '#2c181080' }}>Subtotal</span>
-            <span className="text-sm" style={{ color: '#2c1810' }}>
+            <span className="text-sm" style={{ color: '#5c1a1a80' }}>Subtotal</span>
+            <span className="text-sm" style={{ color: '#5c1a1a' }}>
               €{(totalPrice() / 100).toLocaleString()}
             </span>
           </div>
           <div className="flex justify-between pb-4">
-            <span className="text-sm" style={{ color: '#2c181080' }}>Shipping</span>
-            <span className="text-sm" style={{ color: '#2c181060' }}>Calculated at checkout</span>
+            <span className="text-sm" style={{ color: '#5c1a1a80' }}>Shipping</span>
+            <span className="text-sm" style={{ color: '#5c1a1a60' }}>Calculated at checkout</span>
           </div>
           <Link
             to="/checkout"

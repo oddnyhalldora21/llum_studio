@@ -60,7 +60,7 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
 
   const headerClass = `fixed top-0 left-0 right-0 z-50 border-b transition-all duration-500 ${
     onCollections
-      ? 'bg-[#2c1810] border-transparent'
+      ? 'bg-[#5c1a1a] border-transparent'
       : isTranslucent
         ? 'bg-transparent border-transparent'
         : isAbout
@@ -75,7 +75,7 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
       ? 'text-[#f5f0eb]/70 hover:text-[#f5f0eb]'
       : isTranslucent
         ? 'text-[#f5f0eb] hover:text-[#f5f0eb]/70'
-        : 'text-[#2c1810] hover:opacity-60'
+        : 'text-[#5c1a1a] hover:opacity-60'
   }`
 
   const logoClass = `text-base font-semibold tracking-widest uppercase transition-all duration-500 hover:opacity-70 ${
@@ -83,10 +83,10 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
       ? 'text-[#f5f0eb]'
       : isTranslucent
         ? 'text-[#f5f0eb]'
-        : 'text-[#2c1810]'
+        : 'text-[#5c1a1a]'
   } ${!showLogo ? 'opacity-0 pointer-events-none' : 'opacity-100'}`
 
-  const hamburgerColor = onCollections || isTranslucent ? '#f5f0eb' : '#2c1810'
+  const hamburgerColor = onCollections || isTranslucent ? '#f5f0eb' : '#5c1a1a'
 
   return (
     <>
@@ -116,7 +116,7 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
             {user ? (
               <>
                 <span className={`text-sm font-medium tracking-wide transition-colors duration-500 ${
-                  onCollections ? 'text-[#f5f0eb]/70' : isTranslucent ? 'text-[#f5f0eb]' : 'text-[#2c1810]'
+                  onCollections ? 'text-[#f5f0eb]/70' : isTranslucent ? 'text-[#f5f0eb]' : 'text-[#5c1a1a]'
                 }`}>
                   {fullName}
                 </span>
@@ -149,22 +149,22 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
       {menuOpen && (
         <div className="fixed inset-0 z-40 flex flex-col pt-14" style={{ backgroundColor: '#f5f0eb' }}>
           <div className="flex flex-col px-8 py-10 gap-6">
-            <Link to="/shop" className="text-2xl font-light tracking-wide" style={{ color: '#2c1810' }}>Shop</Link>
-            <Link to="/collections" className="text-2xl font-light tracking-wide" style={{ color: '#2c1810' }}>Collections</Link>
-            <Link to="/about" className="text-2xl font-light tracking-wide" style={{ color: '#2c1810' }}>About</Link>
-            <div className="border-t pt-6 mt-4 flex flex-col gap-4" style={{ borderColor: '#2c181020' }}>
+            <Link to="/shop" className="text-2xl font-light tracking-wide" style={{ color: '#5c1a1a' }}>Shop</Link>
+            <Link to="/collections" className="text-2xl font-light tracking-wide" style={{ color: '#5c1a1a' }}>Collections</Link>
+            <Link to="/about" className="text-2xl font-light tracking-wide" style={{ color: '#5c1a1a' }}>About</Link>
+            <div className="border-t pt-6 mt-4 flex flex-col gap-4" style={{ borderColor: '#5c1a1a20' }}>
               {user ? (
                 <>
-                  <span className="text-sm" style={{ color: '#2c181080' }}>{fullName}</span>
-                  <button onClick={handleSignOut} className="text-sm text-left" style={{ color: '#2c1810' }}>Sign Out</button>
+                  <span className="text-sm" style={{ color: '#5c1a1a80' }}>{fullName}</span>
+                  <button onClick={handleSignOut} className="text-sm text-left" style={{ color: '#5c1a1a' }}>Sign Out</button>
                 </>
               ) : (
-                <Link to="/sign-in" className="text-sm" style={{ color: '#2c1810' }}>Sign In</Link>
+                <Link to="/sign-in" className="text-sm" style={{ color: '#5c1a1a' }}>Sign In</Link>
               )}
               <button
                 onClick={() => { setMenuOpen(false); setSearchOpen(true) }}
                 className="text-sm text-left"
-                style={{ color: '#2c1810' }}
+                style={{ color: '#5c1a1a' }}
               >
                 Search
               </button>
@@ -179,7 +179,7 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
           <div className="fixed inset-0 z-40" onClick={() => setSearchOpen(false)} />
           <div
             className="fixed top-14 left-1/2 -translate-x-1/2 z-50 border shadow-lg w-[90vw] md:w-[480px]"
-            style={{ ...searchBg, borderColor: '#2c181020' }}
+            style={{ ...searchBg, borderColor: '#5c1a1a20' }}
           >
             <div className="flex items-center p-4 gap-4">
               <input
@@ -190,19 +190,19 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
                 onKeyDown={handleKeyDown}
                 autoFocus
                 className="flex-1 text-sm outline-none bg-transparent"
-                style={{ color: '#2c1810' }}
+                style={{ color: '#5c1a1a' }}
               />
               <button
                 onClick={handleSearch}
                 className="text-sm font-medium transition-opacity hover:opacity-60 px-4 py-2 border"
-                style={{ color: '#2c1810', borderColor: '#2c181040' }}
+                style={{ color: '#5c1a1a', borderColor: '#5c1a1a40' }}
               >
                 Search
               </button>
               <button
                 onClick={() => setSearchOpen(false)}
                 className="transition-opacity hover:opacity-60"
-                style={{ color: '#2c1810' }}
+                style={{ color: '#5c1a1a' }}
               >
                 ✕
               </button>

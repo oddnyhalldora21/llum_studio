@@ -9,13 +9,13 @@ function Footer({ lightsOn }: Props) {
   const isAbout = location.pathname === '/about'
   const isCollections = location.pathname === '/collections' || location.pathname.startsWith('/collections/')
 
-  const textColor = isCollections ? '#f5f0eb' : '#2c1810'
-  const borderColor = isCollections ? '#f5f0eb' : '#2c1810'
+  const textColor = isCollections ? '#f5f0eb' : '#5c1a1a'
+  const borderColor = isCollections ? '#f5f0eb' : '#5c1a1a'
 
   return (
     <footer
       className="px-12 py-12 transition-colors duration-700"
-      style={{ backgroundColor: isCollections ? '#2c1810' : lightsOn || isAbout ? '#e8e0d8' : '#f5f0eb' }}
+      style={{ backgroundColor: isCollections ? '#5c1a1a' : lightsOn || isAbout ? '#e8e0d8' : '#f5f0eb' }}
     >
 
       {/* Newsletter */}

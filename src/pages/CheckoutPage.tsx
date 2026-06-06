@@ -12,27 +12,27 @@ function CheckoutPage() {
   }
 
   const inputClass = "w-full px-3 py-3 text-sm outline-none bg-transparent border transition-colors"
-  const inputStyle = { borderColor: '#2c181030', color: '#2c1810' }
+  const inputStyle = { borderColor: '#5c1a1a30', color: '#5c1a1a' }
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#f5f0eb' }}>
 
       {/* Single full line */}
       <div className="px-8 pt-24">
-        <div className="border-t" style={{ borderColor: '#2c1810' }} />
+        <div className="border-t" style={{ borderColor: '#5c1a1a' }} />
       </div>
 
       <div className="flex px-8 gap-8 py-12">
 
         {/* Left - Form */}
         <div className="flex-1">
-          <h1 className="text-xs tracking-widest uppercase mb-12" style={{ color: '#2c1810' }}>
+          <h1 className="text-xs tracking-widest uppercase mb-12" style={{ color: '#5c1a1a' }}>
             Checkout
           </h1>
 
           {/* Contact */}
           <div className="mb-10">
-            <p className="text-xs tracking-widest uppercase mb-4" style={{ color: '#2c181080' }}>Contact</p>
+            <p className="text-xs tracking-widest uppercase mb-4" style={{ color: '#5c1a1a80' }}>Contact</p>
             <input
               type="email"
               placeholder="Email"
@@ -43,7 +43,7 @@ function CheckoutPage() {
 
           {/* Shipping */}
           <div className="mb-10">
-            <p className="text-xs tracking-widest uppercase mb-4" style={{ color: '#2c181080' }}>Shipping Address</p>
+            <p className="text-xs tracking-widest uppercase mb-4" style={{ color: '#5c1a1a80' }}>Shipping Address</p>
             <div className="flex gap-3 mb-3">
               <input type="text" placeholder="First name" className={inputClass} style={inputStyle} />
               <input type="text" placeholder="Last name" className={inputClass} style={inputStyle} />
@@ -57,8 +57,8 @@ function CheckoutPage() {
 
           {/* Payment */}
           <div className="mb-12">
-            <p className="text-xs tracking-widest uppercase mb-2" style={{ color: '#2c181080' }}>Payment</p>
-            <p className="text-xs mb-4" style={{ color: '#2c181060' }}>This is a demo store — no real payments are processed.</p>
+            <p className="text-xs tracking-widest uppercase mb-2" style={{ color: '#5c1a1a80' }}>Payment</p>
+            <p className="text-xs mb-4" style={{ color: '#5c1a1a60' }}>This is a demo store — no real payments are processed.</p>
             <input type="text" placeholder="Card number" className={`${inputClass} mb-3`} style={inputStyle} />
             <div className="flex gap-3">
               <input type="text" placeholder="MM / YY" className={inputClass} style={inputStyle} />
@@ -82,15 +82,15 @@ function CheckoutPage() {
           <div className="mb-6">
             {items.map(item => (
               <div key={item.product.id} className="py-2">
-                <div style={{ height: '1px', backgroundColor: '#2c1810' }} />
+                <div style={{ height: '1px', backgroundColor: '#5c1a1a' }} />
                 <div className="flex items-center justify-between py-2 gap-2">
-                  <p className="text-sm flex-1" style={{ color: '#2c1810' }}>{item.product.name}</p>
-                  <p className="text-sm shrink-0" style={{ color: '#2c181080' }}>Qty: {item.quantity}</p>
-                  <p className="text-sm shrink-0 ml-2" style={{ color: '#2c1810' }}>
+                  <p className="text-sm flex-1" style={{ color: '#5c1a1a' }}>{item.product.name}</p>
+                  <p className="text-sm shrink-0" style={{ color: '#5c1a1a80' }}>Qty: {item.quantity}</p>
+                  <p className="text-sm shrink-0 ml-2" style={{ color: '#5c1a1a' }}>
                     €{(item.product.price_cents * item.quantity / 100).toLocaleString()}
                   </p>
                 </div>
-                <div style={{ height: '1px', backgroundColor: '#2c1810' }} />
+                <div style={{ height: '1px', backgroundColor: '#5c1a1a' }} />
                 <div className="py-3 flex gap-4 items-start">
                   <div className="overflow-hidden shrink-0" style={{ width: '80px', height: '96px', backgroundColor: '#e8e0d8' }}>
                     <img
@@ -102,7 +102,7 @@ function CheckoutPage() {
                   <button
                     onClick={() => removeItem(item.product.id)}
                     className="text-xs transition-opacity hover:opacity-60 pt-1"
-                    style={{ color: '#2c181060' }}
+                    style={{ color: '#5c1a1a60' }}
                   >
                     Remove
                   </button>
@@ -112,19 +112,19 @@ function CheckoutPage() {
           </div>
 
           {/* Totals */}
-          <div style={{ height: '1px', backgroundColor: '#2c1810' }} />
+          <div style={{ height: '1px', backgroundColor: '#5c1a1a' }} />
           <div className="flex justify-between py-3">
-            <span className="text-sm" style={{ color: '#2c181080' }}>Subtotal</span>
-            <span className="text-sm" style={{ color: '#2c1810' }}>€{(total / 100).toLocaleString()}</span>
+            <span className="text-sm" style={{ color: '#5c1a1a80' }}>Subtotal</span>
+            <span className="text-sm" style={{ color: '#5c1a1a' }}>€{(total / 100).toLocaleString()}</span>
           </div>
           <div className="flex justify-between pb-3">
-            <span className="text-sm" style={{ color: '#2c181080' }}>Shipping</span>
-            <span className="text-sm" style={{ color: '#2c181060' }}>Free</span>
+            <span className="text-sm" style={{ color: '#5c1a1a80' }}>Shipping</span>
+            <span className="text-sm" style={{ color: '#5c1a1a60' }}>Free</span>
           </div>
-          <div style={{ height: '1px', backgroundColor: '#2c1810' }} />
+          <div style={{ height: '1px', backgroundColor: '#5c1a1a' }} />
           <div className="flex justify-between py-3">
-            <span className="text-sm font-medium" style={{ color: '#2c1810' }}>Total</span>
-            <span className="text-sm font-medium" style={{ color: '#2c1810' }}>€{(total / 100).toLocaleString()}</span>
+            <span className="text-sm font-medium" style={{ color: '#5c1a1a' }}>Total</span>
+            <span className="text-sm font-medium" style={{ color: '#5c1a1a' }}>€{(total / 100).toLocaleString()}</span>
           </div>
 
         </div>

@@ -49,8 +49,8 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
     return matchesCategory && matchesSearch
   })
 
-  if (loading) return <div className="flex items-center justify-center min-h-screen text-sm" style={{ color: '#2c1810' }}>Loading...</div>
-  if (error) return <div className="flex items-center justify-center min-h-screen text-sm" style={{ color: '#2c1810' }}>{error}</div>
+  if (loading) return <div className="flex items-center justify-center min-h-screen text-sm" style={{ color: '#5c1a1a' }}>Loading...</div>
+  if (error) return <div className="flex items-center justify-center min-h-screen text-sm" style={{ color: '#5c1a1a' }}>{error}</div>
 
   const allCategories = [...lightingCategories, ...collectionSlugs]
 
@@ -60,7 +60,7 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
       {/* Top strip — light toggle */}
       <div className="flex justify-end items-center px-8 pt-24 pb-6">
         <div className="flex items-center gap-3">
-          <span className="text-xs tracking-widest uppercase" style={{ color: '#2c1810' }}>Light</span>
+          <span className="text-xs tracking-widest uppercase" style={{ color: '#5c1a1a' }}>Light</span>
           <button
             onClick={() => setLightsOn(!lightsOn)}
             className={`relative w-12 h-6 rounded-full border transition-colors duration-500 ${
@@ -76,8 +76,8 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
 
       {/* Divider line */}
       <div className="flex gap-4 px-8">
-        <div className="hidden md:block w-56 shrink-0 border-t" style={{ borderColor: '#2c1810' }} />
-        <div className="flex-1 border-t" style={{ borderColor: '#2c1810' }} />
+        <div className="hidden md:block w-56 shrink-0 border-t" style={{ borderColor: '#5c1a1a' }} />
+        <div className="flex-1 border-t" style={{ borderColor: '#5c1a1a' }} />
       </div>
 
       {/* Mobile filter bar */}
@@ -91,9 +91,9 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
             onClick={() => handleCategoryChange(cat)}
             className="shrink-0 text-xs tracking-wide px-3 py-1.5 border transition-colors"
             style={{
-              color: selectedCategory === cat ? '#f5f0eb' : '#2c1810',
-              backgroundColor: selectedCategory === cat ? '#2c1810' : 'transparent',
-              borderColor: '#2c1810'
+              color: selectedCategory === cat ? '#f5f0eb' : '#5c1a1a',
+              backgroundColor: selectedCategory === cat ? '#5c1a1a' : 'transparent',
+              borderColor: '#5c1a1a'
             }}
           >
             {cat}
@@ -106,14 +106,14 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
 
         {/* Sidebar — desktop only */}
         <aside className="hidden md:block w-56 shrink-0 px-8 py-6">
-          <p className="text-sm mb-1" style={{ color: '#2c1810' }}>Lighting</p>
+          <p className="text-sm mb-1" style={{ color: '#5c1a1a' }}>Lighting</p>
           <ul className="space-y-0.1 mb-4">
             {lightingCategories.map((cat) => (
               <li key={cat}>
                 <button
                   onClick={() => handleCategoryChange(cat)}
                   className="text-sm text-left w-full relative"
-                  style={{ color: '#2c1810', paddingLeft: '16px' }}
+                  style={{ color: '#5c1a1a', paddingLeft: '16px' }}
                 >
                   <span
                     key={selectedCategory === cat ? 'active' : 'inactive'}
@@ -124,14 +124,14 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
             ))}
           </ul>
 
-          <p className="text-sm mb-1" style={{ color: '#2c1810' }}>Collections</p>
+          <p className="text-sm mb-1" style={{ color: '#5c1a1a' }}>Collections</p>
           <ul className="space-y-0.1">
             {collectionSlugs.map((col) => (
               <li key={col}>
                 <button
                   onClick={() => handleCategoryChange(col)}
                   className="text-sm text-left w-full relative"
-                  style={{ color: '#2c1810', paddingLeft: '16px' }}
+                  style={{ color: '#5c1a1a', paddingLeft: '16px' }}
                 >
                   <span
                     key={selectedCategory === col ? 'active' : 'inactive'}
@@ -146,8 +146,8 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
         {/* Products */}
         <main className="flex-1 px-4 md:px-8 py-6 md:py-10">
           <div style={{ opacity: visible ? 1 : 0, transition: 'opacity 0.5s ease' }}>
-          <h1 className="text-xl md:text-2xl mb-6 md:mb-8" style={{ color: '#2c1810' }}>
-              {displayedCategory}<sup className="text-xs ml-0.5" style={{ color: '#2c1810' }}>{filtered.length}</sup>
+          <h1 className="text-xl md:text-2xl mb-6 md:mb-8" style={{ color: '#5c1a1a' }}>
+              {displayedCategory}<sup className="text-xs ml-0.5" style={{ color: '#5c1a1a' }}>{filtered.length}</sup>
             </h1>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
@@ -172,8 +172,8 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
                       />
                     )}
                   </div>
-                  <p className="text-xs md:text-sm" style={{ color: '#2c1810' }}>{product.name}</p>
-                  <p className="text-xs md:text-sm" style={{ color: '#2c181080' }}>
+                  <p className="text-xs md:text-sm" style={{ color: '#5c1a1a' }}>{product.name}</p>
+                  <p className="text-xs md:text-sm" style={{ color: '#5c1a1a80' }}>
                     From €{(product.price_cents / 100).toLocaleString()}
                   </p>
                 </Link>
@@ -181,7 +181,7 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
             </div>
 
             {filtered.length === 0 && (
-              <p className="text-sm mt-12" style={{ color: '#2c181060' }}>No products found for "{search}"</p>
+              <p className="text-sm mt-12" style={{ color: '#5c1a1a60' }}>No products found for "{search}"</p>
             )}
           </div>
         </main>

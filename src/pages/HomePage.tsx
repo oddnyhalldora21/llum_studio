@@ -98,14 +98,14 @@ function HomePage() {
       {/* Catalog Section */}
       <section className="py-16 flex">
         <div className="absolute left-0 right-0 flex gap-4 px-8" style={{ marginTop: '-4rem' }}>
-          <div className="w-56 shrink-0 border-t" style={{ borderColor: '#2c1810' }} />
-          <div className="flex-1 border-t" style={{ borderColor: '#2c1810' }} />
+          <div className="w-56 shrink-0 border-t" style={{ borderColor: '#5c1a1a' }} />
+          <div className="flex-1 border-t" style={{ borderColor: '#5c1a1a' }} />
         </div>
 
         <div className="w-56 shrink-0 px-8 flex flex-col justify-between py-2">
           <div>
-            <p className="text-xs tracking-widest uppercase mb-6" style={{ color: '#2c181080' }}>Our Catalog</p>
-            <p className="text-sm leading-relaxed" style={{ color: '#2c1810' }}>
+            <p className="text-xs tracking-widest uppercase mb-6" style={{ color: '#5c1a1a80' }}>Our Catalog</p>
+            <p className="text-sm leading-relaxed" style={{ color: '#5c1a1a' }}>
               Since our founding in 2018, our catalog has grown to include eight collections and over 27 products — suitable for both residential and commercial projects.
             </p>
           </div>
@@ -113,7 +113,7 @@ function HomePage() {
             <Link
               to="/shop"
               className="text-sm tracking-wide hover:opacity-60 transition-opacity"
-              style={{ color: '#2c1810' }}
+              style={{ color: '#5c1a1a' }}
             >
               Shop All Lights
             </Link>
@@ -139,19 +139,19 @@ function HomePage() {
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <h3 className="text-2xl font-light" style={{ color: '#2c1810' }}>{col.name}</h3>
+                <h3 className="text-2xl font-light" style={{ color: '#5c1a1a' }}>{col.name}</h3>
               </Link>
             ))}
           </div>
           <div className="flex justify-end gap-4 mt-6">
             <span
               className="cursor-pointer hover:opacity-60 transition-opacity text-lg"
-              style={{ color: '#2c1810' }}
+              style={{ color: '#5c1a1a' }}
               onClick={() => catalogScrollRef.current?.scrollBy({ left: -300, behavior: 'smooth' })}
             >←</span>
             <span
               className="cursor-pointer hover:opacity-60 transition-opacity text-lg"
-              style={{ color: '#2c1810' }}
+              style={{ color: '#5c1a1a' }}
               onClick={() => catalogScrollRef.current?.scrollBy({ left: 300, behavior: 'smooth' })}
             >→</span>
           </div>
@@ -161,38 +161,38 @@ function HomePage() {
       {/* Newsletter Section */}
       <section className="py-16 flex">
         <div className="absolute left-0 right-0 flex gap-4 px-8" style={{ marginTop: '-4rem' }}>
-          <div className="w-56 shrink-0 border-t" style={{ borderColor: '#2c1810' }} />
-          <div className="flex-1 border-t" style={{ borderColor: '#2c1810' }} />
+          <div className="w-56 shrink-0 border-t" style={{ borderColor: '#5c1a1a' }} />
+          <div className="flex-1 border-t" style={{ borderColor: '#5c1a1a' }} />
         </div>
 
         <div className="w-56 shrink-0 px-8 py-2">
-          <p className="text-xs tracking-widest uppercase" style={{ color: '#2c181080' }}>Newsletter</p>
+          <p className="text-xs tracking-widest uppercase" style={{ color: '#5c1a1a80' }}>Newsletter</p>
         </div>
 
         <div className="flex-1 px-10 flex items-center justify-center py-12">
           <div className="max-w-xl w-full">
-            <p className="text-2xl font-light mb-8 leading-snug" style={{ color: '#2c1810' }}>
+            <p className="text-2xl font-light mb-8 leading-snug" style={{ color: '#5c1a1a' }}>
               Subscribe to our newsletter to stay in the know and up to date on the latest news and happenings.
             </p>
-            <div className="flex" style={{ border: '1px solid #2c181050' }}>
+            <div className="flex" style={{ border: '1px solid #5c1a1a50' }}>
               <input
                 type="email"
                 placeholder="Your Email Address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSubscribe()}
-                className="flex-1 px-4 py-3 text-sm bg-transparent outline-none placeholder-[#2c181050]"
-                style={{ color: '#2c1810' }}
+                className="flex-1 px-4 py-3 text-sm bg-transparent outline-none placeholder-[#5c1a1a50]"
+                style={{ color: '#5c1a1a' }}
               />
               <button
                 onClick={handleSubscribe}
                 className="px-6 py-3 text-sm tracking-wide transition-opacity hover:opacity-60"
-                style={{ color: '#2c1810', borderLeft: '1px solid #2c181050' }}
+                style={{ color: '#5c1a1a', borderLeft: '1px solid #5c1a1a50' }}
               >
                 {subscribed ? 'Thank you!' : 'Subscribe'}
               </button>
             </div>
-            <p className="text-xs mt-3" style={{ color: '#2c181060' }}>
+            <p className="text-xs mt-3" style={{ color: '#5c1a1a60' }}>
               By signing up you are agreeing to our{' '}
               <span className="underline cursor-pointer hover:opacity-60">Privacy Policy</span>.
             </p>
@@ -242,14 +242,14 @@ function HomePage() {
       {/* Featured Products Section */}
       <section className="py-16 flex">
         <div className="absolute left-0 right-0 flex gap-4 px-8" style={{ marginTop: '-4rem' }}>
-          <div className="w-56 shrink-0 border-t" style={{ borderColor: '#2c1810' }} />
-          <div className="flex-1 border-t" style={{ borderColor: '#2c1810' }} />
+          <div className="w-56 shrink-0 border-t" style={{ borderColor: '#5c1a1a' }} />
+          <div className="flex-1 border-t" style={{ borderColor: '#5c1a1a' }} />
         </div>
 
         <div className="w-56 shrink-0 px-8 flex flex-col justify-between py-2">
           <div>
-            <p className="text-xs tracking-widest uppercase mb-6" style={{ color: '#2c181080' }}>Featured Products</p>
-            <p className="text-sm leading-relaxed" style={{ color: '#2c1810' }}>
+            <p className="text-xs tracking-widest uppercase mb-6" style={{ color: '#5c1a1a80' }}>Featured Products</p>
+            <p className="text-sm leading-relaxed" style={{ color: '#5c1a1a' }}>
               A selection of our most loved pieces — each one crafted to bring warmth and character to any space.
             </p>
           </div>
@@ -257,7 +257,7 @@ function HomePage() {
             <Link
               to="/shop"
               className="text-sm tracking-wide hover:opacity-60 transition-opacity"
-              style={{ color: '#2c1810' }}
+              style={{ color: '#5c1a1a' }}
             >
               View All Products
             </Link>
@@ -283,19 +283,19 @@ function HomePage() {
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <h3 className="text-sm tracking-wide" style={{ color: '#2c1810' }}>{product.name}</h3>
+                <h3 className="text-sm tracking-wide" style={{ color: '#5c1a1a' }}>{product.name}</h3>
               </Link>
             ))}
           </div>
           <div className="flex justify-end gap-4 mt-6">
             <span
               className="cursor-pointer hover:opacity-60 transition-opacity text-lg"
-              style={{ color: '#2c1810' }}
+              style={{ color: '#5c1a1a' }}
               onClick={() => featuredScrollRef.current?.scrollBy({ left: -300, behavior: 'smooth' })}
             >←</span>
             <span
               className="cursor-pointer hover:opacity-60 transition-opacity text-lg"
-              style={{ color: '#2c1810' }}
+              style={{ color: '#5c1a1a' }}
               onClick={() => featuredScrollRef.current?.scrollBy({ left: 300, behavior: 'smooth' })}
             >→</span>
           </div>
