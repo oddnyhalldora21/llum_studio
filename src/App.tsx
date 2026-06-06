@@ -4,7 +4,7 @@ import Navbar from './components/layout/Navbar'
 import HomePage from './pages/HomePage'
 import ShopPage from './pages/ShopPage'
 import ProductDetailPage from './pages/ProductDetailPage'
-import CartPage from './pages/CartPage'
+
 import CheckoutPage from './pages/CheckoutPage'
 import SignInPage from './pages/SignInPage'
 import Footer from './components/layout/Footer'
@@ -28,7 +28,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/shop" element={<ShopPage lightsOn={lightsOn} setLightsOn={setLightsOn} />} />
           <Route path="/products/:id" element={<ProductDetailPage lightsOn={lightsOn} setLightsOn={setLightsOn} />} />
-          <Route path="/cart" element={<CartPage />} />
+         
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/sign-in" element={<SignInPage />} />
           <Route path="/order-confirmation" element={<OrderConfirmationPage />} />

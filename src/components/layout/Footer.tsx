@@ -19,17 +19,17 @@ function Footer({ lightsOn }: Props) {
     >
 
       {/* Newsletter */}
-      <div className="flex items-center justify-between border-b pb-8 mb-8" style={{ borderColor }}>
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b pb-8 mb-8" style={{ borderColor }}>
         <p className="text-sm tracking-wide" style={{ color: textColor }}>Stay in the loop</p>
-        <div className="flex gap-0">
+        <div className="flex">
           <input
             type="email"
             placeholder="Your email"
-            className="bg-transparent border-b text-sm px-0 py-2 w-64 outline-none transition-colors placeholder-opacity-50"
+            className="bg-transparent border-b text-sm px-0 py-2 w-full md:w-64 outline-none transition-colors placeholder-opacity-50"
             style={{ borderColor, color: textColor }}
           />
           <button
-            className="text-sm ml-6 tracking-wide transition-opacity hover:opacity-60"
+            className="text-sm ml-6 tracking-wide transition-opacity hover:opacity-60 shrink-0"
             style={{ color: textColor }}
           >
             Subscribe
@@ -38,7 +38,7 @@ function Footer({ lightsOn }: Props) {
       </div>
 
       {/* Links */}
-      <div className="grid grid-cols-3 gap-12 mb-10">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 mb-10">
         <div>
           <h4 className="text-xs tracking-widest uppercase mb-3" style={{ color: textColor }}>Shop</h4>
           <ul className="space-y-1.5">
@@ -59,7 +59,7 @@ function Footer({ lightsOn }: Props) {
             ))}
           </ul>
         </div>
-        <div>
+        <div className="col-span-2 md:col-span-1">
           <h4 className="text-xs tracking-widest uppercase mb-3" style={{ color: textColor }}>Contact</h4>
           <ul className="space-y-1.5">
             <li className="text-sm" style={{ color: textColor }}>hello@llumstudio.com</li>
@@ -70,8 +70,8 @@ function Footer({ lightsOn }: Props) {
       </div>
 
       {/* Bottom */}
-      <div className="flex items-center justify-between border-t pt-6" style={{ borderColor }}>
-        <span className="text-base font-semibold tracking-widest uppercase" style={{ color: textColor }}>Llum Studio</span>
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 border-t pt-6" style={{ borderColor }}>
+        <span className="text-base font-semibold tracking-widests uppercase" style={{ color: textColor }}>Llum Studio</span>
         <span className="text-xs opacity-50" style={{ color: textColor }}>© 2026 Llum Studio. All rights reserved.</span>
       </div>
 
