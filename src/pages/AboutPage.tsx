@@ -12,7 +12,7 @@ function AboutPage() {
       </section>
 
       {/* Intro text */}
-      <section className="px-16 py-20 max-w-5xl">
+      <section className="px-8 py-20 max-w-5xl">
         <p className="text-lg leading-relaxed mb-8" style={{ color: '#5c1a1a' }}>
           Llum Studio is a design studio defining a new vocabulary for interiors, in which old-world craft meets at-scale manufacturing. Founded in 2018 by Elena Voss and Marc Solà, our practice transforms the familiar by bringing endless curiosity, exceptional materials, and unparalleled adaptability to lighting and objects for all spaces.
         </p>
@@ -22,7 +22,7 @@ function AboutPage() {
       </section>
 
       {/* Two photos — founders + chandelier */}
-      <section className="flex px-16 gap-4 mb-4">
+      <section className="flex px-8 gap-4 mb-4">
         <div className="flex-1 overflow-hidden" style={{ aspectRatio: '3/4' }}>
           <img
             src="https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/about_us_photos/founders-photo.png"
@@ -40,7 +40,7 @@ function AboutPage() {
       </section>
 
       {/* Captions */}
-      <section className="flex px-16 gap-4 mb-20">
+      <section className="flex px-8 gap-4 mb-20">
         <div className="flex-1 flex gap-8">
           <span className="text-xs" style={{ color: '#5c1a1a' }}>Fig. 1</span>
           <span className="text-xs" style={{ color: '#5c1a1a' }}>Founders Elena Voss and Marc Solà</span>
@@ -52,7 +52,7 @@ function AboutPage() {
       </section>
 
       {/* Body text — two columns */}
-      <section className="px-16 py-10 grid grid-cols-2 gap-16 mb-20">
+      <section className="px-8 py-10 grid grid-cols-2 gap-16 mb-20">
         <div>
           <p className="text-sm leading-relaxed mb-6" style={{ color: '#5c1a1a' }}>
             Elena and Marc's respect for craft and materials extends back as far as their upbringings, and, later, to their training as craftspeople working with wood, metal, ceramics, and glass.
@@ -75,7 +75,7 @@ function AboutPage() {
       </section>
 
       {/* Three craft photos */}
-      <section className="flex px-16 gap-4 mb-4">
+      <section className="flex px-8 gap-4 mb-4">
         <div className="flex-1 overflow-hidden" style={{ aspectRatio: '3/4' }}>
           <img
             src="https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/about_us_photos/clay-bowl.png"
@@ -100,7 +100,7 @@ function AboutPage() {
       </section>
 
       {/* Captions row 2 */}
-      <section className="flex px-16 gap-4 mb-20">
+      <section className="flex px-8 gap-4 mb-20">
         <div className="flex-1 flex gap-8">
           <span className="text-xs" style={{ color: '#5c1a1a' }}>Fig. 3</span>
           <span className="text-xs" style={{ color: '#5c1a1a' }}>A ceramic shade curing after being shaped</span>
@@ -116,7 +116,7 @@ function AboutPage() {
       </section>
 
       {/* Contact section */}
-      <section className="mx-16 py-16 grid grid-cols-2 gap-16 border-t" style={{ borderColor: '#5c1a1a' }}>
+      <section className="mx-8 py-16 grid grid-cols-2 gap-16 border-t" style={{ borderColor: '#5c1a1a' }}>
         <p className="text-sm leading-relaxed" style={{ color: '#5c1a1a' }}>
           Whether you have a question about an order, a product, or would like more information about what we do, we'd love to hear from you.
         </p>
