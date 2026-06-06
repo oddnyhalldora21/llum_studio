@@ -113,7 +113,7 @@ function HomePage() {
           <p className="text-xs tracking-widest uppercase" style={{ color: '#5c1a1a80' }}>Newsletter</p>
         </div>
 
-        <div className="flex-1 px-4 md:px-10 flex items-center justify-center py-8 md:py-12">
+        <div className="flex-1 px-4 md:px-10 flex items-center justify-center py-16 md:py-18">
           <div className="max-w-xl w-full">
             <p className="md:hidden text-xs tracking-widest uppercase mb-4" style={{ color: '#5c1a1a80' }}>Newsletter</p>
             <p className="text-xl md:text-2xl font-light mb-8 leading-snug" style={{ color: '#5c1a1a' }}>
@@ -143,10 +143,7 @@ function HomePage() {
 
       {/* Editorial Split Section */}
       <section className="flex flex-col md:flex-row md:h-[80vh] pt-4">
-        <div className="absolute left-0 right-0 flex gap-4 px-8" style={{ marginTop: '-4rem' }}>
-          <div className="w-56 shrink-0 border-t" style={{ borderColor: '#5c1a1a' }} />
-          <div className="flex-1 border-t" style={{ borderColor: '#5c1a1a' }} />
-        </div>
+        
 
         <div className="relative w-full md:w-1/2 overflow-hidden group" style={{ minHeight: '300px' }}>
           <img src="https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/lido-collection-detail/Screenshot%202026-06-04%20at%2016.34.10.png" alt="Lido Collection" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
