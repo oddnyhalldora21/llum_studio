@@ -5,10 +5,15 @@ function AboutPage() {
       {/* Hero image */}
       <section className="relative h-screen w-full overflow-hidden -mt-14">
         <img
-          src="https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/about_us_photos/hero-top-photo-aboutus.png"
+          src="https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/about_us_photos/hero-about-us-photo.png"
           alt="Llum Studio workshop"
           className="absolute inset-0 w-full h-full object-cover"
         />
+        <div className="absolute inset-0 flex items-center justify-center px-8">
+          <p className="text-center text-lg md:text-2xl font-light leading-relaxed max-w-2xl" style={{ color: '#e8e0d8' }}>
+            Llum Studio is a design studio defining a new vocabulary for interiors, in which old-world craft meets at-scale manufacturing.
+          </p>
+        </div>
       </section>
 
       {/* Intro text */}
