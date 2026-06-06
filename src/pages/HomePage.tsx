@@ -67,11 +67,7 @@ function HomePage() {
       </section>
 
       {/* Catalog Section */}
-      <section className="mt-20 py-16 flex">
-        <div className="absolute left-0 right-0 flex gap-4 px-8" style={{ marginTop: '-4rem' }}>
-          <div className="hidden md:block w-56 shrink-0 border-t" style={{ borderColor: '#5c1a1a' }} />
-          <div className="flex-1 border-t" style={{ borderColor: '#5c1a1a' }} />
-        </div>
+      <section className="py-16 flex">
 
         <div className="hidden md:flex w-56 shrink-0 px-8 flex-col justify-between py-2">
           <div>
@@ -88,7 +84,7 @@ function HomePage() {
         </div>
 
         <div className="flex-1 px-4 md:px-10 overflow-hidden">
-          <p className="md:hidden text-xs tracking-widest uppercase mb-4" style={{ color: '#5c1a1a80' }}>Our Catalog</p>
+          <p className="md:hidden text-xs tracking-widest uppercase mb-4 pt-4" style={{ color: '#5c1a1a80' }}>Our Catalog</p>
           <div ref={catalogScrollRef} className="flex gap-4 md:gap-6 overflow-x-auto pb-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
             {catalogCollections.map((col) => (
               <Link key={col.slug} to={`/shop?collection=${col.slug}`} className="shrink-0 w-48 md:w-72 group cursor-pointer">
@@ -107,9 +103,9 @@ function HomePage() {
       </section>
 
       {/* Newsletter Section */}
-      <section className="py-16 flex flex-col md:flex-row">
-        <div className="absolute left-0 right-0 flex gap-4 px-8" style={{ marginTop: '-5rem' }}>
-          <div className="hidden md:block w-56 shrink-0 border-t" style={{ borderColor: '#5c1a1a' }} />
+      <section className="py-16 flex">
+        <div className="absolute left-0 right-0 flex gap-4 px-8" style={{ marginTop: '-4rem' }}>
+          <div className="w-56 shrink-0 border-t" style={{ borderColor: '#5c1a1a' }} />
           <div className="flex-1 border-t" style={{ borderColor: '#5c1a1a' }} />
         </div>
 
@@ -119,7 +115,7 @@ function HomePage() {
 
         <div className="flex-1 px-4 md:px-10 flex items-center justify-center py-8 md:py-12">
           <div className="max-w-xl w-full">
-            <p className="text-xs tracking-widest uppercase mb-6 md:hidden" style={{ color: '#5c1a1a80' }}>Newsletter</p>
+            <p className="md:hidden text-xs tracking-widest uppercase mb-4" style={{ color: '#5c1a1a80' }}>Newsletter</p>
             <p className="text-xl md:text-2xl font-light mb-8 leading-snug" style={{ color: '#5c1a1a' }}>
               Subscribe to our newsletter to stay in the know and up to date on the latest news and happenings.
             </p>
@@ -146,13 +142,13 @@ function HomePage() {
       </section>
 
       {/* Editorial Split Section */}
-      <section className="mt-20 flex flex-col md:flex-row h-auto md:h-[80vh] pt-4">
-        <div className="absolute left-0 right-0 hidden md:flex gap-4 px-8" style={{ marginTop: '-6rem' }}>
+      <section className="flex flex-col md:flex-row md:h-[80vh] pt-4">
+        <div className="absolute left-0 right-0 flex gap-4 px-8" style={{ marginTop: '-4rem' }}>
           <div className="w-56 shrink-0 border-t" style={{ borderColor: '#5c1a1a' }} />
           <div className="flex-1 border-t" style={{ borderColor: '#5c1a1a' }} />
         </div>
 
-        <div className="relative w-full md:w-1/2 overflow-hidden group" style={{ height: '60vw', minHeight: '300px' }}>
+        <div className="relative w-full md:w-1/2 overflow-hidden group" style={{ minHeight: '300px' }}>
           <img src="https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/lido-collection-detail/Screenshot%202026-06-04%20at%2016.34.10.png" alt="Lido Collection" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
           <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-10">
             <p className="text-xs tracking-widest uppercase mb-2" style={{ color: '#f5f0eb90' }}>Lido Collection</p>
@@ -162,10 +158,10 @@ function HomePage() {
           </div>
         </div>
 
-        <div className="relative w-full md:w-1/2 overflow-hidden group" style={{ height: '60vw', minHeight: '300px' }}>
+        <div className="relative w-full md:w-1/2 overflow-hidden group" style={{ minHeight: '300px' }}>
           <img src="https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/saga-collection-detail/Screenshot%202026-06-04%20at%2016.38.05.png" alt="Saga Collection" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
           <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-10">
-            <p className="text-xs tracking-widests uppercase mb-2" style={{ color: '#f5f0eb90' }}>Saga Collection</p>
+            <p className="text-xs tracking-widest uppercase mb-2" style={{ color: '#f5f0eb90' }}>Saga Collection</p>
             <Link to="/collections/saga" className="text-lg md:text-2xl font-light hover:opacity-70 transition-opacity" style={{ color: '#f5f0eb' }}>
               Sculptural Forms, Lasting Light →
             </Link>
@@ -174,11 +170,7 @@ function HomePage() {
       </section>
 
       {/* Featured Products Section */}
-      <section className="mt-20 py-16 flex">
-        <div className="absolute left-0 right-0 flex gap-4 px-8" style={{ marginTop: '-4rem' }}>
-          <div className="hidden md:block w-56 shrink-0 border-t" style={{ borderColor: '#5c1a1a' }} />
-          <div className="flex-1 border-t" style={{ borderColor: '#5c1a1a' }} />
-        </div>
+      <section className="py-16 flex">
 
         <div className="hidden md:flex w-56 shrink-0 px-8 flex-col justify-between py-2">
           <div>
@@ -195,7 +187,7 @@ function HomePage() {
         </div>
 
         <div className="flex-1 px-4 md:px-10 overflow-hidden">
-          <p className="md:hidden text-xs tracking-widest uppercase mb-4" style={{ color: '#5c1a1a80' }}>Featured Products</p>
+          <p className="md:hidden text-xs tracking-widest uppercase mb-4 pt-4" style={{ color: '#5c1a1a80' }}>Featured Products</p>
           <div ref={featuredScrollRef} className="flex gap-4 md:gap-6 overflow-x-auto pb-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
             {featuredProducts.map((product) => (
               <Link key={product.id} to={`/products/${product.slug}`} className="shrink-0 w-48 md:w-72 group cursor-pointer">
