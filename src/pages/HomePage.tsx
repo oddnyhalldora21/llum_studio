@@ -71,8 +71,7 @@ function HomePage() {
 
         <div className="hidden md:flex w-56 shrink-0 px-8 flex-col justify-between py-2">
           <div>
-            <p className="text-xs tracking-widest uppercase mb-6" style={{ color: '#5c1a1a80' }}>Our Catalog</p>
-            <p className="text-sm leading-relaxed" style={{ color: '#5c1a1a' }}>
+          <p className="text-xs tracking-widest uppercase mb-6" style={{ color: '#5c1a1a' }}>Our Catalog</p>            <p className="text-sm leading-relaxed" style={{ color: '#5c1a1a' }}>
               Since our founding in 2018, our catalog has grown to include eight collections and over 27 products — suitable for both residential and commercial projects.
             </p>
           </div>
@@ -84,7 +83,7 @@ function HomePage() {
         </div>
 
         <div className="flex-1 px-4 md:px-10 overflow-hidden">
-          <p className="md:hidden text-xs tracking-widest uppercase mb-4 pt-4" style={{ color: '#5c1a1a80' }}>Our Catalog</p>
+          <p className="md:hidden text-xs tracking-widest uppercase mb-4 pt-4" style={{ color: '#5c1a1a' }}>Our Catalog</p>
           <div ref={catalogScrollRef} className="flex gap-4 md:gap-6 overflow-x-auto pb-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
             {catalogCollections.map((col) => (
               <Link key={col.slug} to={`/shop?collection=${col.slug}`} className="shrink-0 w-48 md:w-72 group cursor-pointer">
@@ -169,8 +168,7 @@ function HomePage() {
 
         <div className="hidden md:flex w-56 shrink-0 px-8 flex-col justify-between py-2">
           <div>
-            <p className="text-xs tracking-widest uppercase mb-6" style={{ color: '#5c1a1a80' }}>Featured Products</p>
-            <p className="text-sm leading-relaxed" style={{ color: '#5c1a1a' }}>
+          <p className="text-xs tracking-widest uppercase mb-6" style={{ color: '#5c1a1a' }}>Featured Products</p>            <p className="text-sm leading-relaxed" style={{ color: '#5c1a1a' }}>
               A selection of our most loved pieces — each one crafted to bring warmth and character to any space.
             </p>
           </div>
@@ -182,7 +180,7 @@ function HomePage() {
         </div>
 
         <div className="flex-1 px-4 md:px-10 overflow-hidden">
-          <p className="md:hidden text-xs tracking-widest uppercase mb-4 pt-4" style={{ color: '#5c1a1a80' }}>Featured Products</p>
+          <p className="md:hidden text-xs tracking-widest uppercase mb-4 pt-4" style={{ color: '#5c1a1a' }}>Featured Products</p>
           <div ref={featuredScrollRef} className="flex gap-4 md:gap-6 overflow-x-auto pb-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
             {featuredProducts.map((product) => (
               <Link key={product.id} to={`/products/${product.slug}`} className="shrink-0 w-48 md:w-72 group cursor-pointer">
