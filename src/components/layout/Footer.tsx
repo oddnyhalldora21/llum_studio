@@ -14,12 +14,12 @@ function Footer({ lightsOn }: Props) {
 
   return (
     <footer
-      className="px-12 py-12 transition-colors duration-700"
+      className="px-8 py-12 transition-colors duration-700"
       style={{ backgroundColor: isCollections ? '#5c1a1a' : lightsOn || isAbout ? '#e8e0d8' : '#f5f0eb' }}
     >
 
       {/* Newsletter */}
-      <div className="flex items-center justify-between border-b pb-8 mb-8 mx-4" style={{ borderColor }}>
+      <div className="flex items-center justify-between border-b pb-8 mb-8" style={{ borderColor }}>
         <p className="text-sm tracking-wide" style={{ color: textColor }}>Stay in the loop</p>
         <div className="flex gap-0">
           <input
@@ -38,7 +38,7 @@ function Footer({ lightsOn }: Props) {
       </div>
 
       {/* Links */}
-      <div className="grid grid-cols-3 gap-12 mb-10 mx-4">
+      <div className="grid grid-cols-3 gap-12 mb-10">
         <div>
           <h4 className="text-xs tracking-widest uppercase mb-3" style={{ color: textColor }}>Shop</h4>
           <ul className="space-y-1.5">
@@ -70,7 +70,7 @@ function Footer({ lightsOn }: Props) {
       </div>
 
       {/* Bottom */}
-      <div className="flex items-center justify-between border-t pt-6 mx-4" style={{ borderColor }}>
+      <div className="flex items-center justify-between border-t pt-6" style={{ borderColor }}>
         <span className="text-base font-semibold tracking-widest uppercase" style={{ color: textColor }}>Llum Studio</span>
         <span className="text-xs opacity-50" style={{ color: textColor }}>© 2026 Llum Studio. All rights reserved.</span>
       </div>

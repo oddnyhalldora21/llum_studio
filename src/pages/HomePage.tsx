@@ -96,7 +96,8 @@ function HomePage() {
       </section>
 
       {/* Catalog Section */}
-      <section className="py-16 flex">
+      <section className="mt-20 py-16 flex">
+        
         <div className="absolute left-0 right-0 flex gap-4 px-8" style={{ marginTop: '-4rem' }}>
           <div className="w-56 shrink-0 border-t" style={{ borderColor: '#5c1a1a' }} />
           <div className="flex-1 border-t" style={{ borderColor: '#5c1a1a' }} />
@@ -160,7 +161,7 @@ function HomePage() {
 
       {/* Newsletter Section */}
       <section className="py-16 flex">
-        <div className="absolute left-0 right-0 flex gap-4 px-8" style={{ marginTop: '-4rem' }}>
+        <div className="absolute left-0 right-0 flex gap-4 px-8" style={{ marginTop: '-5rem' }}>
           <div className="w-56 shrink-0 border-t" style={{ borderColor: '#5c1a1a' }} />
           <div className="flex-1 border-t" style={{ borderColor: '#5c1a1a' }} />
         </div>
@@ -201,7 +202,11 @@ function HomePage() {
       </section>
 
       {/* Editorial Split Section */}
-<section className="flex h-[80vh] pt-4">
+<section className="mt-20 flex h-[80vh] pt-4">
+<div className="absolute left-0 right-0 flex gap-4 px-8" style={{ marginTop: '-6rem' }}>
+          <div className="w-56 shrink-0 border-t" style={{ borderColor: '#5c1a1a' }} />
+          <div className="flex-1 border-t" style={{ borderColor: '#5c1a1a' }} />
+        </div>
   <div className="relative w-1/2 overflow-hidden group">
     <img
       src="https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/lido-collection-detail/Screenshot%202026-06-04%20at%2016.34.10.png"
@@ -240,7 +245,7 @@ function HomePage() {
 </section>
 
       {/* Featured Products Section */}
-      <section className="py-16 flex">
+      <section className="mt-20 py-16 flex">
         <div className="absolute left-0 right-0 flex gap-4 px-8" style={{ marginTop: '-4rem' }}>
           <div className="w-56 shrink-0 border-t" style={{ borderColor: '#5c1a1a' }} />
           <div className="flex-1 border-t" style={{ borderColor: '#5c1a1a' }} />
