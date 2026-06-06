@@ -110,30 +110,30 @@ function HomePage() {
         </div>
 
         <div className="hidden md:block w-56 shrink-0 px-8 py-2">
-          <p className="text-xs tracking-widest uppercase" style={{ color: '#5c1a1a80' }}>Newsletter</p>
+          <p className="text-xs tracking-widest uppercase" style={{ color: '#5c1a1a' }}>Newsletter</p>
         </div>
 
         <div className="flex-1 px-4 md:px-10 flex items-center justify-center py-16 md:py-18">
           <div className="max-w-xl w-full">
-            <p className="md:hidden text-xs tracking-widest uppercase mb-4" style={{ color: '#5c1a1a80' }}>Newsletter</p>
+            <p className="md:hidden text-xs tracking-widest uppercase mb-4" style={{ color: '#5c1a1a' }}>Newsletter</p>
             <p className="text-xl md:text-2xl font-light mb-8 leading-snug" style={{ color: '#5c1a1a' }}>
               Subscribe to our newsletter to stay in the know and up to date on the latest news and happenings.
             </p>
-            <div className="flex" style={{ border: '1px solid #5c1a1a50' }}>
+            <div className="flex" style={{ border: '1px solid #5c1a1a' }}>
               <input
                 type="email"
                 placeholder="Your Email Address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSubscribe()}
-                className="flex-1 px-4 py-3 text-sm bg-transparent outline-none placeholder-[#5c1a1a50]"
+                className="flex-1 px-4 py-3 text-sm bg-transparent outline-none"
                 style={{ color: '#5c1a1a' }}
               />
-              <button onClick={handleSubscribe} className="px-4 md:px-6 py-3 text-sm tracking-wide transition-opacity hover:opacity-60" style={{ color: '#5c1a1a', borderLeft: '1px solid #5c1a1a50' }}>
+              <button onClick={handleSubscribe} className="px-4 md:px-6 py-3 text-sm tracking-wide transition-opacity hover:opacity-60" style={{ color: '#5c1a1a', borderLeft: '1px solid #5c1a1a' }}>
                 {subscribed ? 'Thank you!' : 'Subscribe'}
               </button>
             </div>
-            <p className="text-xs mt-3" style={{ color: '#5c1a1a60' }}>
+            <p className="text-xs mt-3" style={{ color: '#5c1a1a' }}>
               By signing up you are agreeing to our{' '}
               <span className="underline cursor-pointer hover:opacity-60">Privacy Policy</span>.
             </p>
