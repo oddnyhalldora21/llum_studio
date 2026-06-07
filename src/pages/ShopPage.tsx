@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams, useNavigate } from 'react-router-dom'
 import { useProducts } from '../hooks/useProducts'
 
 const lightingCategories = ["All Lighting", "Chandelier", "Pendant", "Sconce", "Table Lamp", "Floor Lamp"]
@@ -15,7 +15,8 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
   const [selectedCategory, setSelectedCategory] = useState("All Lighting")
   const [visible, setVisible] = useState(true)
   const [displayedCategory, setDisplayedCategory] = useState("All Lighting")
-  const [searchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams()
+  const navigate = useNavigate()
   const search = searchParams.get('search') || ''
   const collectionParam = searchParams.get('collection') || ''
 
@@ -38,6 +39,11 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
     }, 300)
   }
 
+  function clearSearch() {
+    setSearchParams({})
+    handleCategoryChange('All Lighting')
+  }
+
   const isCollection = collectionSlugs.map(c => c.toLowerCase()).includes(selectedCategory.toLowerCase())
 
   const filtered = products.filter(p => {
@@ -57,8 +63,24 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
   return (
     <div className={`min-h-screen transition-colors duration-700 ${lightsOn ? 'bg-[#e8e0d8]' : 'bg-[#f5f0eb]'}`}>
 
-      {/* Top strip — light toggle */}
-      <div className="flex justify-end items-center px-8 pt-24 pb-6">
+      {/* Top strip — light toggle + search indicator */}
+      <div className="flex items-center justify-between px-8 pt-24 pb-6">
+        {search ? (
+          <div className="flex items-center gap-3">
+            <span className="text-sm" style={{ color: '#5c1a1a' }}>
+              Results for "<span className="font-medium">{search}</span>"
+            </span>
+            <button
+              onClick={clearSearch}
+              className="text-xs tracking-wide transition-opacity hover:opacity-60 px-3 py-1 border"
+              style={{ color: '#5c1a1a', borderColor: '#5c1a1a' }}
+            >
+              ✕ Clear
+            </button>
+          </div>
+        ) : (
+          <div />
+        )}
         <div className="flex items-center gap-3">
           <span className="text-xs tracking-widest uppercase" style={{ color: '#5c1a1a' }}>Light</span>
           <button
@@ -81,10 +103,7 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
       </div>
 
       {/* Mobile filter bar */}
-      <div
-        className="md:hidden flex gap-4 px-8 py-4 overflow-x-auto"
-        style={{ scrollbarWidth: 'none' }}
-      >
+      <div className="md:hidden flex gap-4 px-8 py-4 overflow-x-auto" style={{ scrollbarWidth: 'none' }}>
         {allCategories.map(cat => (
           <button
             key={cat}
@@ -146,8 +165,9 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
         {/* Products */}
         <main className="flex-1 px-4 md:px-8 py-6 md:py-10">
           <div style={{ opacity: visible ? 1 : 0, transition: 'opacity 0.5s ease' }}>
-          <h1 className="text-xl md:text-2xl mb-6 md:mb-8" style={{ color: '#5c1a1a' }}>
-              {displayedCategory}<sup className="text-xs ml-0.5" style={{ color: '#5c1a1a' }}>{filtered.length}</sup>
+            <h1 className="text-xl md:text-2xl mb-6 md:mb-8" style={{ color: '#5c1a1a' }}>
+              {search ? `Search results` : displayedCategory}
+              <sup className="text-xs ml-0.5" style={{ color: '#5c1a1a' }}>{filtered.length}</sup>
             </h1>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
@@ -181,7 +201,18 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
             </div>
 
             {filtered.length === 0 && (
-              <p className="text-sm mt-12" style={{ color: '#5c1a1a60' }}>No products found for "{search}"</p>
+              <div className="mt-12">
+                <p className="text-sm mb-6" style={{ color: '#5c1a1a60' }}>
+                  No products found for "{search}"
+                </p>
+                <button
+                  onClick={clearSearch}
+                  className="text-sm tracking-wide transition-opacity hover:opacity-60"
+                  style={{ color: '#5c1a1a' }}
+                >
+                  ← Back to all products
+                </button>
+              </div>
             )}
           </div>
         </main>
