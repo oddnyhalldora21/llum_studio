@@ -18,12 +18,22 @@ function ProductDetailPage({ lightsOn, setLightsOn }: Props) {
   const [selectedSize, setSelectedSize] = useState('Select')
   const [selectedHardware, setSelectedHardware] = useState('Select')
   const [selectedColor, setSelectedColor] = useState('Original')
+  const [variantError, setVariantError] = useState<string | null>(null)
 
   if (loading) return <div className="flex items-center justify-center min-h-screen text-sm" style={{ color: '#5c1a1a60', backgroundColor: '#f5f0eb' }}>Loading...</div>
   if (error || !product) return <div className="flex items-center justify-center min-h-screen text-sm" style={{ color: '#c0392b', backgroundColor: '#f5f0eb' }}>Product not found</div>
 
   function handleAddToCart() {
     if (!product) return
+    if (selectedSize === 'Select') {
+      setVariantError('Please select a size')
+      return
+    }
+    if (selectedHardware === 'Select') {
+      setVariantError('Please select a hardware finish')
+      return
+    }
+    setVariantError(null)
     for (let i = 0; i < quantity; i++) {
       addItem(product)
     }
@@ -142,7 +152,10 @@ function ProductDetailPage({ lightsOn, setLightsOn }: Props) {
           <DropdownRow label="Color" options={colorOptions} selected={selectedColor} setSelected={setSelectedColor} name="color" />
         </div>
 
-        <div className="flex items-center mt-6" style={{ border: '1px solid #5c1a1a50' }}>
+        {variantError && (
+          <p className="text-xs mt-4 mb-2" style={{ color: '#c0392b' }}>{variantError}</p>
+        )}
+        <div className="flex items-center mt-2" style={{ border: '1px solid #5c1a1a50' }}>
           <div className="flex items-center gap-3 px-4 py-2" style={{ borderRight: '1px solid #5c1a1a50' }}>
             <span className="text-sm" style={{ color: '#5c1a1a80' }}>Qty</span>
             <button onClick={() => setQuantity(q => Math.max(1, q - 1))} className="transition-opacity hover:opacity-50" style={{ color: '#5c1a1a' }}>−</button>
