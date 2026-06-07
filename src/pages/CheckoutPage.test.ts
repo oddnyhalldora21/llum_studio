@@ -17,11 +17,11 @@ describe('Checkout Logic', () => {
     description: 'A test lamp',
     image_url: 'https://example.com/image.jpg',
     image_url_2: null,
-    collection: null, // Added the missing property
+    collection: null,
   }
 
   it('cart is empty after placing order', () => {
-    useCartStore.getState().addItem(mockProduct)
+    useCartStore.getState().addItem(mockProduct, 'Medium', 'Brass', 'Original')
     useCartStore.getState().clearCart()
     const { items } = useCartStore.getState()
     expect(items).toHaveLength(0)
@@ -29,8 +29,8 @@ describe('Checkout Logic', () => {
 
   it('calculates correct total for multiple items', () => {
     const mockProduct2 = { ...mockProduct, id: 'test-2', price_cents: 200000 }
-    useCartStore.getState().addItem(mockProduct)
-    useCartStore.getState().addItem(mockProduct2)
+    useCartStore.getState().addItem(mockProduct, 'Medium', 'Brass', 'Original')
+    useCartStore.getState().addItem(mockProduct2, 'Small', 'Pewter', 'Original')
     const total = useCartStore.getState().totalPrice()
     expect(total).toBe(300000)
   })
@@ -41,7 +41,7 @@ describe('Checkout Logic', () => {
   })
 
   it('total items is 0 after checkout', () => {
-    useCartStore.getState().addItem(mockProduct)
+    useCartStore.getState().addItem(mockProduct, 'Medium', 'Brass', 'Original')
     useCartStore.getState().clearCart()
     const total = useCartStore.getState().totalItems()
     expect(total).toBe(0)

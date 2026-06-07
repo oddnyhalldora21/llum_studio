@@ -17,7 +17,7 @@ describe('Cart Store', () => {
     description: 'A test lamp',
     image_url: 'https://example.com/image.jpg',
     image_url_2: null,
-    collection: null, // Added the missing property
+    collection: null,
   }
 
   it('starts with an empty cart', () => {
@@ -26,7 +26,7 @@ describe('Cart Store', () => {
   })
 
   it('adds a product to the cart', () => {
-    useCartStore.getState().addItem(mockProduct)
+    useCartStore.getState().addItem(mockProduct, 'Medium', 'Brass', 'Original')
     const { items } = useCartStore.getState()
     expect(items).toHaveLength(1)
     expect(items[0].product.name).toBe('Test Lamp')
@@ -34,51 +34,51 @@ describe('Cart Store', () => {
   })
 
   it('increases quantity when adding same product twice', () => {
-    useCartStore.getState().addItem(mockProduct)
-    useCartStore.getState().addItem(mockProduct)
+    useCartStore.getState().addItem(mockProduct, 'Medium', 'Brass', 'Original')
+    useCartStore.getState().addItem(mockProduct, 'Medium', 'Brass', 'Original')
     const { items } = useCartStore.getState()
     expect(items).toHaveLength(1)
     expect(items[0].quantity).toBe(2)
   })
 
   it('removes a product from the cart', () => {
-    useCartStore.getState().addItem(mockProduct)
-    useCartStore.getState().removeItem('test-1')
+    useCartStore.getState().addItem(mockProduct, 'Medium', 'Brass', 'Original')
+    useCartStore.getState().removeItem('test-1', 'Medium', 'Brass')
     const { items } = useCartStore.getState()
     expect(items).toHaveLength(0)
   })
 
   it('updates quantity of a product', () => {
-    useCartStore.getState().addItem(mockProduct)
-    useCartStore.getState().updateQuantity('test-1', 5)
+    useCartStore.getState().addItem(mockProduct, 'Medium', 'Brass', 'Original')
+    useCartStore.getState().updateQuantity('test-1', 'Medium', 'Brass', 5)
     const { items } = useCartStore.getState()
     expect(items[0].quantity).toBe(5)
   })
 
   it('removes product when quantity is set to 0', () => {
-    useCartStore.getState().addItem(mockProduct)
-    useCartStore.getState().updateQuantity('test-1', 0)
+    useCartStore.getState().addItem(mockProduct, 'Medium', 'Brass', 'Original')
+    useCartStore.getState().updateQuantity('test-1', 'Medium', 'Brass', 0)
     const { items } = useCartStore.getState()
     expect(items).toHaveLength(0)
   })
 
   it('clears the cart', () => {
-    useCartStore.getState().addItem(mockProduct)
+    useCartStore.getState().addItem(mockProduct, 'Medium', 'Brass', 'Original')
     useCartStore.getState().clearCart()
     const { items } = useCartStore.getState()
     expect(items).toHaveLength(0)
   })
 
   it('calculates total items correctly', () => {
-    useCartStore.getState().addItem(mockProduct)
-    useCartStore.getState().addItem(mockProduct)
+    useCartStore.getState().addItem(mockProduct, 'Medium', 'Brass', 'Original')
+    useCartStore.getState().addItem(mockProduct, 'Medium', 'Brass', 'Original')
     const total = useCartStore.getState().totalItems()
     expect(total).toBe(2)
   })
 
   it('calculates total price correctly', () => {
-    useCartStore.getState().addItem(mockProduct)
-    useCartStore.getState().addItem(mockProduct)
+    useCartStore.getState().addItem(mockProduct, 'Medium', 'Brass', 'Original')
+    useCartStore.getState().addItem(mockProduct, 'Medium', 'Brass', 'Original')
     const total = useCartStore.getState().totalPrice()
     expect(total).toBe(200000)
   })
