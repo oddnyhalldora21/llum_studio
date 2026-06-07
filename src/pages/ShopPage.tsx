@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link, useSearchParams, useNavigate } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { useProducts } from '../hooks/useProducts'
 
 const lightingCategories = ["All Lighting", "Chandelier", "Pendant", "Sconce", "Table Lamp", "Floor Lamp"]
@@ -16,7 +16,7 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
   const [visible, setVisible] = useState(true)
   const [displayedCategory, setDisplayedCategory] = useState("All Lighting")
   const [searchParams, setSearchParams] = useSearchParams()
-  const navigate = useNavigate()
+  
   const search = searchParams.get('search') || ''
   const collectionParam = searchParams.get('collection') || ''
 
