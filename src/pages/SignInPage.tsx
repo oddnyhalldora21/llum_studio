@@ -6,7 +6,8 @@ import { supabase } from '../lib/supabase'
 function SignInPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [fullName, setFullName] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
   const [isSignUp, setIsSignUp] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
@@ -29,7 +30,7 @@ function SignInPage() {
         await supabase.from('profiles').insert({
           id: user.id,
           email: email,
-          full_name: fullName,
+          full_name: `${firstName} ${lastName}`.trim(),
         })
         await refreshProfile()
       }
@@ -45,6 +46,9 @@ function SignInPage() {
     navigate('/')
     setLoading(false)
   }
+
+  const inputClass = "w-full px-3 py-3 text-sm outline-none bg-transparent border mb-3"
+  const inputStyle = { borderColor: '#5c1a1a40', color: '#5c1a1a' }
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#f5f0eb' }}>
@@ -73,22 +77,32 @@ function SignInPage() {
 
           <div className="mb-6">
             {isSignUp && (
-              <input
-                type="text"
-                placeholder="Full name"
-                value={fullName}
-                onChange={e => setFullName(e.target.value)}
-                className="w-full px-3 py-3 text-sm outline-none bg-transparent border mb-3"
-                style={{ borderColor: '#5c1a1a40', color: '#5c1a1a' }}
-              />
+              <div className="flex flex-col md:flex-row gap-0 md:gap-3">
+                <input
+                  type="text"
+                  placeholder="First name"
+                  value={firstName}
+                  onChange={e => setFirstName(e.target.value)}
+                  className={inputClass}
+                  style={inputStyle}
+                />
+                <input
+                  type="text"
+                  placeholder="Last name"
+                  value={lastName}
+                  onChange={e => setLastName(e.target.value)}
+                  className={inputClass}
+                  style={inputStyle}
+                />
+              </div>
             )}
             <input
               type="email"
               placeholder="Email"
               value={email}
               onChange={e => setEmail(e.target.value)}
-              className="w-full px-3 py-3 text-sm outline-none bg-transparent border mb-3"
-              style={{ borderColor: '#5c1a1a40', color: '#5c1a1a' }}
+              className={inputClass}
+              style={inputStyle}
             />
             <input
               type="password"
@@ -96,7 +110,7 @@ function SignInPage() {
               value={password}
               onChange={e => setPassword(e.target.value)}
               className="w-full px-3 py-3 text-sm outline-none bg-transparent border"
-              style={{ borderColor: '#5c1a1a40', color: '#5c1a1a' }}
+              style={inputStyle}
             />
           </div>
 

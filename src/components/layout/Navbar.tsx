@@ -115,11 +115,11 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
           <div className="hidden md:flex items-center gap-6">
             {user ? (
               <>
-                <span className={`text-sm font-medium tracking-wide transition-colors duration-500 ${
+                <Link to="/profile" className={`text-sm font-medium tracking-wide transition-colors duration-500 hover:opacity-60 ${
                   onCollections || isTranslucent ? 'text-[#f5f0eb]' : 'text-[#5c1a1a]'
                 }`}>
                   {fullName}
-                </span>
+                </Link>
                 <button onClick={handleSignOut} className={linkClass}>Sign Out</button>
               </>
             ) : (
