@@ -6,12 +6,13 @@ import { useAuthStore } from '../store/authStore'
 function CheckoutPage() {
   const navigate = useNavigate()
   const { items, clearCart, removeItem } = useCartStore()
-  const { user } = useAuthStore()
+  const { user, fullName } = useAuthStore()
   const total = items.reduce((sum, item) => sum + item.product.price_cents * item.quantity, 0)
 
+  const nameParts = fullName?.split(' ') ?? []
   const [email, setEmail] = useState(user?.email || '')
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
+  const [firstName, setFirstName] = useState(nameParts[0] ?? '')
+  const [lastName, setLastName] = useState(nameParts.slice(1).join(' ') ?? '')
   const [address, setAddress] = useState('')
   const [city, setCity] = useState('')
   const [postal, setPostal] = useState('')
