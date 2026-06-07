@@ -35,7 +35,7 @@ function ProductDetailPage({ lightsOn, setLightsOn }: Props) {
     }
     setVariantError(null)
     for (let i = 0; i < quantity; i++) {
-      addItem(product)
+      addItem(product, selectedSize, selectedHardware, selectedColor)
     }
     setAdded(true)
     setTimeout(() => setAdded(false), 2000)

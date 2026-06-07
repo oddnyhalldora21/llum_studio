@@ -43,25 +43,30 @@ function CartDrawer({ open, onClose }: Props) {
           </div>
         ) : (
           <div>
-            {items.map((item) => (
-              <div key={item.product.id} className="py-2">
+            {items.map((item, index) => (
+              <div key={`${item.product.id}-${item.size}-${item.hardware}-${index}`} className="py-2">
 
                 {/* Top border */}
                 <div style={{ height: '1px', backgroundColor: '#5c1a1a' }} />
 
                 {/* Name row */}
                 <div className="flex items-center justify-between py-2 gap-2">
-                  <p className="text-sm flex-1" style={{ color: '#5c1a1a' }}>
-                    {item.product.name}
-                  </p>
+                  <div className="flex-1">
+                    <p className="text-sm" style={{ color: '#5c1a1a' }}>
+                      {item.product.name}
+                    </p>
+                    <p className="text-xs mt-0.5" style={{ color: '#5c1a1a60' }}>
+                      {item.size} · {item.hardware}
+                    </p>
+                  </div>
                   <div className="flex items-center gap-3 shrink-0">
                     <button
-                      onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
+                      onClick={() => updateQuantity(item.product.id, item.size, item.hardware, item.quantity - 1)}
                       className="text-sm" style={{ color: '#5c1a1a60' }}
                     >−</button>
                     <span className="text-sm" style={{ color: '#5c1a1a' }}>{item.quantity}</span>
                     <button
-                      onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
+                      onClick={() => updateQuantity(item.product.id, item.size, item.hardware, item.quantity + 1)}
                       className="text-sm" style={{ color: '#5c1a1a60' }}
                     >+</button>
                   </div>
@@ -83,7 +88,7 @@ function CartDrawer({ open, onClose }: Props) {
                     />
                   </div>
                   <button
-                    onClick={() => removeItem(item.product.id)}
+                    onClick={() => removeItem(item.product.id, item.size, item.hardware)}
                     className="text-xs transition-colors pt-1"
                     style={{ color: '#5c1a1a60' }}
                   >
@@ -114,7 +119,7 @@ function CartDrawer({ open, onClose }: Props) {
           <Link
             to="/checkout"
             onClick={onClose}
-            className="block w-full py-2 text-center text-sm tracking-widest uppercase transition-opacity hover:opacity-70"
+            className="block w-full py-2 text-center text-sm tracking-widests uppercase transition-opacity hover:opacity-70"
             style={{ backgroundColor: '#3d1a10', color: '#f5f0eb' }}
           >
             Checkout

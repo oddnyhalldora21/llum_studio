@@ -207,11 +207,14 @@ function CheckoutPage() {
 
         {/* Right - Order Summary */}
         <div className="w-full md:w-80 shrink-0 md:pt-20">
-          {items.map(item => (
-            <div key={item.product.id} className="py-2">
+        {items.map((item, index) => (
+            <div key={`${item.product.id}-${item.size}-${item.hardware}-${index}`} className="py-2">
               <div style={{ height: '1px', backgroundColor: '#5c1a1a' }} />
               <div className="flex items-center justify-between py-2 gap-2">
-                <p className="text-sm flex-1" style={{ color: '#5c1a1a' }}>{item.product.name}</p>
+                <div className="flex-1">
+                  <p className="text-sm" style={{ color: '#5c1a1a' }}>{item.product.name}</p>
+                  <p className="text-xs mt-0.5" style={{ color: '#5c1a1a60' }}>{item.size} · {item.hardware}</p>
+                </div>
                 <p className="text-sm shrink-0" style={{ color: '#5c1a1a80' }}>Qty: {item.quantity}</p>
                 <p className="text-sm shrink-0 ml-2" style={{ color: '#5c1a1a' }}>
                   €{(item.product.price_cents * item.quantity / 100).toLocaleString()}
@@ -223,7 +226,7 @@ function CheckoutPage() {
                   <img src={item.product.image_url} alt={item.product.name} className="w-full h-full object-cover" />
                 </div>
                 <button
-                  onClick={() => removeItem(item.product.id)}
+                  onClick={() => removeItem(item.product.id, item.size, item.hardware)}
                   className="text-xs transition-opacity hover:opacity-60 pt-1"
                   style={{ color: '#5c1a1a60' }}
                 >
