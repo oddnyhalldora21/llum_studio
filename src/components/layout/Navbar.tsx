@@ -106,7 +106,7 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
             <Link to="/shop" className={linkClass}>Shop</Link>
             <Link to="/collections" className={linkClass}>Collections</Link>
             <Link to="/about" className={linkClass}>About</Link>
-            <button onClick={() => setSearchOpen(!searchOpen)} className={linkClass}>
+            <button onClick={() => setSearchOpen(!searchOpen)} className={`${linkClass} cursor-pointer`}>
               Search
             </button>
           </div>

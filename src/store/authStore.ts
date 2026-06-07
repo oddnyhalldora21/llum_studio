@@ -10,6 +10,7 @@ type AuthStore = {
   signUp: (email: string, password: string) => Promise<string | null>
   signOut: () => Promise<void>
   initialize: () => void
+  refreshProfile: () => Promise<void>
 }
 
 export const useAuthStore = create<AuthStore>((set) => ({
@@ -26,20 +27,35 @@ export const useAuthStore = create<AuthStore>((set) => ({
         .select('full_name')
         .eq('id', data.user.id)
         .single()
-      set({ fullName: profile?.full_name ?? null })
+      set({ user: data.user, fullName: profile?.full_name ?? null })
     }
     return null
   },
 
   signUp: async (email, password) => {
-    const { error } = await supabase.auth.signUp({ email, password })
+    const { error, data } = await supabase.auth.signUp({ email, password })
     if (error) return error.message
+    if (data.user) {
+      set({ user: data.user })
+    }
     return null
   },
 
   signOut: async () => {
     await supabase.auth.signOut()
     set({ user: null, fullName: null })
+  },
+
+  refreshProfile: async () => {
+    const { data: { user } } = await supabase.auth.getUser()
+    if (user) {
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('full_name')
+        .eq('id', user.id)
+        .single()
+      set({ user, fullName: profile?.full_name ?? null })
+    }
   },
 
   initialize: () => {
