@@ -20,7 +20,7 @@ function MobileMenu({ onClose, onSearchOpen }: Props) {
   }
 
   return (
-    <div className="fixed inset-0 z-40 flex flex-col pt-14 overflow-y-auto" style={{ backgroundColor: '#5c1a1a' }}>
+    <div className="fixed inset-0 z-40 flex flex-col pt-14 overflow-y-auto animate-slideIn" style={{ backgroundColor: '#5c1a1a' }}>
       <div className="flex flex-col px-8 py-8">
 
        

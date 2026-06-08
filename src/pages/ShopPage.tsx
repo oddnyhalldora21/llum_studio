@@ -116,7 +116,7 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
         </button>
 
         {filterOpen && (
-          <div className="mt-4 flex flex-col">
+          <div className="mt-4 flex flex-col animate-slideDown">
             <p className="text-sm mb-1" style={{ color: '#5c1a1a' }}>Lighting</p>
             <ul className="space-y-0.5 mb-4">
               {lightingCategories.map(cat => (

@@ -60,7 +60,7 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
   const showLogo = !isTranslucentPage || scrolled || hovered || menuOpen
 
   const headerClass = `fixed top-0 left-0 right-0 z-50 border-b transition-all duration-500 ${
-    onCollections
+    onCollections || menuOpen
       ? 'bg-[#5c1a1a] border-transparent'
       : isTranslucent
         ? 'bg-transparent border-transparent'
@@ -80,14 +80,14 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
   }`
 
   const logoClass = `text-base font-semibold tracking-widest uppercase transition-all duration-500 hover:opacity-70 ${
-    onCollections
+    onCollections || menuOpen
       ? 'text-[#f5f0eb]'
       : isTranslucent
         ? 'text-[#f5f0eb]'
         : 'text-[#5c1a1a]'
   } ${!showLogo ? 'opacity-0 pointer-events-none' : 'opacity-100'}`
 
-  const hamburgerColor = onCollections || isTranslucent ? '#f5f0eb' : '#5c1a1a'
+ const hamburgerColor = onCollections || isTranslucent || menuOpen ? '#f5f0eb' : '#5c1a1a'
 
   return (
     <>
