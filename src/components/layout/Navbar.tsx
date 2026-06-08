@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useCartStore } from '../../store/cartStore'
 import { useAuthStore } from '../../store/authStore'
+import MobileMenu from './MobileMenu'
 
 interface Props {
   lightsOn: boolean
@@ -56,7 +57,7 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
 
   const searchBg = { backgroundColor: '#f5f0eb' }
   const isTranslucent = isTranslucentPage && !scrolled
-  const showLogo = !isTranslucentPage || scrolled || hovered
+  const showLogo = !isTranslucentPage || scrolled || hovered || menuOpen
 
   const headerClass = `fixed top-0 left-0 right-0 z-50 border-b transition-all duration-500 ${
     onCollections
@@ -145,32 +146,12 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
         </nav>
       </header>
 
-      {/* Mobile menu overlay */}
+      {/* Mobile menu */}
       {menuOpen && (
-        <div className="fixed inset-0 z-40 flex flex-col pt-14" style={{ backgroundColor: '#f5f0eb' }}>
-          <div className="flex flex-col px-8 py-10 gap-6">
-            <Link to="/shop" className="text-2xl font-light tracking-wide" style={{ color: '#5c1a1a' }}>Shop</Link>
-            <Link to="/collections" className="text-2xl font-light tracking-wide" style={{ color: '#5c1a1a' }}>Collections</Link>
-            <Link to="/about" className="text-2xl font-light tracking-wide" style={{ color: '#5c1a1a' }}>About</Link>
-            <div className="border-t pt-6 mt-4 flex flex-col gap-4" style={{ borderColor: '#5c1a1a20' }}>
-              {user ? (
-                <>
-                  <span className="text-sm" style={{ color: '#5c1a1a80' }}>{fullName}</span>
-                  <button onClick={handleSignOut} className="text-sm text-left" style={{ color: '#5c1a1a' }}>Sign Out</button>
-                </>
-              ) : (
-                <Link to="/sign-in" className="text-sm" style={{ color: '#5c1a1a' }}>Sign In</Link>
-              )}
-              <button
-                onClick={() => { setMenuOpen(false); setSearchOpen(true) }}
-                className="text-sm text-left"
-                style={{ color: '#5c1a1a' }}
-              >
-                Search
-              </button>
-            </div>
-          </div>
-        </div>
+        <MobileMenu
+          onClose={() => setMenuOpen(false)}
+          onSearchOpen={() => setSearchOpen(true)}
+        />
       )}
 
       {/* Search popup */}
