@@ -23,6 +23,15 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
   const [scrolled, setScrolled] = useState(false)
   const [hovered, setHovered] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [menuClosing, setMenuClosing] = useState(false)
+
+  function closeMenu() {
+    setMenuClosing(true)
+    setTimeout(() => {
+      setMenuOpen(false)
+      setMenuClosing(false)
+    }, 300)
+  }
 
   useEffect(() => {
     if (!isTranslucentPage) return
@@ -34,7 +43,7 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
   }, [isTranslucentPage])
 
   useEffect(() => {
-    setMenuOpen(false)
+    closeMenu()
   }, [location.pathname])
 
   async function handleSignOut() {
@@ -136,7 +145,7 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
             <button onClick={onCartOpen} className="text-sm font-medium" style={{ color: hamburgerColor }}>
               Cart ({totalItems})
             </button>
-            <button onClick={() => setMenuOpen(!menuOpen)} className="flex flex-col gap-1.5 p-1">
+            <button onClick={() => menuOpen ? closeMenu() : setMenuOpen(true)} className="flex flex-col gap-1.5 p-1">
               <span className="block w-6 h-px transition-all duration-300" style={{ backgroundColor: hamburgerColor }} />
               <span className="block w-6 h-px transition-all duration-300" style={{ backgroundColor: hamburgerColor }} />
               <span className="block w-6 h-px transition-all duration-300" style={{ backgroundColor: hamburgerColor }} />
@@ -149,8 +158,9 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
       {/* Mobile menu */}
       {menuOpen && (
         <MobileMenu
-          onClose={() => setMenuOpen(false)}
+          onClose={closeMenu}
           onSearchOpen={() => setSearchOpen(true)}
+          closing={menuClosing}
         />
       )}
 

@@ -5,13 +5,16 @@ import { useAuthStore } from '../../store/authStore'
 interface Props {
   onClose: () => void
   onSearchOpen: () => void
+  closing: boolean
 }
 
-function MobileMenu({ onClose, onSearchOpen }: Props) {
+function MobileMenu({ onClose, onSearchOpen, closing }: Props) {
   const { user, fullName, signOut } = useAuthStore()
   const navigate = useNavigate()
   const [shopExpanded, setShopExpanded] = useState(false)
+  const [shopClosing, setShopClosing] = useState(false)
   const [collectionsExpanded, setCollectionsExpanded] = useState(false)
+  const [collectionsClosing, setCollectionsClosing] = useState(false)
 
   async function handleSignOut() {
     await signOut()
@@ -19,16 +22,38 @@ function MobileMenu({ onClose, onSearchOpen }: Props) {
     onClose()
   }
 
-  return (
-    <div className="fixed inset-0 z-40 flex flex-col pt-14 overflow-y-auto animate-slideIn" style={{ backgroundColor: '#5c1a1a' }}>
-      <div className="flex flex-col px-8 py-8">
+  function toggleShop() {
+    if (shopExpanded) {
+      setShopClosing(true)
+      setTimeout(() => {
+        setShopExpanded(false)
+        setShopClosing(false)
+      }, 200)
+    } else {
+      setShopExpanded(true)
+    }
+  }
 
-       
+  function toggleCollections() {
+    if (collectionsExpanded) {
+      setCollectionsClosing(true)
+      setTimeout(() => {
+        setCollectionsExpanded(false)
+        setCollectionsClosing(false)
+      }, 200)
+    } else {
+      setCollectionsExpanded(true)
+    }
+  }
+
+  return (
+    <div className={`fixed inset-0 z-40 flex flex-col pt-14 overflow-y-auto ${closing ? 'animate-slideOut' : 'animate-slideIn'}`} style={{ backgroundColor: '#5c1a1a' }}>
+      <div className="flex flex-col px-8 py-8">
 
         {/* Shop expandable */}
         <div>
           <button
-            onClick={() => setShopExpanded(!shopExpanded)}
+            onClick={toggleShop}
             className="w-full flex items-center justify-between py-3 border-t text-2xl font-light tracking-wide"
             style={{ color: '#f5f0eb', borderColor: '#f5f0eb' }}
           >
@@ -36,7 +61,7 @@ function MobileMenu({ onClose, onSearchOpen }: Props) {
             <span className="text-xl">{shopExpanded ? '−' : '+'}</span>
           </button>
           {shopExpanded && (
-            <div className="flex flex-col pb-2">
+            <div className={`flex flex-col pb-2 ${shopClosing ? 'animate-slideUp' : 'animate-slideDown'}`}>
               {['All Lighting', 'Chandelier', 'Pendant', 'Sconce', 'Table Lamp', 'Floor Lamp'].map(cat => (
                 <Link
                   key={cat}
@@ -54,7 +79,7 @@ function MobileMenu({ onClose, onSearchOpen }: Props) {
         {/* Collections expandable */}
         <div>
           <button
-            onClick={() => setCollectionsExpanded(!collectionsExpanded)}
+            onClick={toggleCollections}
             className="w-full flex items-center justify-between py-3 border-t text-2xl font-light tracking-wide"
             style={{ color: '#f5f0eb', borderColor: '#f5f0eb' }}
           >
@@ -62,7 +87,7 @@ function MobileMenu({ onClose, onSearchOpen }: Props) {
             <span className="text-xl">{collectionsExpanded ? '−' : '+'}</span>
           </button>
           {collectionsExpanded && (
-            <div className="flex flex-col pb-2">
+            <div className={`flex flex-col pb-2 ${collectionsClosing ? 'animate-slideUp' : 'animate-slideDown'}`}>
               {['Lido', 'Saga', 'Flora', 'Core', 'Dune', 'Strata', 'Terra'].map(col => (
                 <Link
                   key={col}
