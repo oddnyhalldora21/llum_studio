@@ -142,8 +142,7 @@ function HomePage() {
 
       {/* Editorial Split Section */}
         <section className="px-8 py-8 flex flex-col md:flex-row md:h-[80vh] gap-4">
-          <div className="relative w-full md:w-1/2 overflow-hidden group" style={{ minHeight: '300px' }}>
-            <img src="https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/lido-collection-detail/Screenshot%202026-06-04%20at%2016.34.10.png" alt="Lido Collection" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+        <div className="relative w-full md:w-1/2 overflow-hidden group" style={{ minHeight: '250px', height: '50vw' }}>            <img src="https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/lido-collection-detail/Screenshot%202026-06-04%20at%2016.34.10.png" alt="Lido Collection" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-10">
               <p className="text-xs tracking-widest uppercase mb-2" style={{ color: '#f5f0eb90' }}>Lido Collection</p>
               <Link to="/collections/lido" className="text-lg md:text-2xl font-light hover:opacity-70 transition-opacity" style={{ color: '#f5f0eb' }}>
@@ -152,8 +151,7 @@ function HomePage() {
             </div>
           </div>
 
-          <div className="relative w-full md:w-1/2 overflow-hidden group" style={{ minHeight: '300px' }}>
-            <img src="https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/saga-collection-detail/Screenshot%202026-06-04%20at%2016.38.05.png" alt="Saga Collection" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <div className="relative w-full md:w-1/2 overflow-hidden group" style={{ minHeight: '250px', height: '50vw' }}>            <img src="https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/saga-collection-detail/Screenshot%202026-06-04%20at%2016.38.05.png" alt="Saga Collection" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-10">
               <p className="text-xs tracking-widest uppercase mb-2" style={{ color: '#f5f0eb90' }}>Saga Collection</p>
               <Link to="/collections/saga" className="text-lg md:text-2xl font-light hover:opacity-70 transition-opacity" style={{ color: '#f5f0eb' }}>
