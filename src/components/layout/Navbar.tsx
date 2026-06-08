@@ -140,15 +140,21 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
             </button>
           </div>
 
-          {/* Mobile right: cart + hamburger */}
-          <div className="flex md:hidden items-center gap-4">
-            <button onClick={onCartOpen} className="text-sm font-medium" style={{ color: hamburgerColor }}>
-              Cart ({totalItems})
+        {/* Mobile right: cart + menu */}
+        <div className="flex md:hidden items-center gap-0">
+            <button
+              onClick={onCartOpen}
+              className="text-sm font-medium px-4 py-1.5 border"
+              style={{ color: hamburgerColor, borderColor: hamburgerColor }}
+            >
+              {totalItems}
             </button>
-            <button onClick={() => menuOpen ? closeMenu() : setMenuOpen(true)} className="flex flex-col gap-1.5 p-1">
-              <span className="block w-6 h-px transition-all duration-300" style={{ backgroundColor: hamburgerColor }} />
-              <span className="block w-6 h-px transition-all duration-300" style={{ backgroundColor: hamburgerColor }} />
-              <span className="block w-6 h-px transition-all duration-300" style={{ backgroundColor: hamburgerColor }} />
+            <button
+              onClick={() => menuOpen ? closeMenu() : setMenuOpen(true)}
+              className="text-sm font-medium px-4 py-1.5 border"
+              style={{ color: hamburgerColor, borderColor: hamburgerColor }}
+            >
+              Menu
             </button>
           </div>
 
