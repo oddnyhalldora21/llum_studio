@@ -16,7 +16,8 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
   const [visible, setVisible] = useState(true)
   const [displayedCategory, setDisplayedCategory] = useState("All Lighting")
   const [searchParams, setSearchParams] = useSearchParams()
-  
+  const [filterOpen, setFilterOpen] = useState(false)
+
   const search = searchParams.get('search') || ''
   const collectionParam = searchParams.get('collection') || ''
 
@@ -32,6 +33,7 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
 
   function handleCategoryChange(cat: string) {
     setVisible(false)
+    setFilterOpen(false)
     setTimeout(() => {
       setSelectedCategory(cat)
       setDisplayedCategory(cat)
@@ -57,8 +59,6 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
 
   if (loading) return <div className="flex items-center justify-center min-h-screen text-sm" style={{ color: '#5c1a1a' }}>Loading...</div>
   if (error) return <div className="flex items-center justify-center min-h-screen text-sm" style={{ color: '#5c1a1a' }}>{error}</div>
-
-  const allCategories = [...lightingCategories, ...collectionSlugs]
 
   return (
     <div className={`min-h-screen transition-colors duration-700 ${lightsOn ? 'bg-[#e8e0d8]' : 'bg-[#f5f0eb]'}`}>
@@ -102,22 +102,53 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
         <div className="flex-1 border-t" style={{ borderColor: '#5c1a1a' }} />
       </div>
 
-      {/* Mobile filter bar */}
-      <div className="md:hidden flex gap-4 px-8 py-4 overflow-x-auto" style={{ scrollbarWidth: 'none' }}>
-        {allCategories.map(cat => (
-          <button
-            key={cat}
-            onClick={() => handleCategoryChange(cat)}
-            className="shrink-0 text-xs tracking-wide px-3 py-1.5 border transition-colors"
-            style={{
-              color: selectedCategory === cat ? '#f5f0eb' : '#5c1a1a',
-              backgroundColor: selectedCategory === cat ? '#5c1a1a' : 'transparent',
-              borderColor: '#5c1a1a'
-            }}
-          >
-            {cat}
-          </button>
-        ))}
+     
+
+     {/* Mobile filter bar */}
+     <div className="md:hidden px-8 py-3">
+        <button
+          onClick={() => setFilterOpen(!filterOpen)}
+          className="flex items-center gap-2 text-sm"
+          style={{ color: '#5c1a1a' }}
+        >
+          <span>{filterOpen ? '−' : '+'}</span>
+          <span>All Lighting</span>
+        </button>
+
+        {filterOpen && (
+          <div className="mt-4 flex flex-col">
+            <p className="text-sm mb-1" style={{ color: '#5c1a1a' }}>Lighting</p>
+            <ul className="space-y-0.5 mb-4">
+              {lightingCategories.map(cat => (
+                <li key={cat}>
+                  <button
+                    onClick={() => handleCategoryChange(cat)}
+                    className="text-sm text-left w-full relative"
+                    style={{ color: '#5c1a1a', paddingLeft: '16px' }}
+                  >
+                    <span className={`absolute left-0 top-0 ${selectedCategory === cat ? 'opacity-100' : 'opacity-0'}`}>●</span>
+                    {cat}
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <p className="text-sm mb-1" style={{ color: '#5c1a1a' }}>Collections</p>
+            <ul className="space-y-0.5">
+              {collectionSlugs.map(col => (
+                <li key={col}>
+                  <button
+                    onClick={() => handleCategoryChange(col)}
+                    className="text-sm text-left w-full relative"
+                    style={{ color: '#5c1a1a', paddingLeft: '16px' }}
+                  >
+                    <span className={`absolute left-0 top-0 ${selectedCategory === col ? 'opacity-100' : 'opacity-0'}`}>●</span>
+                    {col}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
 
       {/* Main layout */}
