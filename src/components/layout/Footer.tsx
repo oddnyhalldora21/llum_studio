@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { useAuthStore } from '../../store/authStore'
 
 interface Props {
   lightsOn: boolean
@@ -9,9 +11,19 @@ function Footer({ lightsOn }: Props) {
   const isAbout = location.pathname === '/about'
   const isCollections = location.pathname === '/collections' || location.pathname.startsWith('/collections/')
   const isHome = location.pathname === '/'
-
+  const { user } = useAuthStore()
   const textColor = isCollections ? '#f5f0eb' : '#5c1a1a'
   const borderColor = isCollections ? '#f5f0eb' : '#5c1a1a'
+  const [footerEmail, setFooterEmail] = useState('')
+  const [footerSubscribed, setFooterSubscribed] = useState(false)
+
+  function handleFooterSubscribe() {
+    if (footerEmail) {
+      setFooterSubscribed(true)
+      setFooterEmail('')
+      setTimeout(() => setFooterSubscribed(false), 3000)
+    }
+  }
 
   return (
     <footer
@@ -27,14 +39,18 @@ function Footer({ lightsOn }: Props) {
             <input
               type="email"
               placeholder="Your email"
+              value={footerEmail}
+              onChange={e => setFooterEmail(e.target.value)}
+              onKeyDown={e => e.key === 'Enter' && handleFooterSubscribe()}
               className="bg-transparent border-b text-sm px-0 py-2 w-full md:w-64 outline-none"
               style={{ borderColor, color: textColor }}
             />
             <button
+              onClick={handleFooterSubscribe}
               className="text-sm ml-6 tracking-wide transition-opacity hover:opacity-60 shrink-0"
               style={{ color: textColor }}
             >
-              Subscribe
+              {footerSubscribed ? 'Thank you!' : 'Subscribe'}
             </button>
           </div>
         </div>
@@ -58,7 +74,7 @@ function Footer({ lightsOn }: Props) {
           <ul className="space-y-1.5">
             <li><Link to="/about" className="text-sm transition-opacity hover:opacity-60" style={{ color: textColor }}>About</Link></li>
             <li><Link to="/collections" className="text-sm transition-opacity hover:opacity-60" style={{ color: textColor }}>Collections</Link></li>
-            <li><Link to="/sign-in" className="text-sm transition-opacity hover:opacity-60" style={{ color: textColor }}>Account</Link></li>
+            <li><Link to={user ? '/profile' : '/sign-in'} className="text-sm transition-opacity hover:opacity-60" style={{ color: textColor }}>Account</Link></li>
           </ul>
         </div>
         <div className="col-span-2 md:col-span-1">

@@ -77,6 +77,7 @@ function ProductDetailPage({ lightsOn, setLightsOn }: Props) {
                 onClick={() => {
                   setSelected(option)
                   setOpenDropdown(null)
+                  setVariantError(null)
                 }}
               >
                 {option}
@@ -135,8 +136,7 @@ function ProductDetailPage({ lightsOn, setLightsOn }: Props) {
       </div>
 
       {/* Info — bottom on mobile, left on desktop */}
-      <div className="w-full md:w-1/2 md:order-1 px-8 md:px-12 pt-8 md:pt-32 pb-16 flex flex-col">
-
+      <div className="w-full md:w-1/2 md:order-1 px-6 md:px-12 pt-12 md:pt-32 pb-16 flex flex-col">
         <p className="text-sm mb-4" style={{ color: '#5c1a1a70' }}>
           {product.description}
         </p>
@@ -163,8 +163,8 @@ function ProductDetailPage({ lightsOn, setLightsOn }: Props) {
             <button onClick={() => setQuantity(q => q + 1)} className="transition-opacity hover:opacity-50" style={{ color: '#5c1a1a' }}>+</button>
           </div>
           <div className="flex items-center justify-between flex-1 px-4 py-2">
-            <span className="text-sm" style={{ color: '#5c1a1a' }}>
-              From €{(product.price_cents / 100).toLocaleString()}
+          <span className="text-sm" style={{ color: '#5c1a1a' }}>
+              From €{((product.price_cents + (selectedSize === 'Medium' ? 100000 : 0)) / 100).toLocaleString()}
             </span>
             <button
               onClick={handleAddToCart}
