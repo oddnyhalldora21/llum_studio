@@ -107,9 +107,7 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
       >
         <nav className="flex items-center justify-between px-8 h-14">
 
-          <Link to="/" className={logoClass}>
-            Llum Studio
-          </Link>
+         
 
           {/* Desktop nav */}
           <div className="hidden md:flex flex-1">

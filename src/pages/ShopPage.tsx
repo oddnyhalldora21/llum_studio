@@ -29,6 +29,7 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
 
   const search = searchParams.get('search') || ''
   const collectionParam = searchParams.get('collection') || ''
+  const genreParam = searchParams.get('genre') || ''
 
   useEffect(() => {
     return () => setLightsOn(false)
@@ -39,6 +40,12 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
       handleCategoryChange(collectionParam.charAt(0).toUpperCase() + collectionParam.slice(1))
     }
   }, [collectionParam])
+
+  useEffect(() => {
+    if (genreParam) {
+      handleCategoryChange(genreParam.charAt(0).toUpperCase() + genreParam.slice(1))
+    }
+  }, [genreParam])
 
   function handleCategoryChange(cat: string) {
     setVisible(false)
@@ -105,9 +112,10 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
         </div>
       </div>
 
+      
       {/* Divider line */}
       <div className="flex gap-4 px-8">
-        <div className="hidden md:block w-56 shrink-0 border-t" style={{ borderColor: '#5c1a1a' }} />
+        <div className="hidden md:block w-51 shrink-0 border-t" style={{ borderColor: '#5c1a1a' }} />
         <div className="flex-1 border-t" style={{ borderColor: '#5c1a1a' }} />
       </div>
 
