@@ -104,12 +104,9 @@ function AboutPage() {
       <section className="mx-8 py-12 md:py-16 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 border-t" style={{ borderColor: '#5c1a1a' }}>
         <p className="text-sm leading-relaxed" style={{ color: '#5c1a1a' }}>
           Whether you have a question about an order, a product, or would like more information about what we do, we'd love to hear from you.
+          hello@llumstudio.com
         </p>
-        <div className="flex flex-wrap gap-6 md:gap-8">
-          {['General Inquiries', 'Telephone', 'Instagram'].map(item => (
-            <a key={item} href="#" className="text-sm hover:opacity-60 transition-opacity" style={{ color: '#5c1a1a' }}>{item}</a>
-          ))}
-        </div>
+        
       </section>
 
     </div>
