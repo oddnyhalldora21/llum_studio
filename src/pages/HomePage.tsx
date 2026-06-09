@@ -140,7 +140,7 @@ function HomePage() {
             {!subscribed && (
               <p className="text-xs mt-3" style={{ color: '#5c1a1a' }}>
                 By signing up you are agreeing to our{' '}
-                <span className="underline cursor-pointer hover:opacity-60">Privacy Policy</span>.
+                <span>Privacy Policy</span>
               </p>
             )}
           </div>
