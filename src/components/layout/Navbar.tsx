@@ -112,6 +112,13 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
           </Link>
 
           {/* Desktop nav */}
+          <div className="hidden md:flex flex-1">
+            <Link to="/" className={logoClass}>
+              Llum Studio
+            </Link>
+          </div>
+
+          {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-10">
             <Link to="/shop" className={linkClass}>Shop</Link>
             <Link to="/collections" className={linkClass}>Collections</Link>
@@ -122,7 +129,7 @@ function Navbar({ lightsOn, onCartOpen }: Props) {
           </div>
 
           {/* Desktop right */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex flex-1 justify-end items-center gap-6">
             {user ? (
               <>
                 <Link to="/profile" className={`text-sm font-medium tracking-wide transition-colors duration-500 hover:opacity-60 ${
