@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { supabase } from '../lib/supabase'
 import type { User } from '@supabase/supabase-js'
+import { useCartStore } from './cartStore'
 
 type AuthStore = {
   user: User | null
@@ -44,6 +45,7 @@ export const useAuthStore = create<AuthStore>((set) => ({
   signOut: async () => {
     await supabase.auth.signOut()
     set({ user: null, fullName: null })
+    useCartStore.getState().clearCart()
   },
 
   refreshProfile: async () => {
