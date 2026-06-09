@@ -33,27 +33,31 @@ function Footer({ lightsOn }: Props) {
 
       {/* Newsletter — hidden on homepage */}
       {!isHome && (
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b pb-8 mb-8" style={{ borderColor }}>
-          <p className="text-sm tracking-wide" style={{ color: textColor }}>Stay in the loop</p>
-          <div className="flex">
-            <input
-              type="email"
-              placeholder="Your email"
-              value={footerEmail}
-              onChange={e => setFooterEmail(e.target.value)}
-              onKeyDown={e => e.key === 'Enter' && handleFooterSubscribe()}
-              className="bg-transparent border-b text-sm px-0 py-2 w-full md:w-64 outline-none"
-              style={{ borderColor, color: textColor }}
-            />
-            <button
-              onClick={handleFooterSubscribe}
-              className="text-sm ml-6 tracking-wide transition-opacity hover:opacity-60 shrink-0"
-              style={{ color: textColor }}
-            >
-              {footerSubscribed ? 'Thank you!' : 'Subscribe'}
-            </button>
-          </div>
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b pb-8 mb-8" style={{ borderColor }}>
+      <p className="text-sm tracking-wide" style={{ color: textColor }}>Stay in the loop</p>
+      {footerSubscribed ? (
+        <p className="text-sm font-medium" style={{ color: textColor }}>Thanks for signing up!</p>
+      ) : (
+        <div className="flex">
+          <input
+            type="email"
+            placeholder="Your email"
+            value={footerEmail}
+            onChange={e => setFooterEmail(e.target.value)}
+            onKeyDown={e => e.key === 'Enter' && handleFooterSubscribe()}
+            className="bg-transparent border-b text-sm px-0 py-2 w-full md:w-64 outline-none"
+            style={{ borderColor, color: textColor }}
+          />
+          <button
+            onClick={handleFooterSubscribe}
+            className="text-sm ml-6 tracking-wide transition-opacity hover:opacity-60 shrink-0"
+            style={{ color: textColor }}
+          >
+            Subscribe
+          </button>
         </div>
+      )}
+    </div>
       )}
 
       {/* Links */}

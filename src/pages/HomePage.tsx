@@ -132,10 +132,17 @@ function HomePage() {
                 {subscribed ? 'Thank you!' : 'Subscribe'}
               </button>
             </div>
-            <p className="text-xs mt-3" style={{ color: '#5c1a1a' }}>
-              By signing up you are agreeing to our{' '}
-              <span className="underline cursor-pointer hover:opacity-60">Privacy Policy</span>.
-            </p>
+            {subscribed && (
+              <p className="text-xs mt-3 font-medium" style={{ color: '#5c1a1a' }}>
+                Thanks for signing up!
+              </p>
+            )}
+            {!subscribed && (
+              <p className="text-xs mt-3" style={{ color: '#5c1a1a' }}>
+                By signing up you are agreeing to our{' '}
+                <span className="underline cursor-pointer hover:opacity-60">Privacy Policy</span>.
+              </p>
+            )}
           </div>
         </div>
       </section>
