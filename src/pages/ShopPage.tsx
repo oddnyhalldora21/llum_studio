@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { useProducts } from '../hooks/useProducts'
+import ProductCardSkeleton from '../components/shop/ProductCardSkeleton'
 
 const lightingCategories = ["All Lighting", "Chandelier", "Pendant", "Sconce", "Table Lamp", "Floor Lamp"]
 const collectionSlugs = ["Lido", "Saga", "Flora", "Core", "Dune", "Strata", "Terra"]
@@ -73,7 +74,6 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
     return matchesCategory && matchesSearch
   })
 
-  if (loading) return <div className="flex items-center justify-center min-h-screen text-sm" style={{ color: '#5c1a1a' }}>Loading...</div>
   if (error) return <div className="flex items-center justify-center min-h-screen text-sm" style={{ color: '#5c1a1a' }}>{error}</div>
 
   return (
@@ -112,18 +112,15 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
         </div>
       </div>
 
-      
       {/* Divider line */}
       <div className="flex gap-4 px-8">
         <div className="hidden md:block w-51 shrink-0 border-t" style={{ borderColor: '#5c1a1a' }} />
         <div className="flex-1 border-t" style={{ borderColor: '#5c1a1a' }} />
       </div>
 
-     
-
-     {/* Mobile filter bar */}
-     <div className="md:hidden px-8 py-3">
-     <button
+      {/* Mobile filter bar */}
+      <div className="md:hidden px-8 py-3">
+        <button
           onClick={() => filterOpen ? closeFilter() : setFilterOpen(true)}
           className="flex items-center gap-2 text-sm"
           style={{ color: '#5c1a1a' }}
@@ -215,53 +212,57 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
           <div style={{ opacity: visible ? 1 : 0, transition: 'opacity 0.5s ease' }}>
             <h1 className="text-xl md:text-2xl mb-6 md:mb-8" style={{ color: '#5c1a1a' }}>
               {search ? `Search results` : displayedCategory}
-              <sup className="text-xs ml-0.5" style={{ color: '#5c1a1a' }}>{filtered.length}</sup>
+              {!loading && <sup className="text-xs ml-0.5" style={{ color: '#5c1a1a' }}>{filtered.length}</sup>}
             </h1>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
-              {filtered.map((product) => (
-                <Link key={product.id} to={`/products/${product.slug}`} className="group">
-                  <div
-                    className="overflow-hidden mb-3 relative transition-colors duration-700"
-                    style={{ aspectRatio: '3/4', backgroundColor: lightsOn ? '#ddd5cb' : '#ebe6e0' }}
+              {loading ? (
+                Array.from({ length: 8 }).map((_, i) => (
+                  <ProductCardSkeleton key={i} />
+                ))
+              ) : filtered.length === 0 ? (
+                <div className="mt-12 col-span-2 md:col-span-4">
+                  <p className="text-sm mb-6" style={{ color: '#5c1a1a60' }}>
+                    No products found for "{search}"
+                  </p>
+                  <button
+                    onClick={clearSearch}
+                    className="text-sm tracking-wide transition-opacity hover:opacity-60"
+                    style={{ color: '#5c1a1a' }}
                   >
-                    <img
-                      src={product.image_url}
-                      alt={product.name}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      style={{ opacity: lightsOn ? 0 : 1, transition: 'opacity 0.8s ease, transform 0.5s ease' }}
-                    />
-                    {product.image_url_2 && (
+                    ← Back to all products
+                  </button>
+                </div>
+              ) : (
+                filtered.map((product) => (
+                  <Link key={product.id} to={`/products/${product.slug}`} className="group">
+                    <div
+                      className="overflow-hidden mb-3 relative transition-colors duration-700"
+                      style={{ aspectRatio: '3/4', backgroundColor: lightsOn ? '#ddd5cb' : '#ebe6e0' }}
+                    >
                       <img
-                        src={product.image_url_2}
+                        src={product.image_url}
                         alt={product.name}
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        style={{ opacity: lightsOn ? 1 : 0, transition: 'opacity 0.8s ease, transform 0.5s ease' }}
+                        style={{ opacity: lightsOn ? 0 : 1, transition: 'opacity 0.8s ease, transform 0.5s ease' }}
                       />
-                    )}
-                  </div>
-                  <p className="text-xs md:text-sm" style={{ color: '#5c1a1a' }}>{product.name}</p>
-                  <p className="text-xs md:text-sm" style={{ color: '#5c1a1a80' }}>
-                    From €{(product.price_cents / 100).toLocaleString()}
-                  </p>
-                </Link>
-              ))}
+                      {product.image_url_2 && (
+                        <img
+                          src={product.image_url_2}
+                          alt={product.name}
+                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          style={{ opacity: lightsOn ? 1 : 0, transition: 'opacity 0.8s ease, transform 0.5s ease' }}
+                        />
+                      )}
+                    </div>
+                    <p className="text-xs md:text-sm" style={{ color: '#5c1a1a' }}>{product.name}</p>
+                    <p className="text-xs md:text-sm" style={{ color: '#5c1a1a80' }}>
+                      From €{(product.price_cents / 100).toLocaleString()}
+                    </p>
+                  </Link>
+                ))
+              )}
             </div>
-
-            {filtered.length === 0 && (
-              <div className="mt-12">
-                <p className="text-sm mb-6" style={{ color: '#5c1a1a60' }}>
-                  No products found for "{search}"
-                </p>
-                <button
-                  onClick={clearSearch}
-                  className="text-sm tracking-wide transition-opacity hover:opacity-60"
-                  style={{ color: '#5c1a1a' }}
-                >
-                  ← Back to all products
-                </button>
-              </div>
-            )}
           </div>
         </main>
 
