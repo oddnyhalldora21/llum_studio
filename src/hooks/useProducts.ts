@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
 import { supabase } from '../lib/supabase'
 
 const SHOP_ID = '6b98e9ae-4667-4100-8203-4fbd00a36157'
@@ -16,29 +16,26 @@ export type Product = {
   collection: string | null
 }
 
+async function fetchProducts(): Promise<Product[]> {
+  const { data, error } = await supabase
+    .from('products')
+    .select('*')
+    .eq('shop_id', SHOP_ID)
+    .eq('is_active', true)
+
+  if (error) throw new Error(error.message)
+  return data || []
+}
+
 export function useProducts() {
-  const [products, setProducts] = useState<Product[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['products'],
+    queryFn: fetchProducts,
+  })
 
-  useEffect(() => {
-    async function fetchProducts() {
-      const { data, error } = await supabase
-        .from('products')
-        .select('*')
-        .eq('shop_id', SHOP_ID)
-        .eq('is_active', true)
-
-      if (error) {
-        setError(error.message)
-      } else {
-        setProducts(data || [])
-      }
-      setLoading(false)
-    }
-
-    fetchProducts()
-  }, [])
-
-  return { products, loading, error }
+  return {
+    products: data || [],
+    loading: isLoading,
+    error: error?.message || null,
+  }
 }
