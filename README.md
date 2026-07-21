@@ -4,6 +4,18 @@ A fictional high-end lighting e-commerce store built with React, TypeScript and 
 
 Live site: [llum-studio.vercel.app](https://llum-studio.vercel.app)
 
+## Screenshots
+
+![Homepage](./readme-assets/homepage.png)
+
+**Lights off / lights on toggle**
+
+![Shop — lights off](./readme-assets/shop-lights-off.png)
+![Shop — lights on](./readme-assets/shop-lights-on.png)
+
+![Product detail](./readme-assets/product-detail.png)
+![Cart drawer](./readme-assets/cart-drawer.png)
+
 ## Design Philosophy
 
 Llum Studio was designed with a single intention: to create a calm, visually refined shopping experience that feels considered and unhurried. The interface prioritises clarity and ease — allowing users to browse, explore, and purchase without friction. Transitions between images, sections, and pages are intentionally smooth, reflecting the tactile, craft-driven nature of the products themselves. Every interaction is designed to feel human and intuitive, so the focus remains where it belongs — on the light.
