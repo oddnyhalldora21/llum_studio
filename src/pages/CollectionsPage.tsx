@@ -2,13 +2,13 @@ import { useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 const collections = [
-  { name: '', slug: 'lido', image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionpage-photos2/lido-cl.png' },
-  { name: '', slug: 'saga', image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionpage-photos2/saga-cl.png' },
-  { name: '', slug: 'flora', image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionpage-photos2/flora-cl.png' },
-  { name: '', slug: 'core', image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionpage-photos2/core-cl.png' },
-  { name: '', slug: 'dune', image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionpage-photos2/dune-cl.png' },
-  { name: '', slug: 'strata', image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionpage-photos2/strata-cl.png' },
-  { name: '', slug: 'terra', image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/terra-collection-section.png' },
+  { name: '', slug: 'lido', image: 'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionpage-photos2/lido-cl.png' },
+  { name: '', slug: 'saga', image: 'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionpage-photos2/saga-cl.png' },
+  { name: '', slug: 'flora', image: 'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionpage-photos2/flora-cl.png' },
+  { name: '', slug: 'core', image: 'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionpage-photos2/core-cl.png' },
+  { name: '', slug: 'dune', image: 'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionpage-photos2/dune-cl.png' },
+  { name: '', slug: 'strata', image: 'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionpage-photos2/strata-cl.png' },
+  { name: '', slug: 'terra', image: 'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/homepage_coll_section/terra-collection-section.png' },
 ]
 
 function CollectionsCarouselPage() {

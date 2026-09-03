@@ -16,26 +16,26 @@ export const collectionsData: Collection[] = [
   {
     name: 'Lido',
     slug: 'lido',
-    heroImage: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/lido-collection-detail/Screenshot%202026-06-05%20at%2020.29.32.png',
+    heroImage: 'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/lido-collection-detail/Screenshot%202026-06-04%20at%2016.36.13.png',
     tagline: 'A continuation of our quest to preserve old-world craft — each piece deriving from a conceptual foundation and realized through distinct forms, materials, and craft-based engineering.',
     photos: [
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/lido-collection-detail/Screenshot%202026-06-04%20at%2016.34.40.png',
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/lido-collection-detail/Screenshot%202026-06-04%20at%2016.34.31.png',
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/lido-collection-detail/Screenshot%202026-06-04%20at%2016.34.20.png',
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/lido-collection-detail/Screenshot%202026-06-04%20at%2016.34.10.png',
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/lido-collection-detail/Screenshot%202026-06-04%20at%2016.33.53.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/lido-collection-detail/Screenshot%202026-06-04%20at%2016.34.40.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/lido-collection-detail/Screenshot%202026-06-04%20at%2016.34.31.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/lido-collection-detail/Screenshot%202026-06-04%20at%2016.34.20.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/lido-collection-detail/Screenshot%202026-06-04%20at%2016.34.10.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/lido-collection-detail/Screenshot%202026-06-04%20at%2016.33.53.png',
     ],
     sections: [
       {
-        image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/lido-collection-detail/Screenshot%202026-06-04%20at%2016.34.40.png',
+        image: 'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/lido-collection-detail/Screenshot%202026-06-04%20at%2016.34.40.png',
         text: 'The Lido Series represents the coming together of two worlds. A continuation of our quest to preserve old-world craft, Lido fixtures combine classic glassmaking techniques — honed over 700 years on the storied Venetian island of Murano — with a thoroughly contemporary approach to production.',
       },
       {
-        image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/lido-collection-detail/Screenshot%202026-06-04%20at%2016.34.31.png',
+        image: 'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/lido-collection-detail/Screenshot%202026-06-04%20at%2016.34.31.png',
         text: 'As with all of our handmade lighting, each fixture is one-of-a-kind, showcasing unrepeatable patterns and material irregularities as varied as grains of sand. Rich in color that deepens when illuminated, the series\'s kaleidoscopic surfaces represent the vitality of a craft-based tradition.',
       },
       {
-        image: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/lido-collection-detail/Screenshot%202026-06-04%20at%2016.34.20.png',
+        image: 'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/lido-collection-detail/Screenshot%202026-06-04%20at%2016.34.20.png',
         text: 'Available in a range of finishes and forms, the series is designed to adapt to commercial or residential spaces of all styles and scales. True to its name — lido translates from Italian to "shore" — the series embodies fluidity: order merging with intuition, familiar structures reimagined with time.',
       },
     ],
@@ -43,14 +43,14 @@ export const collectionsData: Collection[] = [
   {
     name: 'Saga',
     slug: 'saga',
-    heroImage:       'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/saga-collection-detail/Screenshot%202026-06-04%20at%2016.38.05.png',
+    heroImage:       'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/saga-collection-detail/Screenshot%202026-06-04%20at%2016.38.05.png',
     tagline: 'An expansive take on traditional task lighting. Made up of three modular shapes for endless adaptability, Saga delivers a satisfying sense of order, without a hint of sameness.',
     photos: [
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/saga-collection-detail/Screenshot%202026-06-04%20at%2016.38.35.png',
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/saga-collection-detail/Screenshot%202026-06-04%20at%2016.38.47.png',
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/saga-collection-detail/Screenshot%202026-06-04%20at%2016.38.27.png',
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/saga-collection-detail/Screenshot%202026-06-04%20at%2016.37.48.png',
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/saga-collection-detail/Screenshot%202026-06-04%20at%2016.37.38.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/saga-collection-detail/Screenshot%202026-06-04%20at%2016.38.35.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/saga-collection-detail/Screenshot%202026-06-04%20at%2016.38.47.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/saga-collection-detail/Screenshot%202026-06-04%20at%2016.38.27.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/saga-collection-detail/Screenshot%202026-06-04%20at%2016.37.48.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/saga-collection-detail/Screenshot%202026-06-04%20at%2016.37.38.png',
     ],
     sections: [
       {
@@ -66,14 +66,14 @@ export const collectionsData: Collection[] = [
   {
     name: 'Flora',
     slug: 'flora',
-    heroImage: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/flora-collection-detail/Screenshot%202026-06-04%20at%2016.42.44.png',
+    heroImage: 'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/flora-collection-detail/Screenshot%202026-06-04%20at%2016.42.44.png',
     tagline: 'A collaboration between Llum Studio and designer Sophie Lou Jacobsen, the Flora Collection uses classic Venetian glassmaking techniques to honor the ephemeral beauty of a world in bloom.',
     photos: [
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/flora-collection-detail/Screenshot%202026-06-04%20at%2016.42.36.png',
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/flora-collection-detail/Screenshot%202026-06-04%20at%2016.42.26.png',
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/flora-collection-detail/Screenshot%202026-06-04%20at%2016.42.16.png',
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/flora-collection-detail/Screenshot%202026-06-04%20at%2016.41.53.png',
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/flora-collection-detail/Screenshot%202026-06-04%20at%2016.41.46.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/flora-collection-detail/Screenshot%202026-06-04%20at%2016.42.36.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/flora-collection-detail/Screenshot%202026-06-04%20at%2016.42.26.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/flora-collection-detail/Screenshot%202026-06-04%20at%2016.42.16.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/flora-collection-detail/Screenshot%202026-06-04%20at%2016.41.53.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/flora-collection-detail/Screenshot%202026-06-04%20at%2016.41.46.png',
     ],
     sections: [
       {
@@ -89,14 +89,14 @@ export const collectionsData: Collection[] = [
   {
     name: 'Core',
     slug: 'core',
-    heroImage: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/cure-collection-detail/Screenshot%202026-06-04%20at%2016.44.53.png',
+    heroImage: 'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/cure-collection-detail/Screenshot%202026-06-04%20at%2016.44.53.png',
     tagline: 'The truest essence of our design philosophy. With interchangeable components and the ability to mix and match, each Core series fixture uses related expressions to make its own enduring statement.',
     photos: [
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/cure-collection-detail/Screenshot%202026-06-04%20at%2016.45.41.png',
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/cure-collection-detail/Screenshot%202026-06-04%20at%2016.45.24.png',
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/cure-collection-detail/Screenshot%202026-06-04%20at%2016.45.11.png',
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/cure-collection-detail/Screenshot%202026-06-04%20at%2016.45.02.png',
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/cure-collection-detail/Screenshot%202026-06-04%20at%2016.44.40.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/cure-collection-detail/Screenshot%202026-06-04%20at%2016.45.41.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/cure-collection-detail/Screenshot%202026-06-04%20at%2016.45.24.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/cure-collection-detail/Screenshot%202026-06-04%20at%2016.45.11.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/cure-collection-detail/Screenshot%202026-06-04%20at%2016.45.02.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/cure-collection-detail/Screenshot%202026-06-04%20at%2016.44.40.png',
     ],
     sections: [
       {
@@ -112,14 +112,14 @@ export const collectionsData: Collection[] = [
   {
     name: 'Dune',
     slug: 'dune',
-    heroImage: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/dune-collection-detail/Screenshot%202026-06-04%20at%2016.47.02.png',
+    heroImage: 'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/dune-collection-detail/Screenshot%202026-06-04%20at%2016.47.02.png',
     tagline: 'Named for sand formations that migrate with the wind, Dune represents both intentionality and flexibility. Function-forward designs are balanced by exuberant shapes and colors, while indoor-outdoor durability enhances petite silhouettes that bring soulful whimsicality to the ritual of gathering.',
     photos: [
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/dune-collection-detail/Screenshot%202026-06-04%20at%2016.47.50.png',
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/dune-collection-detail/Screenshot%202026-06-04%20at%2016.47.35.png',
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/dune-collection-detail/Screenshot%202026-06-04%20at%2016.47.25.png',
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/dune-collection-detail/Screenshot%202026-06-04%20at%2016.47.16.png',
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/dune-collection-detail/Screenshot%202026-06-04%20at%2016.47.08.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/dune-collection-detail/Screenshot%202026-06-04%20at%2016.47.50.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/dune-collection-detail/Screenshot%202026-06-04%20at%2016.47.35.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/dune-collection-detail/Screenshot%202026-06-04%20at%2016.47.25.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/dune-collection-detail/Screenshot%202026-06-04%20at%2016.47.16.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/dune-collection-detail/Screenshot%202026-06-04%20at%2016.47.08.png',
     ],
     sections: [
       {
@@ -135,14 +135,14 @@ export const collectionsData: Collection[] = [
   {
     name: 'Strata',
     slug: 'strata',
-    heroImage: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/strata-collection-detail/Screenshot%202026-06-04%20at%2020.25.09.png',
+    heroImage: 'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/strata-collection-detail/Screenshot%202026-06-04%20at%2020.25.09.png',
     tagline: 'Transforming glass into a language of light, color, and form.',
     photos: [
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/strata-collection-detail/Screenshot%202026-06-04%20at%2016.49.54.png',
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/strata-collection-detail/Screenshot%202026-06-04%20at%2016.49.38.png',
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/strata-collection-detail/Screenshot%202026-06-04%20at%2016.49.32.png',
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/strata-collection-detail/Screenshot%202026-06-04%20at%2016.49.24.png',
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/strata-collection-detail/Screenshot%202026-06-04%20at%2016.49.02.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/strata-collection-detail/Screenshot%202026-06-04%20at%2016.49.54.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/strata-collection-detail/Screenshot%202026-06-04%20at%2016.49.38.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/strata-collection-detail/Screenshot%202026-06-04%20at%2016.49.32.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/strata-collection-detail/Screenshot%202026-06-04%20at%2016.49.24.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/strata-collection-detail/Screenshot%202026-06-04%20at%2016.49.02.png',
     ],
     sections: [
       {
@@ -158,14 +158,14 @@ export const collectionsData: Collection[] = [
   {
     name: 'Terra',
     slug: 'terra',
-    heroImage: 'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/terra-collection-detail/Screenshot%202026-06-04%20at%2016.30.54.png',
+    heroImage: 'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/terra-collection-detail/Screenshot%202026-06-04%20at%2016.30.54.png',
     tagline: 'A collaboration with ceramicist Danny Kaplan. Together, we experimented with structure and scale to make the connection between clay and light appear innate — as effortless as friendly conversation.',
     photos: [
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/terra-collection-detail/Screenshot%202026-06-04%20at%2016.30.43.png',
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/terra-collection-detail/Screenshot%202026-06-04%20at%2016.30.32.png',
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/terra-collection-detail/Screenshot%202026-06-04%20at%2016.30.20.png',
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/terra-collection-detail/Screenshot%202026-06-04%20at%2016.29.47.png',
-      'https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/terra-collection-detail/Screenshot%202026-06-04%20at%2016.28.58.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/terra-collection-detail/Screenshot%202026-06-04%20at%2016.30.43.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/terra-collection-detail/Screenshot%202026-06-04%20at%2016.30.32.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/terra-collection-detail/Screenshot%202026-06-04%20at%2016.30.20.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/terra-collection-detail/Screenshot%202026-06-04%20at%2016.29.47.png',
+      'https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/collectionDetail-photos/terra-collection-detail/Screenshot%202026-06-04%20at%2016.28.58.png',
     ],
     sections: [
       {

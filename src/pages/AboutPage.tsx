@@ -5,7 +5,7 @@ function AboutPage() {
       {/* Hero image */}
       <section className="relative h-screen w-full overflow-hidden -mt-14">
         <img
-          src="https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/about_us_photos/hero-about-us-photo.png"
+          src="https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/about_us_photos/hero-top-photo-aboutus.webp"
           alt="Llum Studio workshop"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -29,10 +29,10 @@ function AboutPage() {
       {/* Two photos */}
       <section className="flex flex-col md:flex-row px-8 gap-4 mb-4">
         <div className="flex-1 overflow-hidden" style={{ aspectRatio: '3/4' }}>
-          <img src="https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/about_us_photos/founders-photo.png" alt="Founders" className="w-full h-full object-cover" />
+          <img src="https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/about_us_photos/founders-photo.png" alt="Founders" className="w-full h-full object-cover" />
         </div>
         <div className="flex-1 overflow-hidden" style={{ aspectRatio: '3/4' }}>
-          <img src="https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/about_us_photos/flora-chandelier.png" alt="Flora Chandelier" className="w-full h-full object-cover" />
+          <img src="https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/about_us_photos/flora-chandelier.png" alt="Flora Chandelier" className="w-full h-full object-cover" />
         </div>
       </section>
 
@@ -74,13 +74,13 @@ function AboutPage() {
       {/* Three craft photos */}
       <section className="flex flex-col md:flex-row px-8 gap-4 mb-4">
         <div className="flex-1 overflow-hidden" style={{ aspectRatio: '3/4' }}>
-          <img src="https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/about_us_photos/clay-bowl.png" alt="Clay bowl" className="w-full h-full object-cover" />
+          <img src="https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/about_us_photos/clay-bowl.png" alt="Clay bowl" className="w-full h-full object-cover" />
         </div>
         <div className="flex-1 overflow-hidden" style={{ aspectRatio: '3/4' }}>
-          <img src="https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/about_us_photos/glass-burning-oven.png" alt="Glass in oven" className="w-full h-full object-cover" />
+          <img src="https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/about_us_photos/glass-burning-oven.png" alt="Glass in oven" className="w-full h-full object-cover" />
         </div>
         <div className="flex-1 overflow-hidden" style={{ aspectRatio: '3/4' }}>
-          <img src="https://ummgqxuzxnmltylxggvq.supabase.co/storage/v1/object/public/llum-studio/about_us_photos/clay-stensil.png" alt="Clay stencil" className="w-full h-full object-cover" />
+          <img src="https://mvlmupvqalbzryjuvdyv.supabase.co/storage/v1/object/public/llum-studio/about_us_photos/clay-stensil.png" alt="Clay stencil" className="w-full h-full object-cover" />
         </div>
       </section>
 
