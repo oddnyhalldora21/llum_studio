@@ -1,10 +1,12 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 function OrderConfirmationPage() {
+  const location = useLocation()
+  const orderNumber = (location.state as { orderNumber?: string } | null)?.orderNumber
+
   return (
     <div className="min-h-screen px-8 py-16" style={{ backgroundColor: '#f5f0eb' }}>
 
-      {/* Top divider line */}
       <div className="w-full border-t mb-16" style={{ borderColor: '#5c1a1a30' }} />
 
       <p className="text-xs tracking-widest uppercase mb-16" style={{ color: '#5c1a1a60' }}>
@@ -13,7 +15,6 @@ function OrderConfirmationPage() {
 
       <div className="max-w-xl">
 
-        {/* Burgundy checkmark */}
         <div
           className="w-16 h-16 rounded-full flex items-center justify-center mb-8"
           style={{ backgroundColor: '#5c1a1a' }}
@@ -26,6 +27,13 @@ function OrderConfirmationPage() {
         <h1 className="text-4xl font-light mb-6" style={{ color: '#5c1a1a' }}>
           Thank you for your order.
         </h1>
+
+        {orderNumber && (
+          <p className="text-sm mb-6" style={{ color: '#5c1a1a' }}>
+            Order number: <span className="font-medium">{orderNumber}</span>
+          </p>
+        )}
+
         <p className="text-sm leading-relaxed mb-2" style={{ color: '#5c1a1a80' }}>
           Your order has been received and is being processed.
         </p>

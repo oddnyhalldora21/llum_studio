@@ -2,11 +2,14 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useCartStore } from '../store/cartStore'
 import { useAuthStore } from '../store/authStore'
+import { useCreateOrder } from '../hooks/useCreateOrder'
+import { validateCheckoutForm } from '../utils/checkoutValidation'
 
 function CheckoutPage() {
   const navigate = useNavigate()
   const { items, clearCart, removeItem } = useCartStore()
   const { user, fullName } = useAuthStore()
+  const createOrder = useCreateOrder()
   const total = items.reduce((sum, item) => sum + item.product.price_cents * item.quantity, 0)
 
   const nameParts = fullName?.split(' ') ?? []
@@ -20,36 +23,27 @@ function CheckoutPage() {
   const [expiry, setExpiry] = useState('')
   const [cvc, setCvc] = useState('')
   const [errors, setErrors] = useState<Record<string, string>>({})
+  const [submitError, setSubmitError] = useState<string | null>(null)
 
-  function validate() {
-    const newErrors: Record<string, string> = {}
-
-    if (!email) newErrors.email = 'Email is required'
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) newErrors.email = 'Enter a valid email'
-
-    if (!firstName) newErrors.firstName = 'First name is required'
-    if (!lastName) newErrors.lastName = 'Last name is required'
-    if (!address) newErrors.address = 'Address is required'
-    if (!city) newErrors.city = 'City is required'
-    if (!postal) newErrors.postal = 'Postal code is required'
-
-    if (!cardNumber) newErrors.cardNumber = 'Card number is required'
-    else if (cardNumber.replace(/\s/g, '').length < 16) newErrors.cardNumber = 'Enter a valid 16-digit card number'
-
-    if (!expiry) newErrors.expiry = 'Expiry is required'
-    else if (!/^\d{2}\/\d{2}$/.test(expiry)) newErrors.expiry = 'Use MM/YY format'
-
-    if (!cvc) newErrors.cvc = 'CVC is required'
-    else if (cvc.length < 3) newErrors.cvc = 'Enter a valid CVC'
-
+  async function handlePlaceOrder() {
+    const newErrors = validateCheckoutForm({
+      email, firstName, lastName, address, city, postal, cardNumber, expiry, cvc,
+    })
     setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
-  }
+    if (Object.keys(newErrors).length > 0) return
 
-  function handlePlaceOrder() {
-    if (!validate()) return
-    clearCart()
-    navigate('/order-confirmation')
+    setSubmitError(null)
+    try {
+      const result = await createOrder.mutateAsync({
+        email, firstName, lastName, address, city, postal,
+        items,
+        subtotalCents: total,
+      })
+      clearCart()
+      navigate('/order-confirmation', { state: { orderNumber: result.orderNumber } })
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : 'Something went wrong placing your order.')
+    }
   }
 
   const inputClass = "w-full px-3 py-3 text-sm outline-none bg-transparent border transition-colors"
@@ -197,12 +191,17 @@ function CheckoutPage() {
             </div>
           </div>
 
+          {submitError && (
+            <p className="text-sm mb-4" style={{ color: '#c0392b' }}>{submitError}</p>
+          )}
+
           <button
             onClick={handlePlaceOrder}
-            className="w-full py-3 text-sm tracking-widest uppercase transition-opacity hover:opacity-70"
+            disabled={createOrder.isPending}
+            className="w-full py-3 text-sm tracking-widest uppercase transition-opacity hover:opacity-70 disabled:opacity-40"
             style={{ backgroundColor: '#3d1a10', color: '#f5f0eb' }}
           >
-            Place Order
+            {createOrder.isPending ? 'Placing order...' : 'Place Order'}
           </button>
         </div>
 
