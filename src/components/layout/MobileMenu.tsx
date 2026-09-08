@@ -62,8 +62,7 @@ function MobileMenu({ onClose, onSearchOpen, closing }: Props) {
           </button>
           {shopExpanded && (
             <div className={`flex flex-col pb-2 ${shopClosing ? 'animate-slideUp' : 'animate-slideDown'}`}>
-             {['All Lighting', 'Chandelier', 'Pendant', 'Sconce', 'Table Lamp', 'Floor Lamp'].map(cat => (
-                <Link
+          {['All Lighting', 'Chandelier', 'Pendant', 'Sconce', 'Table Lamp', 'Floor Lamp', 'Surface Mount'].map(cat => (                <Link
                   key={cat}
                   to={cat === 'All Lighting' ? '/shop' : `/shop?genre=${encodeURIComponent(cat)}`}
                   className="py-3 border-t text-base font-light"
