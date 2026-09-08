@@ -3,7 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { useProducts } from '../hooks/useProducts'
 import ProductCardSkeleton from '../components/shop/ProductCardSkeleton'
 
-const lightingCategories = ["All Lighting", "Chandelier", "Pendant", "Sconce", "Table Lamp", "Floor Lamp"]
+const lightingCategories = ["All Lighting", "Chandelier", "Pendant", "Sconce", "Table Lamp", "Floor Lamp", "Surface Mount"]
 const collectionSlugs = ["Lido", "Saga", "Flora", "Core", "Dune", "Strata", "Terra"]
 
 interface Props {
