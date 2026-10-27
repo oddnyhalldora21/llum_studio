@@ -74,6 +74,14 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
     return matchesCategory && matchesSearch
   })
 
+  // Pin featured products to the front; everything else keeps its order
+  const featuredOrder = ['Orb Pendant', 'Seneca Table Lamp', 'Luca Wall Sconce, Artist Edition', 'Calla Floor Lamp']
+  const rank = (p: { name: string }) => {
+    const i = featuredOrder.indexOf(p.name)
+    return i === -1 ? featuredOrder.length : i
+  }
+  filtered.sort((a, b) => rank(a) - rank(b))
+
   if (error) return <div className="flex items-center justify-center min-h-screen text-sm" style={{ color: '#5c1a1a' }}>{error}</div>
 
   return (
