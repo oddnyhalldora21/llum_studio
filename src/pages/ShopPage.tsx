@@ -75,7 +75,7 @@ function ShopPage({ lightsOn, setLightsOn }: Props) {
   })
 
   // Pin featured products to the front; everything else keeps its order
-  const featuredOrder = ['Orb Pendant', 'Seneca Table Lamp', 'Luca Wall Sconce, Artist Edition', 'Calla Floor Lamp']
+  const featuredOrder = ['Murano Glass Orb Pendant', 'Seneca Table Lamp', 'Luca Wall Sconce Artist Edition', 'Calla Floor Lamp']
   const rank = (p: { name: string }) => {
     const i = featuredOrder.indexOf(p.name)
     return i === -1 ? featuredOrder.length : i
